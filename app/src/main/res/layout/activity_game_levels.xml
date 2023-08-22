@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/im_old_map"
+    tools:context=".GameLevels">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_back"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:text="@string/back"
+            android:textAllCaps="false"
+            android:textColor="@color/black_95"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:cornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/grid_levels"
+            app:layout_constraintTop_toBottomOf="@+id/grid_levels"
+            app:strokeColor="@color/black_60"
+            app:strokeWidth="3dp" />
+
+        <GridLayout
+            android:id="@+id/grid_levels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:text="@string/_1" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:text="@string/_2" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:text="@string/_3" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="3"
+                android:text="@string/_4" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="4"
+                android:text="@string/_5" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:text="@string/_6" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:text="@string/_7" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:text="@string/_8" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="3"
+                android:text="@string/_9" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="4"
+                android:text="@string/_10" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:text="@string/_11" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:text="@string/_12" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:text="@string/_13" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="3"
+                android:text="@string/_14" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="4"
+                android:text="@string/_15" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:text="@string/_16" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:text="@string/_17" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:text="@string/_18" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="3"
+                android:text="@string/_19" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="4"
+                android:text="@string/_20" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:text="@string/_21" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:text="@string/_22" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:text="@string/_23" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="3"
+                android:text="@string/_24" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="4"
+                android:text="@string/_25" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:text="@string/_26" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:text="@string/_27" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:text="@string/_28" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="3"
+                android:text="@string/_29" />
+
+            <TextView
+                style="@style/my_tv_style"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_column="4"
+                android:text="@string/_30" />
+
+        </GridLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
