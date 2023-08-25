@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_size_indent_8dp">8dp</dimen>
+    <dimen name="middle_size_indent_16dp">16dp</dimen>
+    <dimen name="large_size_indent_24dp">24dp</dimen>
+    <dimen name="xlarge_size_indent_32dp">32dp</dimen>
+
+    <dimen name="small_size_font_20sp">20sp</dimen>
+    <dimen name="middle_size_font_24sp">24sp</dimen>
+    <dimen name="large_size_font_32sp">32sp</dimen>
+    <dimen name="xlarge_size_font_40sp">40sp</dimen>
+
+
+</resources>

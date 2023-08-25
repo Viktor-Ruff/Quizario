@@ -4,24 +4,29 @@ import static com.ruff.game_lesson_1.MainActivity.MY_LOG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.ruff.game_lesson_1.databinding.ActivityGameLevelsBinding;
+
 public class GameLevels extends AppCompatActivity {
 
-    Button btBack;
+    private ActivityGameLevelsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_levels);
+        binding = ActivityGameLevelsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        btBack = (Button) findViewById(R.id.bt_back);
+
+        levelListeners();
 
         //click handling button back
-        btBack.setOnClickListener(new View.OnClickListener() {
+        binding.btBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -32,7 +37,22 @@ public class GameLevels extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void levelListeners() {
+
+
+        //enter to level 1
+        binding.tvLevel1.setOnClickListener(v -> {
+
+            try {
+                Intent intent = new Intent(GameLevels.this, Level1.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                Log.d(MY_LOG, e.getMessage());
+            }
+        });
     }
 
 }
+

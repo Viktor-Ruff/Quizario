@@ -9,10 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.ruff.game_lesson_1.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String MY_LOG = "MY_LOG";
-    Button btStart;
+
+    private ActivityMainBinding binding;
     Toast backToast;
 
     private long backPressedTime = 0;
@@ -20,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        btStart = (Button) findViewById(R.id.bt_start);
 
         //click handling button start
-        btStart.setOnClickListener(new View.OnClickListener() {
+        binding.btStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -39,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //click handling system button back
 
+
+    //click handling system button back
     @Override
     public void onBackPressed() {
 
