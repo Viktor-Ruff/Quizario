@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="@dimen/small_size_indent_8dp"
     android:background="@drawable/im_back_dialog_preview">
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_close_dialog"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/bt_back"
+        android:id="@+id/bt_continue"
         style="@style/my_button_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

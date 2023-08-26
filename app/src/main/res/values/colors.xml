@@ -13,8 +13,7 @@
     <color name="black_60">#60000000</color>
     <color name="blue">#48d1ff</color>
 
-
-    <color name="green_slider2">#DBD62C</color>
-    <color name="green_slider">#A7FA32</color>
+    <color name="green_80">#CCA7FA32</color>
+    <color name="red_80">#CCEA0A0A</color>
 
 </resources>

@@ -9,7 +9,6 @@
 
 
     <com.google.android.material.button.MaterialButton
-
         android:id="@+id/bt_start"
         style="@style/my_button_style.large"
         android:layout_width="176dp"

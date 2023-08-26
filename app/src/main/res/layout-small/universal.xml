@@ -42,12 +42,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:thumbRadius="1dp"
-        app:tickColorInactive="@color/black_60"
+        app:tickColorInactive="@color/black_95"
         app:tickRadiusActive="0dp"
-        app:tickRadiusInactive="2dp"
-        app:trackColorActive="@color/green_slider"
-        app:trackColorInactive="@color/white_40"
-        app:trackHeight="16dp" />
+        app:tickRadiusInactive="1dp"
+        app:trackColorActive="@color/green_80"
+        app:trackColorInactive="@color/black_60"
+        app:trackHeight="10dp" />
 
 
     <TextView

@@ -35,5 +35,6 @@
     <string name="level">Level:</string>
     <string name="exercise_level1">Choose the number that is higher. Questions can be repeated until you score 10 points</string>
     <string name="_continue">Continue</string>
+    <string name="level_1">Level 1</string>
     <string name="x">X</string>
 </resources>

@@ -28,6 +28,9 @@
     </style>
 
     <style name="card_tv_style">
+        <item name="android:inputType">number</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
         <item name="android:background">@drawable/tv_style_white_40</item>
         <item name="android:fontFamily">@font/florabet</item>
         <item name="android:gravity">center</item>
@@ -43,7 +46,6 @@
         <item name="android:textSize">160sp</item>
     </style>
 
-
     <style name="my_button_style" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:backgroundTint">@color/white_40</item>
         <item name="android:fontFamily">@font/didact_gothic_regular</item>
@@ -55,7 +57,6 @@
         <item name="strokeColor">@color/black_60</item>
         <item name="strokeWidth">2dp</item>
     </style>
-
 
     <style name="my_button_style.large">
         <item name="cornerRadius">24dp</item>
