@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -24,31 +25,35 @@
         app:strokeColor="@color/black_60"
         app:strokeWidth="2dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:paddingStart="@dimen/middle_size_indent_16dp"
-        android:paddingEnd="@dimen/middle_size_indent_16dp"
-        android:src="@drawable/im_two_cards_mini"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/middle_size_indent_16dp"
-        android:layout_marginEnd="@dimen/middle_size_indent_16dp"
-        android:fontFamily="@font/didact_gothic_regular"
-        android:text="@string/exercise_level1"
-        android:textColor="@color/black_95"
-        android:textSize="@dimen/middle_size_font_24sp"
+        android:layout_height="300dp"
+        android:maxHeight="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_close_dialog">
+
+        <TextView
+
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/middle_size_indent_16dp"
+            android:layout_marginTop="@dimen/small_size_indent_8dp"
+            android:layout_marginEnd="@dimen/middle_size_indent_16dp"
+            android:fontFamily="@font/didact_gothic_regular"
+            android:paddingBottom="@dimen/small_size_indent_8dp"
+            android:text="@string/interesting_fact_level1"
+            android:textColor="@color/black_95"
+            android:textSize="@dimen/middle_size_font_24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_close_dialog" />
+
+    </androidx.core.widget.NestedScrollView>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_continue"
@@ -61,7 +66,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/scroll_view" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

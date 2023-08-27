@@ -52,6 +52,17 @@ public class GameLevels extends AppCompatActivity {
                 Log.d(MY_LOG, e.getMessage());
             }
         });
+
+        //enter to level 2
+        binding.tvLevel2.setOnClickListener(v -> {
+
+            try {
+                Intent intent = new Intent(GameLevels.this, Level2.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                Log.d(MY_LOG, e.getMessage());
+            }
+        });
     }
 
 }

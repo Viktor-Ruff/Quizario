@@ -16,6 +16,10 @@
             android:name=".Level1"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            android:name=".Level2"
+            android:exported="false" />
+        <activity
             android:name=".GameLevels"
             android:exported="false"
             android:screenOrientation="portrait" />

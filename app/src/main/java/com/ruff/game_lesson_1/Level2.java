@@ -1,11 +1,7 @@
 package com.ruff.game_lesson_1;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,9 +12,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.slider.Slider;
@@ -29,16 +27,15 @@ import java.util.Map;
 import java.util.Random;
 
 
-public class Level1 extends AppCompatActivity {
+public class Level2 extends AppCompatActivity {
 
     private UniversalBinding binding;
     private static final int COUNT_QUESTIONS = 10;
     Slider slider;
     Animation animation;
-
+    Map<Integer, String> romanNumArray;
     int leftNumCard;
     int rightNumCard;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +43,21 @@ public class Level1 extends AppCompatActivity {
         binding = UniversalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
+        if (getResources().getConfiguration().screenLayout == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            binding.tvLeftNumber.setTextSize(6);
+        } else if (getResources().getConfiguration().screenLayout == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+            binding.tvLeftNumber.setTextSize(8);
+        } else if (getResources().getConfiguration().screenLayout == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            binding.tvLeftNumber.setTextSize(20);
+        }
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
             onBackPressed();
         });
 
         //установка номера уровня
-        binding.tvLevelNumber.setText(R.string.level_1);
+        binding.tvLevelNumber.setText(R.string.level_2);
+
 
         //скругление углов картинок
         binding.tvLeftNumber.setClipToOutline(true);
@@ -71,6 +75,11 @@ public class Level1 extends AppCompatActivity {
         Dialog dialogStart = new Dialog(this);
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
+        ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
+        ivDialog.setImageResource(R.drawable.im_roman_two_cards);
+
+        TextView tvDescription = dialogStart.findViewById(R.id.textView);
+        tvDescription.setText(getResources().getString(R.string.exercise_level2));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogStart.show();
@@ -93,8 +102,6 @@ public class Level1 extends AppCompatActivity {
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.end_dialog);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
-        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level2));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.show();
 
@@ -106,8 +113,9 @@ public class Level1 extends AppCompatActivity {
         MaterialButton _continue = dialogEnd.findViewById(R.id.bt_continue);
         _continue.setOnClickListener(v -> {
             dialogEnd.cancel();
-            Intent intent = new Intent(Level1.this, Level2.class);
-            startActivity(intent);
+
+            /*Intent intent = new Intent(Level2.this, Level3.class);
+            startActivity(intent);*/
         });
 
     }
@@ -200,6 +208,20 @@ public class Level1 extends AppCompatActivity {
 
     public void initCardViews() {
 
+
+        romanNumArray = new HashMap<>();
+
+        romanNumArray.put(1, "I");
+        romanNumArray.put(2, "II");
+        romanNumArray.put(3, "III");
+        romanNumArray.put(4, "IV");
+        romanNumArray.put(5, "V");
+        romanNumArray.put(6, "VI");
+        romanNumArray.put(7, "VII");
+        romanNumArray.put(8, "VIII");
+        romanNumArray.put(9, "IX");
+        romanNumArray.put(10, "X");
+
         String[] textArray = getResources().getStringArray(R.array.textArray);
         Random random = new Random();
         leftNumCard = random.nextInt(textArray.length);
@@ -209,10 +231,10 @@ public class Level1 extends AppCompatActivity {
             rightNumCard = random.nextInt(textArray.length);
         }
 
-        binding.tvLeftNumber.setText(String.valueOf(leftNumCard));
-        binding.tvRightNumber.setText(String.valueOf(rightNumCard));
-        binding.tvLeftNumberText.setText(textArray[leftNumCard]);
-        binding.tvRightNumberText.setText(textArray[rightNumCard]);
+        binding.tvLeftNumber.setText(romanNumArray.get(leftNumCard + 1));
+        binding.tvRightNumber.setText(String.valueOf(romanNumArray.get(rightNumCard + 1)));
+        binding.tvLeftNumberText.setText(String.valueOf(romanNumArray.get(leftNumCard + 1)));
+        binding.tvRightNumberText.setText(String.valueOf(romanNumArray.get(rightNumCard + 1)));
         binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
         binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
     }

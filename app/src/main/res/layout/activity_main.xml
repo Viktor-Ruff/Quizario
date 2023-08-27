@@ -7,6 +7,21 @@
     android:background="@drawable/im_back_main"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xlarge_size_indent_32dp"
+        android:fontFamily="@font/florabet"
+        android:shadowColor="@color/black_95"
+        android:shadowDx="10"
+        android:shadowRadius="10"
+        android:text="Quizario"
+        android:textColor="@color/black"
+        android:textSize="76sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_start"
@@ -14,6 +29,8 @@
         android:layout_width="176dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/middle_size_indent_16dp"
+        android:gravity="center"
+        android:padding="5dp"
         android:text="@string/start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

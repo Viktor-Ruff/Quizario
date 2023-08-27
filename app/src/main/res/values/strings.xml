@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">game_lesson_1</string>
+
+    <string name="interesting_fact_level1">"Congratulations, you've completed the level!\n
+        Different Cultures Discovered Zero at Different Times. The idea of zero as a number was invented throughout the world at different times in history. Despite this scattered adoption, it's generally accepted that the Indian astronomer and mathematician Brahmagupta brought up the concept of zero for the first time, around 600 A.D."</string>
+
+    <string name="interesting_fact_level2">"Congratulations, you've completed the level!\n
+        Zero Is the Only Number That Can't Be Represented In Roman Numerals. sn't a number because you couldn't divide by zero. There are a total of zero zeros in Roman numerals. While the ancient Greeks were aware of zero as a concept, they didn't consider zero to be a number at all. For example, Aristotle decided zero wasn't a number because you couldn't divide by zero. Instead of a Roman numeral, the Latin word "nulla" would have been used to represent the concept of zero. The reason no numeral existed for zero is because there was no need for a numeral to represent it."</string>
+
     <string name="back">Back</string>
     <string name="_1">1</string>
     <string name="_2">2</string>
@@ -34,7 +41,10 @@
     <string name="start">Start</string>
     <string name="level">Level:</string>
     <string name="exercise_level1">Choose the number that is higher. Questions can be repeated until you score 10 points</string>
+    <string name="exercise_level2">Choose the roman number that is higher. Questions can be repeated until you score 10 points</string>
     <string name="_continue">Continue</string>
     <string name="level_1">Level 1</string>
+    <string name="level_2">Level 2</string>
     <string name="x">X</string>
+
 </resources>

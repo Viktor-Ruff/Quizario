@@ -28,6 +28,9 @@
     </style>
 
     <style name="card_tv_style">
+        <item name="android:shadowColor">@color/black_95</item>
+        <item name="android:shadowDx">10</item>
+        <item name="android:shadowRadius">10</item>
         <item name="android:inputType">number</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
