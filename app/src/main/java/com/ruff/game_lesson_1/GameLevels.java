@@ -8,9 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-
 import com.ruff.game_lesson_1.databinding.ActivityGameLevelsBinding;
+import com.ruff.game_lesson_1.levels.Level1;
+import com.ruff.game_lesson_1.levels.Level2;
+import com.ruff.game_lesson_1.levels.Level3;
 
 public class GameLevels extends AppCompatActivity {
 
@@ -58,6 +59,18 @@ public class GameLevels extends AppCompatActivity {
 
             try {
                 Intent intent = new Intent(GameLevels.this, Level2.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                Log.d(MY_LOG, e.getMessage());
+            }
+        });
+
+
+        //enter to level 3
+        binding.tvLevel3.setOnClickListener(v -> {
+
+            try {
+                Intent intent = new Intent(GameLevels.this, Level3.class);
                 startActivity(intent);
             } catch (Exception e) {
                 Log.d(MY_LOG, e.getMessage());

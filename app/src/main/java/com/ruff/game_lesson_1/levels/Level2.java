@@ -1,11 +1,13 @@
-package com.ruff.game_lesson_1;
+package com.ruff.game_lesson_1.levels;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -14,12 +16,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.slider.Slider;
+import com.ruff.game_lesson_1.GameLevels;
+import com.ruff.game_lesson_1.R;
 import com.ruff.game_lesson_1.databinding.UniversalBinding;
 
 import java.util.HashMap;
@@ -43,17 +46,32 @@ public class Level2 extends AppCompatActivity {
         binding = UniversalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if (getResources().getConfiguration().screenLayout == Configuration.SCREENLAYOUT_SIZE_SMALL) {
-            binding.tvLeftNumber.setTextSize(6);
-        } else if (getResources().getConfiguration().screenLayout == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
-            binding.tvLeftNumber.setTextSize(8);
-        } else if (getResources().getConfiguration().screenLayout == Configuration.SCREENLAYOUT_SIZE_LARGE) {
-            binding.tvLeftNumber.setTextSize(20);
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+
+        int screenLayout = getBaseContext().getResources().getConfiguration().screenLayout;
+        screenLayout &= Configuration.SCREENLAYOUT_SIZE_MASK;
+
+
+        if (screenLayout == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            binding.tvLeftNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 48);
+            binding.tvRightNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 48);
+        } else if (screenLayout == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+            binding.tvLeftNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 68);
+            binding.tvRightNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 68);
+        } else if (screenLayout == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            binding.tvLeftNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 108);
+            binding.tvRightNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 108);
+        } else if (screenLayout == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+            binding.tvLeftNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 138);
+            binding.tvRightNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 138);
         }
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
             onBackPressed();
         });
+
 
         //установка номера уровня
         binding.tvLevelNumber.setText(R.string.level_2);
@@ -82,6 +100,7 @@ public class Level2 extends AppCompatActivity {
         tvDescription.setText(getResources().getString(R.string.exercise_level2));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        dialogStart.setCancelable(false);
         dialogStart.show();
 
         MaterialButton close = dialogStart.findViewById(R.id.bt_close_dialog);
@@ -103,6 +122,7 @@ public class Level2 extends AppCompatActivity {
         dialogEnd.setContentView(R.layout.end_dialog);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        dialogEnd.setCancelable(false);
         dialogEnd.show();
 
         MaterialButton close = dialogEnd.findViewById(R.id.bt_close_dialog);
@@ -114,8 +134,8 @@ public class Level2 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             dialogEnd.cancel();
 
-            /*Intent intent = new Intent(Level2.this, Level3.class);
-            startActivity(intent);*/
+            Intent intent = new Intent(Level2.this, Level3.class);
+            startActivity(intent);
         });
 
     }
@@ -237,6 +257,12 @@ public class Level2 extends AppCompatActivity {
         binding.tvRightNumberText.setText(String.valueOf(romanNumArray.get(rightNumCard + 1)));
         binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
         binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Level2.this, GameLevels.class);
+        startActivity(intent);
     }
 
 }

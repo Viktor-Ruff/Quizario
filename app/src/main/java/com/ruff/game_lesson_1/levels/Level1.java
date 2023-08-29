@@ -1,4 +1,4 @@
-package com.ruff.game_lesson_1;
+package com.ruff.game_lesson_1.levels;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,15 +16,14 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.slider.Slider;
+import com.ruff.game_lesson_1.GameLevels;
+import com.ruff.game_lesson_1.R;
 import com.ruff.game_lesson_1.databinding.UniversalBinding;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 
@@ -45,6 +43,9 @@ public class Level1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = UniversalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
 
         //кнопка назад
@@ -73,6 +74,7 @@ public class Level1 extends AppCompatActivity {
         dialogStart.setContentView(R.layout.preview_dialog);
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        dialogStart.setCancelable(false);
         dialogStart.show();
 
         MaterialButton close = dialogStart.findViewById(R.id.bt_close_dialog);
@@ -96,6 +98,7 @@ public class Level1 extends AppCompatActivity {
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
         tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level2));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        dialogEnd.setCancelable(false);
         dialogEnd.show();
 
         MaterialButton close = dialogEnd.findViewById(R.id.bt_close_dialog);
@@ -217,4 +220,10 @@ public class Level1 extends AppCompatActivity {
         binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Level1.this, GameLevels.class);
+        startActivity(intent);
+    }
 }

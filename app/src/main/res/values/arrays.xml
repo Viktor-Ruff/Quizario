@@ -27,4 +27,22 @@
         <item>Nine</item>
     </string-array>
 
+
+    <string-array name="animalsPredatorArray">
+        <item>Bear</item>
+        <item>Wolf</item>
+        <item>Fox</item>
+        <item>Lion</item>
+        <item>Panther</item>
+    </string-array>
+
+    <string-array name="animalsHerbivorousArray">
+        <item>Cow</item>
+        <item>Camel</item>
+        <item>Elephant</item>
+        <item>Squirrel</item>
+        <item>Pig</item>
+    </string-array>
+
+
 </resources>

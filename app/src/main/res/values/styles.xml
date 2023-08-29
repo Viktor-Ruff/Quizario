@@ -11,6 +11,23 @@
         <item name="android:layout_margin">5dp</item>
     </style>
 
+    <style name="levels_tv_style.small">
+        <item name="android:textSize">@dimen/xlarge_size_font_40sp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="levels_tv_style.large">
+        <item name="android:textSize">@dimen/large_size_font_32sp</item>
+        <item name="android:background">@drawable/selector_game_level_large</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="levels_tv_style.xlarge">
+        <item name="android:background">@drawable/selector_game_level_xlarge</item>
+        <item name="android:textSize">@dimen/xlarge_size_font_40sp</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
     <style name="my_tv_style">
         <item name="android:fontFamily">@font/didact_gothic_regular</item>
         <item name="android:textSize">@dimen/large_size_font_32sp</item>
@@ -25,6 +42,10 @@
 
     <style name="my_tv_style.large">
         <item name="android:textSize">@dimen/xlarge_size_font_40sp</item>
+    </style>
+
+    <style name="my_tv_style.xlarge">
+        <item name="android:textSize">56sp</item>
     </style>
 
     <style name="card_tv_style">
@@ -49,6 +70,10 @@
         <item name="android:textSize">160sp</item>
     </style>
 
+    <style name="card_tv_style.xlarge">
+        <item name="android:textSize">200sp</item>
+    </style>
+
     <style name="my_button_style" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:backgroundTint">@color/white_40</item>
         <item name="android:fontFamily">@font/didact_gothic_regular</item>
@@ -65,6 +90,12 @@
         <item name="cornerRadius">24dp</item>
         <item name="android:textSize">@dimen/large_size_font_32sp</item>
         <item name="strokeWidth">3dp</item>
+    </style>
+
+    <style name="my_button_style.xlarge">
+        <item name="cornerRadius">30dp</item>
+        <item name="android:textSize">@dimen/xlarge_size_font_40sp</item>
+        <item name="strokeWidth">4dp</item>
     </style>
 
     <style name="my_button_style.small">

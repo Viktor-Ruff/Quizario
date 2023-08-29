@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_universal_constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/im_back_level1"
-    tools:context=".Level1"
+    tools:context=".levels.Level1"
     tools:ignore="MissingDefaultResource">
 
     <com.google.android.material.button.MaterialButton
@@ -18,7 +19,7 @@
         app:layout_constraintBottom_toTopOf="@+id/slider"
         app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
+    <TextView
         android:id="@+id/tv_level_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +36,9 @@
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="false"
+        android:enabled="false"
+        android:focusable="false"
         android:stepSize="1"
         android:value="0"
         android:valueFrom="0"
