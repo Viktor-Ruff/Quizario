@@ -7,8 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginStart="@dimen/middle_size_indent_16dp"
-    android:layout_marginEnd="@dimen/middle_size_indent_16dp"
-    android:background="@drawable/im_back_dialog_preview">
+    android:layout_marginEnd="@dimen/middle_size_indent_16dp">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_close_dialog"
@@ -27,9 +26,6 @@
         app:strokeWidth="2dp" />
 
 
-
-
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
@@ -41,7 +37,6 @@
         app:layout_constraintTop_toBottomOf="@id/bt_close_dialog">
 
         <TextView
-
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

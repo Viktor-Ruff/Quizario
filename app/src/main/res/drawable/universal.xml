@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_universal_constraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/im_back_level1"
+    tools:context=".levels.Level1"
+    tools:ignore="MissingDefaultResource">
+
+    <ImageView
+        android:id="@+id/iv_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/middle_size_indent_16dp"
+        android:src="@drawable/ic_heart_fil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_heart_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_size_indent_8dp"
+        android:fontFamily="@font/didact_gothic_regular"
+        android:textSize="@dimen/xlarge_size_font_40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_heart"
+        app:layout_constraintEnd_toStartOf="@+id/iv_heart"
+        app:layout_constraintTop_toTopOf="@+id/iv_heart"
+        tools:text="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_back"
+        style="@style/my_button_style.xlarge"
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/xlarge_size_indent_32dp"
+        android:layout_marginBottom="@dimen/middle_size_indent_16dp"
+        android:text="@string/back"
+        app:layout_constraintBottom_toTopOf="@+id/slider"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_level_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/xlarge_size_indent_32dp"
+        android:fontFamily="@font/didact_gothic_regular"
+        android:text="@string/level"
+        android:textSize="@dimen/xlarge_size_font_40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bt_back" />
+
+    <com.google.android.material.slider.Slider
+        android:enabled="false"
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/middle_size_indent_16dp"
+        android:layout_marginEnd="@dimen/middle_size_indent_16dp"
+        android:layout_marginBottom="@dimen/middle_size_indent_16dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:stepSize="1"
+        android:value="0"
+        android:valueFrom="0"
+        android:valueTo="10"
+        app:layout_constraintBottom_toTopOf="@+id/tv_left_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:thumbRadius="1dp"
+        app:tickColorInactive="@color/black_60"
+        app:tickRadiusActive="0dp"
+        app:tickRadiusInactive="2dp"
+        app:trackColorActive="@color/green_80"
+        app:trackColorInactive="@color/white_40"
+        app:trackHeight="26dp" />
+
+
+    <TextView
+        android:id="@+id/tv_left_number"
+        style="@style/card_tv_style.xlarge"
+        android:layout_width="0dp"
+        android:layout_height="520dp"
+        android:layout_marginStart="@dimen/xlarge_size_indent_32dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_right_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/tv_right_number"
+        style="@style/card_tv_style.xlarge"
+        android:layout_width="0dp"
+        android:layout_height="520dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="@dimen/xlarge_size_indent_32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_left_number"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="22" />
+
+
+    <TextView
+        android:id="@+id/tv_left_number_text"
+        style="@style/my_tv_style.xlarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tv_left_number"
+        app:layout_constraintStart_toStartOf="@+id/tv_left_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_left_number"
+        tools:text="One" />
+
+
+    <TextView
+        android:id="@+id/tv_right_number_text"
+        style="@style/my_tv_style.xlarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tv_right_number"
+        app:layout_constraintStart_toStartOf="@+id/tv_right_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_right_number"
+        tools:text="Twenty two" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

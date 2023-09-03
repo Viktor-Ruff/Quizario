@@ -1,312 +1,332 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@drawable/im_back_levels"
     tools:context=".GameLevels">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/iv_heart"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_margin="@dimen/large_size_indent_24dp"
+        android:src="@drawable/ic_heart_fil_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_marginTop="8dp"
-            android:id="@+id/bt_back"
-            style="@style/my_button_style.large"
-            android:layout_width="158dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:text="@string/back"
-            app:layout_constraintEnd_toEndOf="@+id/grid_levels"
-            app:layout_constraintTop_toBottomOf="@+id/grid_levels" />
+    <TextView
+        android:textColor="@color/black_95"
+        android:paddingBottom="8dp"
+        android:id="@+id/tv_heart_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_size_indent_8dp"
+        android:fontFamily="@font/didact_gothic_regular"
+        android:textSize="54sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_heart"
+        app:layout_constraintEnd_toStartOf="@+id/iv_heart"
+        app:layout_constraintTop_toTopOf="@+id/iv_heart"
+        tools:text="1" />
 
-        <GridLayout
-            android:id="@+id/grid_levels"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:columnCount="5"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_back"
+        style="@style/my_button_style.large"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:minHeight="70dp"
+        android:text="@string/back"
+        app:layout_constraintEnd_toEndOf="@+id/grid_levels"
+        app:layout_constraintTop_toBottomOf="@+id/grid_levels" />
 
-            <TextView
-                android:id="@+id/tv_level_1"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:text="@string/_1" />
+    <GridLayout
+        android:id="@+id/grid_levels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tv_level_2"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:text="@string/_2" />
+        <TextView
+            android:id="@+id/tv_level_1"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:text="@string/_1" />
 
-            <TextView
-                android:id="@+id/tv_level_3"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:text="@string/_3" />
+        <TextView
+            android:id="@+id/tv_level_2"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:text="@string/_2" />
 
-            <TextView
-                android:id="@+id/tv_level_4"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="3"
-                android:text="@string/_4" />
+        <TextView
+            android:id="@+id/tv_level_3"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:text="@string/_3" />
 
-            <TextView
-                android:id="@+id/tv_level_5"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="4"
-                android:text="@string/_5" />
+        <TextView
+            android:id="@+id/tv_level_4"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:text="@string/_4" />
 
-            <TextView
-                android:id="@+id/tv_level_6"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:text="@string/_6" />
+        <TextView
+            android:id="@+id/tv_level_5"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:text="@string/_5" />
 
-            <TextView
-                android:id="@+id/tv_level_7"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:text="@string/_7" />
+        <TextView
+            android:id="@+id/tv_level_6"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:text="@string/_6" />
 
-            <TextView
-                android:id="@+id/tv_level_8"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:text="@string/_8" />
+        <TextView
+            android:id="@+id/tv_level_7"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:text="@string/_7" />
 
-            <TextView
-                android:id="@+id/tv_level_9"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="3"
-                android:text="@string/_9" />
+        <TextView
+            android:id="@+id/tv_level_8"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:text="@string/_8" />
 
-            <TextView
-                android:id="@+id/tv_level_10"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="4"
-                android:text="@string/_10" />
+        <TextView
+            android:id="@+id/tv_level_9"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:text="@string/_9" />
 
-            <TextView
-                android:id="@+id/tv_level_11"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:text="@string/_11" />
+        <TextView
+            android:id="@+id/tv_level_10"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:text="@string/_10" />
 
-            <TextView
-                android:id="@+id/tv_level_12"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:text="@string/_12" />
+        <TextView
+            android:id="@+id/tv_level_11"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:text="@string/_11" />
 
-            <TextView
-                android:id="@+id/tv_level_13"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:text="@string/_13" />
+        <TextView
+            android:id="@+id/tv_level_12"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:text="@string/_12" />
 
-            <TextView
-                android:id="@+id/tv_level_14"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="3"
-                android:text="@string/_14" />
+        <TextView
+            android:id="@+id/tv_level_13"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:text="@string/_13" />
 
-            <TextView
-                android:id="@+id/tv_level_15"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="4"
-                android:text="@string/_15" />
+        <TextView
+            android:id="@+id/tv_level_14"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:text="@string/_14" />
 
-            <TextView
-                android:id="@+id/tv_level_16"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:text="@string/_16" />
+        <TextView
+            android:id="@+id/tv_level_15"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:text="@string/_15" />
 
-            <TextView
-                android:id="@+id/tv_level_17"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:text="@string/_17" />
+        <TextView
+            android:id="@+id/tv_level_16"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:text="@string/_16" />
 
-            <TextView
-                android:id="@+id/tv_level_18"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:text="@string/_18" />
+        <TextView
+            android:id="@+id/tv_level_17"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:text="@string/_17" />
 
-            <TextView
-                android:id="@+id/tv_level_19"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="3"
-                android:text="@string/_19" />
+        <TextView
+            android:id="@+id/tv_level_18"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:text="@string/_18" />
 
-            <TextView
-                android:id="@+id/tv_level_20"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="4"
-                android:text="@string/_20" />
+        <TextView
+            android:id="@+id/tv_level_19"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:text="@string/_19" />
 
-            <TextView
-                android:id="@+id/tv_level_21"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:text="@string/_21" />
+        <TextView
+            android:id="@+id/tv_level_20"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:text="@string/_20" />
 
-            <TextView
-                android:id="@+id/tv_level_22"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:text="@string/_22" />
+        <TextView
+            android:id="@+id/tv_level_21"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:text="@string/_21" />
 
-            <TextView
-                android:id="@+id/tv_level_23"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:text="@string/_23" />
+        <TextView
+            android:id="@+id/tv_level_22"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:text="@string/_22" />
 
-            <TextView
-                android:id="@+id/tv_level_24"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="3"
-                android:text="@string/_24" />
+        <TextView
+            android:id="@+id/tv_level_23"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:text="@string/_23" />
 
-            <TextView
-                android:id="@+id/tv_level_25"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="4"
-                android:text="@string/_25" />
+        <TextView
+            android:id="@+id/tv_level_24"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:text="@string/_24" />
 
-            <TextView
-                android:id="@+id/tv_level_26"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:text="@string/_26" />
+        <TextView
+            android:id="@+id/tv_level_25"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:text="@string/_25" />
 
-            <TextView
-                android:id="@+id/tv_level_27"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:text="@string/_27" />
+        <TextView
+            android:id="@+id/tv_level_26"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:text="@string/_26" />
 
-            <TextView
-                android:id="@+id/tv_level_28"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:text="@string/_28" />
+        <TextView
+            android:id="@+id/tv_level_27"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:text="@string/_27" />
 
-            <TextView
-                android:id="@+id/tv_level_29"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="3"
-                android:text="@string/_29" />
+        <TextView
+            android:id="@+id/tv_level_28"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:text="@string/_28" />
 
-            <TextView
-                android:id="@+id/tv_level_30"
-                style="@style/levels_tv_style.large"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_rowWeight="1"
-                android:layout_column="4"
-                android:text="@string/_30" />
+        <TextView
+            android:id="@+id/tv_level_29"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:text="@string/_29" />
 
-        </GridLayout>
+        <TextView
+            android:id="@+id/tv_level_30"
+            style="@style/levels_tv_style.large"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:text="@string/_30" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.core.widget.NestedScrollView>

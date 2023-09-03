@@ -9,6 +9,8 @@
 
     <string name="interesting_fact_level3">"Pandas do not have a special place to sleep - no bed, no nest. Therefore, they fall asleep where they were at the time of fatigue. And if the dream overcame them at the moment when they climbed the tree, well, so be it."</string>
 
+    <string name="interesting_fact_level4">"Brazil is the champion orange growing country. The USA, Mexico, India and Japan are trying to keep up with the record holder. In subtropical Brazil, there are no low temperatures, which contributes to the breakdown of chlorophyll in the peel of the fruit. Therefore, even ripe fruit is both yellow and green. This is hard for consumers to understand, so imported oranges are treated with ethylene to remove chlorophyll and give them an orange color. Thus, color is not an indicator of fruit maturity."</string>
+
     <string name="back">Back</string>
     <string name="_1">1</string>
     <string name="_2">2</string>
@@ -45,12 +47,18 @@
     <string name="exercise_level1">Choose the number that is higher. Questions can be repeated until you score 10 points</string>
     <string name="exercise_level2">Choose the roman number that is higher. Questions can be repeated until you score 10 points</string>
     <string name="exercise_level3">Choose a card with a predatory animal. Questions can be repeated until you score 10 points</string>
+    <string name="exercise_level4">Choose a card with an edible item. Questions can be repeated until you score 10 points</string>
     <string name="_continue">Continue</string>
+    <string name="restore">Restore</string>
     <string name="level_1">Level 1</string>
     <string name="level_2">Level 2</string>
     <string name="level_3">Level 3</string>
     <string name="level_4">Level 4</string>
     <string name="level_5">Level 5</string>
+
+    <string name="restore_lives">"You've run out of lives! 1 life is restored in 10 minutes. To restore the maximum supply of lives, click the "Restore" button."</string>
+
+
     <string name="x">X</string>
 
 </resources>

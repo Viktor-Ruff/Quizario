@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.slider.Slider;
 import com.ruff.game_lesson_1.GameLevels;
+import com.ruff.game_lesson_1.LivesSingleton;
+import com.ruff.game_lesson_1.MyInterstitialAd;
+import com.ruff.game_lesson_1.MyMediaPlayer;
 import com.ruff.game_lesson_1.R;
 import com.ruff.game_lesson_1.databinding.UniversalBinding;
 
@@ -30,7 +34,6 @@ import java.util.Random;
 public class Level3 extends AppCompatActivity {
 
     private UniversalBinding binding;
-    private static final int COUNT_QUESTIONS = 10;
     Slider slider;
     Animation animation;
     private int leftNumCard;
@@ -40,8 +43,11 @@ public class Level3 extends AppCompatActivity {
     String[] predatorTextArray;
     int[] herbivorousArray;
     String[] herbivorousTextArray;
-
     int order;
+    MyMediaPlayer soundEndDialog, soundLivesDialog;
+    LivesSingleton livesSingleton;
+
+    private MyInterstitialAd myInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +55,15 @@ public class Level3 extends AppCompatActivity {
         binding = UniversalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        //загрузка рекламы в память
+        myInterstitialAd = MyInterstitialAd.getInstance();
+        myInterstitialAd.loadInterstitialAd(this);
+
+        livesSingleton = LivesSingleton.getInstance();
+        binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
+        soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
+        soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
         predatorArray = new int[]{R.drawable.im_bear, R.drawable.im_wolf, R.drawable.im_fox,
                 R.drawable.im_leon, R.drawable.im_pantera};
@@ -87,9 +100,10 @@ public class Level3 extends AppCompatActivity {
         Dialog dialogStart = new Dialog(this);
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
+        ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview_level3);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
         ivDialog.setImageResource(R.drawable.two_cards_level3);
-
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
         tvDescription.setText(getResources().getString(R.string.exercise_level3));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -111,12 +125,14 @@ public class Level3 extends AppCompatActivity {
     }
 
     private void initEndDialog() {
+        soundEndDialog.play();
         Dialog dialogEnd = new Dialog(this);
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.preview_dialog);
+        ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_preview_dialog_constraint);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview_level3);
         ImageView ivDialog = dialogEnd.findViewById(R.id.imageView);
-        ivDialog.setImageResource(R.drawable.two_cards_level3);
-
+        ivDialog.setImageResource(R.drawable.im_dialog_end_panda);
         TextView tvDescription = dialogEnd.findViewById(R.id.textView);
         tvDescription.setText(getResources().getString(R.string.interesting_fact_level3));
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -126,17 +142,57 @@ public class Level3 extends AppCompatActivity {
 
         MaterialButton close = dialogEnd.findViewById(R.id.bt_close_dialog);
         close.setOnClickListener(v -> {
-            onBackPressed();
+            soundEndDialog.stopPlay();
+
+            //показ рекламы
+            if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
+                myInterstitialAd.showInterstitialAd(null, Level3.this);
+                myInterstitialAd.setLevelCompleteCounter(0);
+            } else {
+                onBackPressed();
+            }
         });
 
         MaterialButton _continue = dialogEnd.findViewById(R.id.bt_continue);
         _continue.setOnClickListener(v -> {
+            soundEndDialog.stopPlay();
             dialogEnd.cancel();
 
-            /*Intent intent = new Intent(Level2.this, Level3.class);
-            startActivity(intent);*/
+            Intent intent = new Intent(Level3.this, Level4.class);
+            if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
+                myInterstitialAd.showInterstitialAd(intent, Level3.this);
+                myInterstitialAd.setLevelCompleteCounter(0);
+            } else {
+                startActivity(intent);
+            }
         });
 
+    }
+
+    private void initLivesDialog() {
+        soundLivesDialog.play();
+        Dialog dialogLives = new Dialog(this);
+        dialogLives.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogLives.setContentView(R.layout.lives_dialog);
+        dialogLives.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialogLives.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        dialogLives.setCancelable(false);
+        dialogLives.show();
+
+        MaterialButton close = dialogLives.findViewById(R.id.bt_close_dialog);
+        close.setOnClickListener(v -> {
+            soundLivesDialog.stopPlay();
+            onBackPressed();
+        });
+
+        MaterialButton restore = dialogLives.findViewById(R.id.bt_restore);
+        restore.setOnClickListener(v -> {
+            soundLivesDialog.stopPlay();
+            //TODO реализовать просмотр рекламы c вознаграждением
+            livesSingleton.setCurrentLives(livesSingleton.getMaxLives());
+            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+            dialogLives.cancel();
+        });
     }
 
 
@@ -160,16 +216,25 @@ public class Level3 extends AppCompatActivity {
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (order > 0) {
-                        if (slider.getValue() < COUNT_QUESTIONS) {
+                        if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + 1);
                         }
                     } else {
+                        if (livesSingleton.getCurrentLives() > 0) {
+                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - 1);
+                            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+                            if (livesSingleton.getCurrentLives() == 0) {
+                                initLivesDialog();
+                            }
+                        }
+
                         if (slider.getValue() > 0) {
                             slider.setValue(slider.getValue() - 1);
                         }
                     }
 
-                    if (slider.getValue() == COUNT_QUESTIONS) {
+                    if (slider.getValue() == slider.getValueTo()) {
+                        myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1);
                         initEndDialog();
                     } else {
                         binding.tvLeftNumber.startAnimation(animation);
@@ -197,21 +262,29 @@ public class Level3 extends AppCompatActivity {
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (order <= 0) {
-                        if (slider.getValue() < COUNT_QUESTIONS) {
+                        if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + 1);
                         }
                     } else {
+                        if (livesSingleton.getCurrentLives() > 0) {
+                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - 1);
+                            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+                            if (livesSingleton.getCurrentLives() == 0) {
+                                initLivesDialog();
+                            }
+                        }
+
                         if (slider.getValue() > 0) {
                             slider.setValue(slider.getValue() - 1);
                         }
                     }
 
-                    if (slider.getValue() == COUNT_QUESTIONS) {
+                    if (slider.getValue() == slider.getValueTo()) {
+                        myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1);
                         initEndDialog();
                     } else {
                         binding.tvRightNumber.startAnimation(animation);
                         initCardViews();
-
                     }
 
                     binding.tvLeftNumber.setEnabled(true);
@@ -251,8 +324,23 @@ public class Level3 extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        soundEndDialog.stopPlay();
+        soundLivesDialog.stopPlay();
         Intent intent = new Intent(Level3.this, GameLevels.class);
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (soundEndDialog.isPlaying()) {
+            soundEndDialog.stopPlay();
+        }
+
+        if (soundLivesDialog.isPlaying()) {
+            soundLivesDialog.stopPlay();
+        }
     }
 
 }

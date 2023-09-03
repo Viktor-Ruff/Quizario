@@ -8,6 +8,30 @@
     android:background="@drawable/im_back_level1"
     tools:context=".levels.Level1">
 
+    <ImageView
+        android:id="@+id/iv_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/middle_size_indent_16dp"
+        android:src="@drawable/ic_heart_fil"
+        app:layout_constraintBottom_toTopOf="@+id/slider"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:paddingBottom="5dp"
+        android:id="@+id/tv_heart_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_size_indent_8dp"
+        android:fontFamily="@font/didact_gothic_regular"
+        android:textSize="@dimen/xlarge_size_font_40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_heart"
+        app:layout_constraintEnd_toStartOf="@+id/iv_heart"
+        app:layout_constraintTop_toTopOf="@+id/iv_heart"
+        tools:text="1" />
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_back"
         style="@style/my_button_style.small"
@@ -22,14 +46,14 @@
         android:id="@+id/tv_level_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/middle_size_indent_16dp"
         android:fontFamily="@font/didact_gothic_regular"
         android:text="@string/level"
         android:textSize="@dimen/small_size_font_20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/bt_back"
+        android:layout_marginTop="@dimen/small_size_indent_8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bt_back" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_left_number_text" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slider"
@@ -58,7 +82,7 @@
         android:id="@+id/tv_left_number"
         style="@style/card_tv_style.small"
         android:layout_width="0dp"
-        android:layout_height="220dp"
+        android:layout_height="200dp"
         android:layout_marginStart="@dimen/middle_size_indent_16dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,7 +95,7 @@
         android:id="@+id/tv_right_number"
         style="@style/card_tv_style.small"
         android:layout_width="0dp"
-        android:layout_height="220dp"
+        android:layout_height="200dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="@dimen/middle_size_indent_16dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -8,20 +8,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
 import com.ruff.game_lesson_1.databinding.ActivityGameLevelsBinding;
 import com.ruff.game_lesson_1.levels.Level1;
 import com.ruff.game_lesson_1.levels.Level2;
 import com.ruff.game_lesson_1.levels.Level3;
+import com.ruff.game_lesson_1.levels.Level4;
 
 public class GameLevels extends AppCompatActivity {
 
     private ActivityGameLevelsBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityGameLevelsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        LivesSingleton livesSingleton = LivesSingleton.getInstance();
+        binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
 
 
         levelListeners();
@@ -31,7 +37,8 @@ public class GameLevels extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    onBackPressed();
+                    Intent intent = new Intent(GameLevels.this, MainActivity.class);
+                    startActivity(intent);
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -76,7 +83,24 @@ public class GameLevels extends AppCompatActivity {
                 Log.d(MY_LOG, e.getMessage());
             }
         });
+
+        //enter to level 4
+        binding.tvLevel4.setOnClickListener(v -> {
+
+            try {
+                Intent intent = new Intent(GameLevels.this, Level4.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                Log.d(MY_LOG, e.getMessage());
+            }
+        });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(GameLevels.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
 

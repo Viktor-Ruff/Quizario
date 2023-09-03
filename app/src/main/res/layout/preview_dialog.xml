@@ -6,8 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginStart="@dimen/middle_size_indent_16dp"
-    android:layout_marginEnd="@dimen/middle_size_indent_16dp"
-    android:background="@drawable/im_back_dialog_preview">
+    android:layout_marginEnd="@dimen/middle_size_indent_16dp">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_close_dialog"
@@ -32,7 +31,6 @@
         android:layout_marginTop="40dp"
         android:paddingStart="@dimen/middle_size_indent_16dp"
         android:paddingEnd="@dimen/middle_size_indent_16dp"
-        android:src="@drawable/im_two_cards_mini"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,8 +38,8 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxHeight="250dp"
+        android:layout_height="125dp"
+        android:maxHeight="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">

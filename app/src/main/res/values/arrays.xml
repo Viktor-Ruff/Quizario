@@ -43,6 +43,32 @@
         <item>Squirrel</item>
         <item>Pig</item>
     </string-array>
+    
+    <string-array name="edibleArray">
+        <item>Apple</item>
+        <item>Cabbage</item>
+        <item>Carrot</item>
+        <item>Corn</item>
+        <item>Cucumber</item>
+        <item>Orange</item>
+        <item>Peach</item>
+        <item>Pear</item>
+        <item>Pomegranate</item>
+        <item>Strawberry</item>
+    </string-array>
+
+    <string-array name="inedibleArray">
+        <item>Backpack</item>
+        <item>Ball</item>
+        <item>Bike</item>
+        <item>Hammer</item>
+        <item>Hat</item>
+        <item>Helmet</item>
+        <item>Nut</item>
+        <item>Rubber</item>
+        <item>Teddy bear</item>
+        <item>Toy</item>
+    </string-array>
 
 
 </resources>

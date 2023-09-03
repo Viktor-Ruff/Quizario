@@ -8,6 +8,30 @@
     android:background="@drawable/im_back_level1"
     tools:context=".levels.Level1">
 
+    <ImageView
+        android:id="@+id/iv_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/middle_size_indent_16dp"
+        android:src="@drawable/ic_heart_fil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textColor="@color/black_95"
+        android:paddingBottom="5dp"
+        android:id="@+id/tv_heart_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_size_indent_8dp"
+        android:fontFamily="@font/didact_gothic_regular"
+        android:textSize="@dimen/xlarge_size_font_40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_heart"
+        app:layout_constraintEnd_toStartOf="@+id/iv_heart"
+        app:layout_constraintTop_toTopOf="@+id/iv_heart"
+        tools:text="1" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_back"
         style="@style/my_button_style"

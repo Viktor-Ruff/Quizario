@@ -15,13 +15,18 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.slider.Slider;
 import com.ruff.game_lesson_1.GameLevels;
+import com.ruff.game_lesson_1.LivesSingleton;
+import com.ruff.game_lesson_1.MyInterstitialAd;
+import com.ruff.game_lesson_1.MyMediaPlayer;
 import com.ruff.game_lesson_1.R;
 import com.ruff.game_lesson_1.databinding.UniversalBinding;
 
@@ -33,12 +38,16 @@ import java.util.Random;
 public class Level2 extends AppCompatActivity {
 
     private UniversalBinding binding;
-    private static final int COUNT_QUESTIONS = 10;
     Slider slider;
     Animation animation;
     Map<Integer, String> romanNumArray;
     int leftNumCard;
     int rightNumCard;
+
+    MyMediaPlayer soundEndDialog, soundLivesDialog;
+    LivesSingleton livesSingleton;
+
+    private MyInterstitialAd myInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +55,15 @@ public class Level2 extends AppCompatActivity {
         binding = UniversalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        //загрузка рекламы в память
+        myInterstitialAd = MyInterstitialAd.getInstance();
+        myInterstitialAd.loadInterstitialAd(this);
 
+        livesSingleton = LivesSingleton.getInstance();
+        binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
+        soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
+        soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
         int screenLayout = getBaseContext().getResources().getConfiguration().screenLayout;
         screenLayout &= Configuration.SCREENLAYOUT_SIZE_MASK;
@@ -93,9 +108,10 @@ public class Level2 extends AppCompatActivity {
         Dialog dialogStart = new Dialog(this);
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
+        ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
-        ivDialog.setImageResource(R.drawable.im_roman_two_cards);
-
+        ivDialog.setImageResource(R.drawable.two_cards_level2);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
         tvDescription.setText(getResources().getString(R.string.exercise_level2));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -117,9 +133,13 @@ public class Level2 extends AppCompatActivity {
     }
 
     private void initEndDialog() {
+
+        soundEndDialog.play();
         Dialog dialogEnd = new Dialog(this);
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.end_dialog);
+        ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
@@ -127,17 +147,56 @@ public class Level2 extends AppCompatActivity {
 
         MaterialButton close = dialogEnd.findViewById(R.id.bt_close_dialog);
         close.setOnClickListener(v -> {
-            onBackPressed();
+            soundEndDialog.stopPlay();
+
+            //показ рекламы
+            if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
+                myInterstitialAd.showInterstitialAd(null, Level2.this);
+                myInterstitialAd.setLevelCompleteCounter(0);
+            } else {
+                onBackPressed();
+            }
         });
 
         MaterialButton _continue = dialogEnd.findViewById(R.id.bt_continue);
         _continue.setOnClickListener(v -> {
+            soundEndDialog.stopPlay();
             dialogEnd.cancel();
-
             Intent intent = new Intent(Level2.this, Level3.class);
-            startActivity(intent);
+            if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
+                myInterstitialAd.showInterstitialAd(intent, Level2.this);
+                myInterstitialAd.setLevelCompleteCounter(0);
+            } else {
+                startActivity(intent);
+            }
         });
 
+    }
+
+    private void initLivesDialog() {
+        soundLivesDialog.play();
+        Dialog dialogLives = new Dialog(this);
+        dialogLives.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogLives.setContentView(R.layout.lives_dialog);
+        dialogLives.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialogLives.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        dialogLives.setCancelable(false);
+        dialogLives.show();
+
+        MaterialButton close = dialogLives.findViewById(R.id.bt_close_dialog);
+        close.setOnClickListener(v -> {
+            soundLivesDialog.stopPlay();
+            onBackPressed();
+        });
+
+        MaterialButton restore = dialogLives.findViewById(R.id.bt_restore);
+        restore.setOnClickListener(v -> {
+            soundLivesDialog.stopPlay();
+            //TODO реализовать просмотр рекламы c вознаграждением
+            livesSingleton.setCurrentLives(livesSingleton.getMaxLives());
+            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+            dialogLives.cancel();
+        });
     }
 
 
@@ -161,21 +220,29 @@ public class Level2 extends AppCompatActivity {
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (leftNumCard > rightNumCard) {
-                        if (slider.getValue() < COUNT_QUESTIONS) {
+                        if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + 1);
                         }
                     } else {
+                        if (livesSingleton.getCurrentLives() > 0) {
+                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - 1);
+                            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+                            if (livesSingleton.getCurrentLives() == 0) {
+                                initLivesDialog();
+                            }
+                        }
+
                         if (slider.getValue() > 0) {
                             slider.setValue(slider.getValue() - 1);
                         }
                     }
 
-                    if (slider.getValue() == COUNT_QUESTIONS) {
+                    if (slider.getValue() == slider.getValueTo()) {
+                        myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1);
                         initEndDialog();
                     } else {
                         binding.tvLeftNumber.startAnimation(animation);
                         initCardViews();
-
                     }
 
                     binding.tvRightNumber.setEnabled(true);
@@ -198,21 +265,29 @@ public class Level2 extends AppCompatActivity {
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (rightNumCard > leftNumCard) {
-                        if (slider.getValue() < COUNT_QUESTIONS) {
+                        if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + 1);
                         }
                     } else {
+                        if (livesSingleton.getCurrentLives() > 0) {
+                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - 1);
+                            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+                            if (livesSingleton.getCurrentLives() == 0) {
+                                initLivesDialog();
+                            }
+                        }
+
                         if (slider.getValue() > 0) {
                             slider.setValue(slider.getValue() - 1);
                         }
                     }
 
-                    if (slider.getValue() == COUNT_QUESTIONS) {
+                    if (slider.getValue() == slider.getValueTo()) {
+                        myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1);
                         initEndDialog();
                     } else {
                         binding.tvRightNumber.startAnimation(animation);
                         initCardViews();
-
                     }
 
                     binding.tvLeftNumber.setEnabled(true);
@@ -261,8 +336,23 @@ public class Level2 extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        soundEndDialog.stopPlay();
+        soundLivesDialog.stopPlay();
         Intent intent = new Intent(Level2.this, GameLevels.class);
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (soundEndDialog.isPlaying()) {
+            soundEndDialog.stopPlay();
+        }
+
+        if (soundLivesDialog.isPlaying()) {
+            soundLivesDialog.stopPlay();
+        }
     }
 
 }
