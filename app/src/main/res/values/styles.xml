@@ -56,7 +56,7 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:background">@drawable/tv_style_white_40</item>
-        <item name="android:fontFamily">@font/florabet</item>
+        <item name="android:fontFamily">@font/koblenz_shadow</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">116sp</item>

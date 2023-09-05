@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +24,7 @@ import com.ruff.game_lesson_1.GameLevels;
 import com.ruff.game_lesson_1.LivesSingleton;
 import com.ruff.game_lesson_1.MyInterstitialAd;
 import com.ruff.game_lesson_1.MyMediaPlayer;
+import com.ruff.game_lesson_1.MyRewardedAd;
 import com.ruff.game_lesson_1.R;
 import com.ruff.game_lesson_1.databinding.UniversalBinding;
 
@@ -39,15 +39,19 @@ public class Level4 extends AppCompatActivity {
     private int leftNumCard;
     int rightNumCard;
 
-    int[] edibleArray;
-    String[] edibleTextArray;
-    int[] inedibleArray;
-    String[] inedibleTextArray;
+    int[] heavyThingsArray;
+    String[] heavyThingsTextArray;
+
+    /* int[] inedibleArray;
+     String[] inedibleTextArray;*/
     int order;
     MyMediaPlayer soundEndDialog, soundLivesDialog;
     LivesSingleton livesSingleton;
-
     private MyInterstitialAd myInterstitialAd;
+    private MyRewardedAd myRewardedAd;
+    private final int wrongAnswerPoint = 2;
+    private final int trueAnswerPoint = 1;
+    private final int oneLive = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,10 @@ public class Level4 extends AppCompatActivity {
         myInterstitialAd = MyInterstitialAd.getInstance();
         myInterstitialAd.loadInterstitialAd(this);
 
+        //загрузка рекламы с вознаграждением в память
+        myRewardedAd = MyRewardedAd.getInstance();
+        myRewardedAd.loadRewardedAd(this);
+
         livesSingleton = LivesSingleton.getInstance();
         binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
 
@@ -66,13 +74,10 @@ public class Level4 extends AppCompatActivity {
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
 
-        edibleArray = new int[]{R.drawable.im_apple, R.drawable.im_cabbage, R.drawable.im_carrot,
-                R.drawable.im_corn, R.drawable.im_cucumber, R.drawable.im_orange, R.drawable.im_peach,
-                R.drawable.im_pear, R.drawable.im_pomegranate, R.drawable.im_strawberry};
-
-        inedibleArray = new int[]{R.drawable.im_bag, R.drawable.im_ball, R.drawable.im_bike,
-                R.drawable.im_hammer, R.drawable.im_hat, R.drawable.im_helmet, R.drawable.im_nut,
-                R.drawable.im_rubber, R.drawable.im_teddy, R.drawable.im_toy};
+        heavyThingsArray = new int[]{R.drawable.im_virus, R.drawable.im_pin, R.drawable.im_nut,
+                R.drawable.im_watch, R.drawable.im_phone, R.drawable.im_hammer, R.drawable.im_rubber,
+                R.drawable.im_scooter, R.drawable.im_motorbike, R.drawable.im_car, R.drawable.im_track,
+                R.drawable.im_airplane, R.drawable.im_ship, R.drawable.im_earth};
 
 
         //фон заднего экрана
@@ -85,7 +90,7 @@ public class Level4 extends AppCompatActivity {
 
 
         //установка номера уровня
-        binding.tvLevelNumber.setText(R.string.level_3);
+        binding.tvLevelNumber.setText(R.string.level_4);
 
 
         //скругление углов картинок
@@ -159,7 +164,7 @@ public class Level4 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
-            Intent intent = new Intent(Level4.this, Level2.class);
+            Intent intent = new Intent(Level4.this, Level3.class);
 
             if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(intent, Level4.this);
@@ -191,9 +196,9 @@ public class Level4 extends AppCompatActivity {
         restore.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
             //TODO реализовать просмотр рекламы c вознаграждением
-            livesSingleton.setCurrentLives(livesSingleton.getMaxLives());
-            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+            myRewardedAd.showRewardedAd(Level4.this, binding.tvHeartCounter);
             dialogLives.cancel();
+            myRewardedAd.loadRewardedAd(this);
         });
     }
 
@@ -211,27 +216,29 @@ public class Level4 extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvRightNumber.setEnabled(false);
-                    if (order > 0) {
+                    if (leftNumCard > rightNumCard) {
                         binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_true));
                     } else {
                         binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (order > 0) {
+                    if (leftNumCard > rightNumCard) {
                         if (slider.getValue() < slider.getValueTo()) {
-                            slider.setValue(slider.getValue() + 1);
+                            slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
                     } else {
                         if (livesSingleton.getCurrentLives() > 0) {
-                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - 1);
+                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive);
                             binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
                             if (livesSingleton.getCurrentLives() == 0) {
                                 initLivesDialog();
                             }
                         }
 
-                        if (slider.getValue() > 0) {
-                            slider.setValue(slider.getValue() - 1);
+                        if (slider.getValue() > 1) {
+                            slider.setValue(slider.getValue() - wrongAnswerPoint);
+                        } else if (slider.getValue() == 1) {
+                            slider.setValue(0);
                         }
                     }
 
@@ -257,27 +264,29 @@ public class Level4 extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvLeftNumber.setEnabled(false);
-                    if (order <= 0) {
+                    if (rightNumCard > leftNumCard) {
                         binding.tvRightNumber.setBackground(getDrawable(R.drawable.im_back_true));
                     } else {
                         binding.tvRightNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (order <= 0) {
+                    if (rightNumCard > leftNumCard) {
                         if (slider.getValue() < slider.getValueTo()) {
-                            slider.setValue(slider.getValue() + 1);
+                            slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
                     } else {
                         if (livesSingleton.getCurrentLives() > 0) {
-                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - 1);
+                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive);
                             binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
                             if (livesSingleton.getCurrentLives() == 0) {
                                 initLivesDialog();
                             }
                         }
 
-                        if (slider.getValue() > 0) {
-                            slider.setValue(slider.getValue() - 1);
+                        if (slider.getValue() > 1) {
+                            slider.setValue(slider.getValue() - wrongAnswerPoint);
+                        } else if (slider.getValue() == 1) {
+                            slider.setValue(0);
                         }
                     }
 
@@ -303,25 +312,21 @@ public class Level4 extends AppCompatActivity {
 
     public void initCardViews() {
 
-        edibleTextArray = getResources().getStringArray(R.array.edibleArray);
-        inedibleTextArray = getResources().getStringArray(R.array.inedibleArray);
+        heavyThingsTextArray = getResources().getStringArray(R.array.heavy_things);
 
         Random random = new Random();
-        order = random.nextInt(2);
-        leftNumCard = random.nextInt(edibleArray.length);
-        rightNumCard = random.nextInt(inedibleArray.length);
+        leftNumCard = random.nextInt(heavyThingsTextArray.length);
+        rightNumCard = random.nextInt(heavyThingsTextArray.length);
 
-        if (order > 0) {
-            binding.tvLeftNumber.setBackgroundResource(edibleArray[leftNumCard]);
-            binding.tvRightNumber.setBackgroundResource(inedibleArray[rightNumCard]);
-            binding.tvLeftNumberText.setText(edibleTextArray[leftNumCard]);
-            binding.tvRightNumberText.setText(inedibleTextArray[rightNumCard]);
-        } else {
-            binding.tvRightNumber.setBackgroundResource(edibleArray[leftNumCard]);
-            binding.tvLeftNumber.setBackgroundResource(inedibleArray[rightNumCard]);
-            binding.tvRightNumberText.setText(edibleTextArray[leftNumCard]);
-            binding.tvLeftNumberText.setText(inedibleTextArray[rightNumCard]);
+        while (leftNumCard == rightNumCard) {
+            rightNumCard = random.nextInt(heavyThingsTextArray.length);
         }
+
+        binding.tvLeftNumber.setBackgroundResource(heavyThingsArray[leftNumCard]);
+        binding.tvRightNumber.setBackgroundResource(heavyThingsArray[rightNumCard]);
+        binding.tvLeftNumberText.setText(heavyThingsTextArray[leftNumCard]);
+        binding.tvRightNumberText.setText(heavyThingsTextArray[rightNumCard]);
+
     }
 
     @Override

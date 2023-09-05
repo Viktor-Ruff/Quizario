@@ -71,4 +71,22 @@
     </string-array>
 
 
+    <string-array name="heavy_things">
+        <item>Virus</item>
+        <item>Pin</item>
+        <item>Nut</item>
+        <item>Watch</item>
+        <item>Phone</item>
+        <item>Hammer</item>
+        <item>Rubber</item>
+        <item>Scooter</item>
+        <item>Motorbike</item>
+        <item>Car</item>
+        <item>Track</item>
+        <item>Airplane</item>
+        <item>Ship</item>
+        <item>Earth</item>
+    </string-array>
+
+
 </resources>

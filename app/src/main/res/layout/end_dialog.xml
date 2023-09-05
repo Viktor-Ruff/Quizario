@@ -45,12 +45,12 @@
             android:layout_marginEnd="@dimen/middle_size_indent_16dp"
             android:fontFamily="@font/didact_gothic_regular"
             android:paddingBottom="@dimen/small_size_indent_8dp"
-            android:text="@string/interesting_fact_level1"
             android:textColor="@color/black_95"
             android:textSize="@dimen/middle_size_font_24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bt_close_dialog" />
+            app:layout_constraintTop_toBottomOf="@+id/bt_close_dialog"
+            tools:text="@string/interesting_fact_level1" />
 
     </androidx.core.widget.NestedScrollView>
 

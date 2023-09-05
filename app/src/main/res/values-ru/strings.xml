@@ -100,17 +100,17 @@
     <string name="x">X</string>
 
 
-    <string name="interesting_fact_level1">"Congratulations, you've completed the level!\n
-        Different Cultures Discovered Zero at Different Times. The idea of zero as a number was invented throughout the world at different times in history. Despite this scattered adoption, it's generally accepted that the Indian astronomer and mathematician Brahmagupta brought up the concept of zero for the first time, around 600 A.D."</string>
+    <string name="interesting_fact_level1">"Поздравляем, вы прошли уровень!\n
+        Разные культуры открыли ноль в разное время. Идея нуля как числа была изобретена во всем мире в разные исторические периоды. Несмотря на такое разрозненное распространение, общепризнано, что индийский астроном и математик Брахмагупта впервые выдвинул концепцию нуля около 600 г. н."</string>
 
-    <string name="interesting_fact_level2">"Congratulations, you've completed the level!\n
-        Brazil is the champion orange growing country. The USA, Mexico, India and Japan are trying to keep up with the record holder. In subtropical Brazil, there are no low temperatures, which contributes to the breakdown of chlorophyll in the peel of the fruit. Therefore, even ripe fruit is both yellow and green. This is hard for consumers to understand, so imported oranges are treated with ethylene to remove chlorophyll and give them an orange color. Thus, color is not an indicator of fruit maturity."</string>
+    <string name="interesting_fact_level2">"Поздравляем, вы прошли уровень!\n
+        Бразилия – страна-чемпион по выращиванию апельсинов. США, Мексика, Индия и Япония стараются не отставать от рекордсмена. В субтропической Бразилии нет низких температур, что способствует расщеплению хлорофилла в кожуре плода. Поэтому даже спелый фрукт бывает и желтым, и зеленым. Потребителям это сложно понять, поэтому импортные апельсины обрабатывают этиленом, чтобы избавить их от хлорофилла и придать оранжевый цвет. Таким образом, цвет – не показатель зрелости плодов."</string>
 
-    <string name="interesting_fact_level3">"Congratulations, you've completed the level!\n
-        Pandas do not have a special place to sleep - no bed, no nest. Therefore, they fall asleep where they were at the time of fatigue. And if the dream overcame them at the moment when they climbed the tree, well, so be it."</string>
+    <string name="interesting_fact_level3">"Поздравляем, вы прошли уровень!\n
+        У панд нет специального места для сна - ни кровати, ни гнезда. Поэтому они засыпают там, где оказались в момент усталости. И если сон сморил их в тот момент, когда они залезли на дерево, ну что ж, так тому и быть."</string>
 
-    <string name="interesting_fact_level4">"Congratulations, you've completed the level!\n
-        Our planet Earth is not a ball! The radius of the Earth at the equator is 21 kilometers greater than the polar radius. That is why the weight of the same object differs in different parts of the planet. Following the principles of universal gravitation, we can understand that objects become heaviest at the poles of our planet, and lightest at the equator."</string>
+    <string name="interesting_fact_level4">"Поздравляем, вы прошли уровень!\n
+        Наша планета Земля – не шар! Радиус Земли на экваторе на 21 километр больше полярного радиуса. Именно поэтому, вес одного и того же предмета в разных частях планеты отличается. Следуя принципам всемирного тяготения, можно понять, что предметы становятся тяжелее всего на полюсах нашей планеты, а легче всего на экваторе."</string>
 
     <string name="interesting_fact_level5"> </string>
     <string name="interesting_fact_level6"> </string>
@@ -120,7 +120,7 @@
     <string name="interesting_fact_level10"> </string>
 
     <string name="interesting_fact_level11">"Congratulations, you've completed the level!\n
-        Zero Is the Only Number That Can't Be Represented In Roman Numerals. sn't a number because you couldn't divide by zero. There are a total of zero zeros in Roman numerals. While the ancient Greeks were aware of zero as a concept, they didn't consider zero to be a number at all. For example, Aristotle decided zero wasn't a number because you couldn't divide by zero. Instead of a Roman numeral, the Latin word "nulla" would have been used to represent the concept of zero. The reason no numeral existed for zero is because there was no need for a numeral to represent it."</string>
+        Ноль — единственное число, которое нельзя представить римскими цифрами. Всего в римских цифрах ноль нулей. Хотя древние греки знали о нуле как о понятии, они вообще не считали ноль числом. Например, Аристотель решил, что ноль не является числом, потому что на ноль нельзя делить. Вместо римской цифры для обозначения нуля использовалось латинское слово «nulla». Причина, по которой не существовало цифры для нуля, заключается в том, что не было необходимости в цифре, представляющей его."</string>
 
     <string name="interesting_fact_level12"> </string>
     <string name="interesting_fact_level13"> </string>

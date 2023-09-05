@@ -25,6 +25,7 @@ import com.ruff.game_lesson_1.GameLevels;
 import com.ruff.game_lesson_1.LivesSingleton;
 import com.ruff.game_lesson_1.MyInterstitialAd;
 import com.ruff.game_lesson_1.MyMediaPlayer;
+import com.ruff.game_lesson_1.MyRewardedAd;
 import com.ruff.game_lesson_1.R;
 import com.ruff.game_lesson_1.databinding.UniversalBinding;
 
@@ -46,8 +47,11 @@ public class Level3 extends AppCompatActivity {
     int order;
     MyMediaPlayer soundEndDialog, soundLivesDialog;
     LivesSingleton livesSingleton;
-
     private MyInterstitialAd myInterstitialAd;
+    private MyRewardedAd myRewardedAd;
+    private final int wrongAnswerPoint = 2;
+    private final int trueAnswerPoint = 1;
+    private final int oneLive = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,10 @@ public class Level3 extends AppCompatActivity {
         //загрузка рекламы в память
         myInterstitialAd = MyInterstitialAd.getInstance();
         myInterstitialAd.loadInterstitialAd(this);
+
+        //загрузка рекламы с вознаграждением в память
+        myRewardedAd = MyRewardedAd.getInstance();
+        myRewardedAd.loadRewardedAd(this);
 
         livesSingleton = LivesSingleton.getInstance();
         binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
@@ -189,9 +197,9 @@ public class Level3 extends AppCompatActivity {
         restore.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
             //TODO реализовать просмотр рекламы c вознаграждением
-            livesSingleton.setCurrentLives(livesSingleton.getMaxLives());
-            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+            myRewardedAd.showRewardedAd(Level3.this, binding.tvHeartCounter);
             dialogLives.cancel();
+            myRewardedAd.loadRewardedAd(this);
         });
     }
 
@@ -217,19 +225,21 @@ public class Level3 extends AppCompatActivity {
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (order > 0) {
                         if (slider.getValue() < slider.getValueTo()) {
-                            slider.setValue(slider.getValue() + 1);
+                            slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
                     } else {
                         if (livesSingleton.getCurrentLives() > 0) {
-                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - 1);
+                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive);
                             binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
                             if (livesSingleton.getCurrentLives() == 0) {
                                 initLivesDialog();
                             }
                         }
 
-                        if (slider.getValue() > 0) {
-                            slider.setValue(slider.getValue() - 1);
+                        if (slider.getValue() > 1) {
+                            slider.setValue(slider.getValue() - wrongAnswerPoint);
+                        } else if (slider.getValue() == 1) {
+                            slider.setValue(0);
                         }
                     }
 
@@ -263,19 +273,21 @@ public class Level3 extends AppCompatActivity {
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (order <= 0) {
                         if (slider.getValue() < slider.getValueTo()) {
-                            slider.setValue(slider.getValue() + 1);
+                            slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
                     } else {
                         if (livesSingleton.getCurrentLives() > 0) {
-                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - 1);
+                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive);
                             binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
                             if (livesSingleton.getCurrentLives() == 0) {
                                 initLivesDialog();
                             }
                         }
 
-                        if (slider.getValue() > 0) {
-                            slider.setValue(slider.getValue() - 1);
+                        if (slider.getValue() > 1) {
+                            slider.setValue(slider.getValue() - wrongAnswerPoint);
+                        } else if (slider.getValue() == 1) {
+                            slider.setValue(0);
                         }
                     }
 

@@ -4,89 +4,98 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 
 /**
  * Created by Viktor-Ruff
  * Date: 03.09.2023
- * Time: 14:05
+ * Time: 18:44
  */
-public class MyInterstitialAd {
+public class MyRewardedAd {
 
-    private static MyInterstitialAd instance;
-    private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712";
-    private static final String TAG = "MyInterstitialAd";
-    private InterstitialAd mInterstitialAd;
-    private int levelCompleteCounter = 0;
-    private int maxLevelComplete = 2;
+    private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
+    private static MyRewardedAd instance;
+    private static final String TAG = "MyRewardedAd";
+    private RewardedAd rewardedAd;
 
-
-    private MyInterstitialAd() {
+    private MyRewardedAd() {
     }
 
-    public static MyInterstitialAd getInstance() {
+    public static MyRewardedAd getInstance() {
         if (instance == null) {
-            instance = new MyInterstitialAd();
+            instance = new MyRewardedAd();
         }
 
         return instance;
     }
 
 
-    public void loadInterstitialAd(Context context) {
+    public void loadRewardedAd(Context context) {
         MobileAds.initialize(context, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
 
-
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(context, AD_UNIT_ID, adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        Log.i(TAG, "onAdLoaded");
-                    }
 
+        RewardedAd.load(context, AD_UNIT_ID,
+                adRequest, new RewardedAdLoadCallback() {
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
+                        // Handle the error.
                         Log.d(TAG, loadAdError.toString());
-                        mInterstitialAd = null;
+                        rewardedAd = null;
+                    }
+
+                    @Override
+                    public void onAdLoaded(@NonNull RewardedAd ad) {
+                        rewardedAd = ad;
+                        Log.d(TAG, "Ad was loaded.");
                     }
                 });
+
+
     }
 
-    public void showInterstitialAd(Intent intent, Activity activity) {
-        if (mInterstitialAd != null) {
-            mInterstitialAd.show(activity);
-            initialAdCallBack(intent, activity);
+    public void showRewardedAd(Activity activity, TextView textView) {
+        if (rewardedAd != null) {
 
+            rewardedAd.show(activity, new OnUserEarnedRewardListener() {
+                @Override
+                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                    // Handle the reward.
+                    Log.d(TAG, "The user earned the reward.");
+                    LivesSingleton livesSingleton = LivesSingleton.getInstance();
+                    livesSingleton.setCurrentLives(livesSingleton.getMaxLives());
+                    textView.setText(String.valueOf(livesSingleton.getCurrentLives()));
+                }
+            });
         } else {
-            Log.d("TAG", "The interstitial ad wasn't ready yet.");
+            Log.d(TAG, "The rewarded ad wasn't ready yet.");
         }
+
+        rewardedAdCallBack();
     }
 
-
-    private void initialAdCallBack(Intent intent, Activity activity) {
-        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+    private void rewardedAdCallBack() {
+        rewardedAd.setFullScreenContentCallback(new FullScreenContentCallback() {
             @Override
             public void onAdClicked() {
                 // Called when a click is recorded for an ad.
@@ -98,20 +107,14 @@ public class MyInterstitialAd {
                 // Called when ad is dismissed.
                 // Set the ad reference to null so you don't show the ad a second time.
                 Log.d(TAG, "Ad dismissed fullscreen content.");
-                mInterstitialAd = null;
-                if (intent == null) {
-                    activity.onBackPressed();
-                } else {
-                    activity.startActivity(intent);
-                }
-
+                //rewardedAd = null;
             }
 
             @Override
             public void onAdFailedToShowFullScreenContent(AdError adError) {
                 // Called when ad fails to show.
                 Log.e(TAG, "Ad failed to show fullscreen content.");
-                mInterstitialAd = null;
+                rewardedAd = null;
             }
 
             @Override
@@ -126,18 +129,8 @@ public class MyInterstitialAd {
                 Log.d(TAG, "Ad showed fullscreen content.");
             }
         });
+
     }
 
 
-    public int getLevelCompleteCounter() {
-        return levelCompleteCounter;
-    }
-
-    public void setLevelCompleteCounter(int levelCompleteCounter) {
-        this.levelCompleteCounter = levelCompleteCounter;
-    }
-
-    public int getMaxLevelComplete() {
-        return maxLevelComplete;
-    }
 }
