@@ -31,7 +31,7 @@ import com.ruff.game_lesson_1.databinding.UniversalBinding;
 import java.util.Random;
 
 
-public class Level6 extends AppCompatActivity {
+public class Level7 extends AppCompatActivity {
 
     private UniversalBinding binding;
     Slider slider;
@@ -154,7 +154,7 @@ public class Level6 extends AppCompatActivity {
 
             //показ рекламы
             if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
-                myInterstitialAd.showInterstitialAd(null, Level6.this);
+                myInterstitialAd.showInterstitialAd(null, Level7.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 onBackPressed();
@@ -165,10 +165,10 @@ public class Level6 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
-            Intent intent = new Intent(Level6.this, Level11.class);
+            Intent intent = new Intent(Level7.this, Level11.class);
 
             if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
-                myInterstitialAd.showInterstitialAd(intent, Level6.this);
+                myInterstitialAd.showInterstitialAd(intent, Level7.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
@@ -197,7 +197,7 @@ public class Level6 extends AppCompatActivity {
         restore.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
             //TODO реализовать просмотр рекламы c вознаграждением
-            myRewardedAd.showRewardedAd(Level6.this, binding.tvHeartCounter);
+            myRewardedAd.showRewardedAd(Level7.this, binding.tvHeartCounter);
             dialogLives.cancel();
             myRewardedAd.loadRewardedAd(this);
         });
@@ -338,7 +338,7 @@ public class Level6 extends AppCompatActivity {
     public void onBackPressed() {
         soundEndDialog.stopPlay();
         soundLivesDialog.stopPlay();
-        Intent intent = new Intent(Level6.this, GameLevels.class);
+        Intent intent = new Intent(Level7.this, GameLevels.class);
         startActivity(intent);
         finish();
     }

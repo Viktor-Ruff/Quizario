@@ -47,7 +47,7 @@
         <item>Horse</item>
         <item>Antelope</item>
     </string-array>
-    
+
     <string-array name="edibleArray">
         <item>Apple</item>
         <item>Cabbage</item>
@@ -108,6 +108,35 @@
         <item>Leopard</item>
         <item>Owl</item>
         <item>Eagle</item>
+    </string-array>
+
+    <string-array name="fruit_array">
+        <item>Banana</item>
+        <item>Kiwi</item>
+        <item>Lemon</item>
+        <item>Mango</item>
+        <item>Passion fruit</item>
+        <item>Pomelo</item>
+        <item>Orange</item>
+        <item>Peach</item>
+        <item>Pear</item>
+        <item>Pomegranate</item>
+        <item>Apple</item>
+    </string-array>
+
+    <string-array name="not_fruit_array">
+        <item>Cabbage</item>
+        <item>Carrot</item>
+        <item>Corn</item>
+        <item>Cucumber</item>
+        <item>Toy</item>
+        <item>Nut</item>
+        <item>Ball</item>
+        <item>Tomato</item>
+        <item>Pumpkin</item>
+        <item>Hat</item>
+        <item>Phone</item>
+
     </string-array>
 
 

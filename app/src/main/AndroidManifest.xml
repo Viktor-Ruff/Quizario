@@ -39,6 +39,17 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".levels.Level6"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".levels.Level7"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".levels.Level11"
             android:exported="false"
             android:screenOrientation="portrait" />

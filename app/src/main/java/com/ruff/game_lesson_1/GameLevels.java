@@ -17,10 +17,12 @@ import android.view.WindowManager;
 import com.google.android.material.button.MaterialButton;
 import com.ruff.game_lesson_1.databinding.ActivityGameLevelsBinding;
 import com.ruff.game_lesson_1.levels.Level1;
+import com.ruff.game_lesson_1.levels.Level11;
 import com.ruff.game_lesson_1.levels.Level2;
 import com.ruff.game_lesson_1.levels.Level3;
 import com.ruff.game_lesson_1.levels.Level4;
 import com.ruff.game_lesson_1.levels.Level5;
+import com.ruff.game_lesson_1.levels.Level6;
 
 public class GameLevels extends AppCompatActivity {
 
@@ -145,7 +147,57 @@ public class GameLevels extends AppCompatActivity {
                 initLivesDialog();
             }
         });
+
+
+        //enter to level 6
+        binding.tvLevel6.setOnClickListener(v -> {
+
+            if (livesSingleton.getCurrentLives() > 0) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level6.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.d(MY_LOG, e.getMessage());
+                }
+            } else {
+                initLivesDialog();
+            }
+        });
+
+
+        //enter to level 7
+        binding.tvLevel7.setOnClickListener(v -> {
+
+            if (livesSingleton.getCurrentLives() > 0) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level7.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.d(MY_LOG, e.getMessage());
+                }
+            } else {
+                initLivesDialog();
+            }
+        });
+
+
+        //enter to level 11
+        binding.tvLevel11.setOnClickListener(v -> {
+
+            if (livesSingleton.getCurrentLives() > 0) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level11.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.d(MY_LOG, e.getMessage());
+                }
+            } else {
+                initLivesDialog();
+            }
+        });
+
     }
+
 
     private void initLivesDialog() {
         soundLivesDialog.play();

@@ -41,7 +41,7 @@
     <string name="exercise_level3">Choose a card with a predatory animal. Questions can be repeated until you score 10 points</string>
     <string name="exercise_level4">Choose an object whose mass is greater. Questions can be repeated until you score 10 points</string>
     <string name="exercise_level5">Choose the animal that is faster. Questions can be repeated until you score 10 points</string>
-    <string name="exercise_level6"> </string>
+    <string name="exercise_level6">Choose a fruit card. Questions can be repeated until you score 10 points </string>
     <string name="exercise_level7"> </string>
     <string name="exercise_level8"> </string>
     <string name="exercise_level9"> </string>
@@ -120,7 +120,9 @@
 
     <string name="interesting_fact_level5">"Congratulations, you've completed the level!\n
         The peregrine falcon is the fastest bird and the fastest animal in the world. Its diving speed exceeds 300 km/h, and the maximum possible speed reaches an incredible 390 km/h."</string>
-    <string name="interesting_fact_level6"> </string>
+
+    <string name="interesting_fact_level6">"Congratulations, you've completed the level!\n
+        Japanese melon is the most expensive fruit in the world. Two Japanese Yubari melons sold at auction for $23,500. Residents of Japan pay huge amounts of money for luxurious fruits."</string>
     <string name="interesting_fact_level7"> </string>
     <string name="interesting_fact_level8"> </string>
     <string name="interesting_fact_level9"> </string>
