@@ -112,7 +112,7 @@ public class Level2 extends AppCompatActivity {
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview_level3);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level2);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
         ivDialog.setImageResource(R.drawable.two_cards_level2);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
@@ -141,7 +141,7 @@ public class Level2 extends AppCompatActivity {
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.end_dialog);
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview_level3);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level2);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
         tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level2));

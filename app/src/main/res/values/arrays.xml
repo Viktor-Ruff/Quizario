@@ -33,7 +33,9 @@
         <item>Wolf</item>
         <item>Fox</item>
         <item>Lion</item>
-        <item>Panther</item>
+        <item>Leopard</item>
+        <item>Eagle</item>
+        <item>White bear</item>
     </string-array>
 
     <string-array name="animalsHerbivorousArray">
@@ -42,6 +44,8 @@
         <item>Elephant</item>
         <item>Squirrel</item>
         <item>Pig</item>
+        <item>Horse</item>
+        <item>Antelope</item>
     </string-array>
     
     <string-array name="edibleArray">
@@ -86,6 +90,24 @@
         <item>Airplane</item>
         <item>Ship</item>
         <item>Earth</item>
+    </string-array>
+
+
+    <string-array name="fast_animals">
+        <item>Snail</item>
+        <item>Ant</item>
+        <item>Spider</item>
+        <item>Pig</item>
+        <item>Cat</item>
+        <item>Squirrel</item>
+        <item>Dog</item>
+        <item>White bear</item>
+        <item>Wolf</item>
+        <item>Horse</item>
+        <item>Antelope</item>
+        <item>Leopard</item>
+        <item>Owl</item>
+        <item>Eagle</item>
     </string-array>
 
 

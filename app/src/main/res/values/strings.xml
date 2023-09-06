@@ -40,6 +40,12 @@
     <string name="exercise_level2">Choose a card with an edible item. Questions can be repeated until you score 10 points</string>
     <string name="exercise_level3">Choose a card with a predatory animal. Questions can be repeated until you score 10 points</string>
     <string name="exercise_level4">Choose an object whose mass is greater. Questions can be repeated until you score 10 points</string>
+    <string name="exercise_level5">Choose the animal that is faster. Questions can be repeated until you score 10 points</string>
+    <string name="exercise_level6"> </string>
+    <string name="exercise_level7"> </string>
+    <string name="exercise_level8"> </string>
+    <string name="exercise_level9"> </string>
+    <string name="exercise_level10"> </string>
     <string name="exercise_level11">Choose the roman number that is higher. Questions can be repeated until you score 10 points</string>
     <string name="exercise_level12"> </string>
     <string name="exercise_level13"> </string>
@@ -112,7 +118,8 @@
     <string name="interesting_fact_level4">"Congratulations, you've completed the level!\n
         Our planet Earth is not a ball! The radius of the Earth at the equator is 21 kilometers greater than the polar radius. That is why the weight of the same object differs in different parts of the planet. Following the principles of universal gravitation, we can understand that objects become heaviest at the poles of our planet, and lightest at the equator."</string>
 
-    <string name="interesting_fact_level5"> </string>
+    <string name="interesting_fact_level5">"Congratulations, you've completed the level!\n
+        The peregrine falcon is the fastest bird and the fastest animal in the world. Its diving speed exceeds 300 km/h, and the maximum possible speed reaches an incredible 390 km/h."</string>
     <string name="interesting_fact_level6"> </string>
     <string name="interesting_fact_level7"> </string>
     <string name="interesting_fact_level8"> </string>

@@ -74,9 +74,9 @@ public class Level3 extends AppCompatActivity {
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
         predatorArray = new int[]{R.drawable.im_bear, R.drawable.im_wolf, R.drawable.im_fox,
-                R.drawable.im_leon, R.drawable.im_pantera};
+                R.drawable.im_leon, R.drawable.im_leopard, R.drawable.im_eagle, R.drawable.im_white_bear};
         herbivorousArray = new int[]{R.drawable.im_cow, R.drawable.im_camel, R.drawable.im_elephant,
-                R.drawable.im_squirrel, R.drawable.im_pig};
+                R.drawable.im_squirrel, R.drawable.im_pig, R.drawable.im_horse, R.drawable.im_antilope};
 
 
         //фон заднего экрана
@@ -109,7 +109,7 @@ public class Level3 extends AppCompatActivity {
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview_level3);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level3);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
         ivDialog.setImageResource(R.drawable.two_cards_level3);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
@@ -138,7 +138,7 @@ public class Level3 extends AppCompatActivity {
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.preview_dialog);
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview_level3);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level3);
         ImageView ivDialog = dialogEnd.findViewById(R.id.imageView);
         ivDialog.setImageResource(R.drawable.im_dialog_end_panda);
         TextView tvDescription = dialogEnd.findViewById(R.id.textView);

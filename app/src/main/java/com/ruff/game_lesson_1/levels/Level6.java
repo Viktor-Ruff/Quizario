@@ -1,19 +1,11 @@
 package com.ruff.game_lesson_1.levels;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
-
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -22,22 +14,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.OnPaidEventListener;
-import com.google.android.gms.ads.ResponseInfo;
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAd;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.google.android.gms.ads.rewarded.RewardedAd;
-import com.google.android.gms.internal.ads.zzblb;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.slider.Slider;
 import com.ruff.game_lesson_1.GameLevels;
@@ -49,21 +29,25 @@ import com.ruff.game_lesson_1.R;
 import com.ruff.game_lesson_1.databinding.UniversalBinding;
 
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 
-public class Level1 extends AppCompatActivity {
+public class Level6 extends AppCompatActivity {
 
     private UniversalBinding binding;
-
     Slider slider;
     Animation animation;
-    int leftNumCard, rightNumCard;
+    private int leftNumCard;
+    int rightNumCard;
+
+    int[] predatorArray;
+    String[] predatorTextArray;
+    int[] herbivorousArray;
+    String[] herbivorousTextArray;
+    int order;
     MyMediaPlayer soundEndDialog, soundLivesDialog;
-    private LivesSingleton livesSingleton;
+    LivesSingleton livesSingleton;
     private MyInterstitialAd myInterstitialAd;
     private MyRewardedAd myRewardedAd;
-
     private final int wrongAnswerPoint = 2;
     private final int trueAnswerPoint = 1;
     private final int oneLive = 1;
@@ -74,8 +58,7 @@ public class Level1 extends AppCompatActivity {
         binding = UniversalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-        //загрузка межстраничной рекламы в память
+        //загрузка рекламы в память
         myInterstitialAd = MyInterstitialAd.getInstance();
         myInterstitialAd.loadInterstitialAd(this);
 
@@ -88,13 +71,25 @@ public class Level1 extends AppCompatActivity {
 
         soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
+
+        predatorArray = new int[]{R.drawable.im_bear, R.drawable.im_wolf, R.drawable.im_fox,
+                R.drawable.im_leon, R.drawable.im_leopard, R.drawable.im_eagle, R.drawable.im_white_bear};
+        herbivorousArray = new int[]{R.drawable.im_cow, R.drawable.im_camel, R.drawable.im_elephant,
+                R.drawable.im_squirrel, R.drawable.im_pig, R.drawable.im_horse, R.drawable.im_antilope};
+
+
+        //фон заднего экрана
+        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level3);
+
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
             onBackPressed();
         });
 
+
         //установка номера уровня
-        binding.tvLevelNumber.setText(R.string.level_1);
+        binding.tvLevelNumber.setText(R.string.level_3);
+
 
         //скругление углов картинок
         binding.tvLeftNumber.setClipToOutline(true);
@@ -107,16 +102,17 @@ public class Level1 extends AppCompatActivity {
         initCards();
     }
 
-
     private void initStartDialog() {
 
         Dialog dialogStart = new Dialog(this);
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level1);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level3);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
-        ivDialog.setImageResource(R.drawable.two_cards_level1);
+        ivDialog.setImageResource(R.drawable.two_cards_level3);
+        TextView tvDescription = dialogStart.findViewById(R.id.textView);
+        tvDescription.setText(getResources().getString(R.string.exercise_level3));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogStart.setCancelable(false);
@@ -136,48 +132,46 @@ public class Level1 extends AppCompatActivity {
     }
 
     private void initEndDialog() {
-
         soundEndDialog.play();
         Dialog dialogEnd = new Dialog(this);
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogEnd.setContentView(R.layout.end_dialog);
-        ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level1);
+        dialogEnd.setContentView(R.layout.preview_dialog);
+        ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_preview_dialog_constraint);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level3);
+        ImageView ivDialog = dialogEnd.findViewById(R.id.imageView);
+        ivDialog.setImageResource(R.drawable.im_dialog_end_panda);
+        TextView tvDescription = dialogEnd.findViewById(R.id.textView);
+        tvDescription.setText(getResources().getString(R.string.interesting_fact_level3));
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
-        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level1));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
         dialogEnd.show();
 
         MaterialButton close = dialogEnd.findViewById(R.id.bt_close_dialog);
-        //обработка кнопки закрыть (крестик)
         close.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
 
             //показ рекламы
             if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
-                myInterstitialAd.showInterstitialAd(null, Level1.this);
+                myInterstitialAd.showInterstitialAd(null, Level6.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 onBackPressed();
             }
-
         });
 
         MaterialButton _continue = dialogEnd.findViewById(R.id.bt_continue);
-        //обработка кнопки продолжить
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
-            Intent intent = new Intent(Level1.this, Level2.class);
+            dialogEnd.cancel();
+
+            Intent intent = new Intent(Level6.this, Level4.class);
             if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
-                myInterstitialAd.showInterstitialAd(intent, Level1.this);
+                myInterstitialAd.showInterstitialAd(intent, Level6.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
             }
-
-            dialogEnd.cancel();
         });
 
     }
@@ -202,11 +196,10 @@ public class Level1 extends AppCompatActivity {
         restore.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
             //TODO реализовать просмотр рекламы c вознаграждением
-            myRewardedAd.showRewardedAd(Level1.this, binding.tvHeartCounter);
+            myRewardedAd.showRewardedAd(Level6.this, binding.tvHeartCounter);
             dialogLives.cancel();
             myRewardedAd.loadRewardedAd(this);
         });
-
     }
 
 
@@ -223,13 +216,13 @@ public class Level1 extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvRightNumber.setEnabled(false);
-                    if (leftNumCard > rightNumCard) {
-                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_green_40));
+                    if (order > 0) {
+                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_true));
                     } else {
-                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_red_40));
+                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (leftNumCard > rightNumCard) {
+                    if (order > 0) {
                         if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
@@ -241,6 +234,7 @@ public class Level1 extends AppCompatActivity {
                                 initLivesDialog();
                             }
                         }
+
                         if (slider.getValue() > 1) {
                             slider.setValue(slider.getValue() - wrongAnswerPoint);
                         } else if (slider.getValue() == 1) {
@@ -254,6 +248,7 @@ public class Level1 extends AppCompatActivity {
                     } else {
                         binding.tvLeftNumber.startAnimation(animation);
                         initCardViews();
+
                     }
 
                     binding.tvRightNumber.setEnabled(true);
@@ -269,13 +264,13 @@ public class Level1 extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvLeftNumber.setEnabled(false);
-                    if (rightNumCard > leftNumCard) {
-                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_green_40));
+                    if (order <= 0) {
+                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.im_back_true));
                     } else {
-                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_red_40));
+                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (rightNumCard > leftNumCard) {
+                    if (order <= 0) {
                         if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
@@ -287,6 +282,7 @@ public class Level1 extends AppCompatActivity {
                                 initLivesDialog();
                             }
                         }
+
                         if (slider.getValue() > 1) {
                             slider.setValue(slider.getValue() - wrongAnswerPoint);
                         } else if (slider.getValue() == 1) {
@@ -300,7 +296,6 @@ public class Level1 extends AppCompatActivity {
                     } else {
                         binding.tvRightNumber.startAnimation(animation);
                         initCardViews();
-
                     }
 
                     binding.tvLeftNumber.setEnabled(true);
@@ -309,34 +304,40 @@ public class Level1 extends AppCompatActivity {
                 return true;
             }
         });
+
+
     }
 
 
     public void initCardViews() {
 
-        String[] textArray = getResources().getStringArray(R.array.textArray);
+        predatorTextArray = getResources().getStringArray(R.array.animalsPredatorArray);
+        herbivorousTextArray = getResources().getStringArray(R.array.animalsHerbivorousArray);
+
+
         Random random = new Random();
-        leftNumCard = random.nextInt(textArray.length);
-        rightNumCard = random.nextInt(textArray.length);
+        order = random.nextInt(2);
+        leftNumCard = random.nextInt(predatorArray.length);
+        rightNumCard = random.nextInt(herbivorousArray.length);
 
-        while (leftNumCard == rightNumCard) {
-            rightNumCard = random.nextInt(textArray.length);
+        if (order > 0) {
+            binding.tvLeftNumber.setBackgroundResource(predatorArray[leftNumCard]);
+            binding.tvRightNumber.setBackgroundResource(herbivorousArray[rightNumCard]);
+            binding.tvLeftNumberText.setText(predatorTextArray[leftNumCard]);
+            binding.tvRightNumberText.setText(herbivorousTextArray[rightNumCard]);
+        } else {
+            binding.tvRightNumber.setBackgroundResource(predatorArray[leftNumCard]);
+            binding.tvLeftNumber.setBackgroundResource(herbivorousArray[rightNumCard]);
+            binding.tvRightNumberText.setText(predatorTextArray[leftNumCard]);
+            binding.tvLeftNumberText.setText(herbivorousTextArray[rightNumCard]);
         }
-
-        binding.tvLeftNumber.setText(String.valueOf(leftNumCard));
-        binding.tvRightNumber.setText(String.valueOf(rightNumCard));
-        binding.tvLeftNumberText.setText(textArray[leftNumCard]);
-        binding.tvRightNumberText.setText(textArray[rightNumCard]);
-        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
-        binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
     }
-
 
     @Override
     public void onBackPressed() {
         soundEndDialog.stopPlay();
         soundLivesDialog.stopPlay();
-        Intent intent = new Intent(Level1.this, GameLevels.class);
+        Intent intent = new Intent(Level6.this, GameLevels.class);
         startActivity(intent);
         finish();
     }

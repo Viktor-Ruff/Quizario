@@ -42,9 +42,6 @@ public class Level4 extends AppCompatActivity {
     int[] heavyThingsArray;
     String[] heavyThingsTextArray;
 
-    /* int[] inedibleArray;
-     String[] inedibleTextArray;*/
-    int order;
     MyMediaPlayer soundEndDialog, soundLivesDialog;
     LivesSingleton livesSingleton;
     private MyInterstitialAd myInterstitialAd;
@@ -110,7 +107,7 @@ public class Level4 extends AppCompatActivity {
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview_level3);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level4);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
         ivDialog.setImageResource(R.drawable.two_cards_level4);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
@@ -139,7 +136,7 @@ public class Level4 extends AppCompatActivity {
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.end_dialog);
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview_level3);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level4);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
         tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level4));
@@ -164,7 +161,7 @@ public class Level4 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
-            Intent intent = new Intent(Level4.this, Level3.class);
+            Intent intent = new Intent(Level4.this, Level5.class);
 
             if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(intent, Level4.this);

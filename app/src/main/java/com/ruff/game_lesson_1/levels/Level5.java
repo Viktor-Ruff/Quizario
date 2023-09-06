@@ -39,12 +39,10 @@ public class Level5 extends AppCompatActivity {
     private int leftNumCard;
     int rightNumCard;
 
-    int[] heavyThingsArray;
-    String[] heavyThingsTextArray;
+    int[] fastAnimalsArray;
+    String[] fastAnimalsTextArray;
 
-    /* int[] inedibleArray;
-     String[] inedibleTextArray;*/
-    int order;
+
     MyMediaPlayer soundEndDialog, soundLivesDialog;
     LivesSingleton livesSingleton;
     private MyInterstitialAd myInterstitialAd;
@@ -74,14 +72,14 @@ public class Level5 extends AppCompatActivity {
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
 
-        heavyThingsArray = new int[]{R.drawable.im_virus, R.drawable.im_pin, R.drawable.im_nut,
-                R.drawable.im_watch, R.drawable.im_phone, R.drawable.im_hammer, R.drawable.im_rubber,
-                R.drawable.im_scooter, R.drawable.im_motorbike, R.drawable.im_car, R.drawable.im_track,
-                R.drawable.im_airplane, R.drawable.im_ship, R.drawable.im_earth};
+        fastAnimalsArray = new int[]{R.drawable.im_snail, R.drawable.im_ant, R.drawable.im_spider,
+                R.drawable.im_pig, R.drawable.im_cat, R.drawable.im_squirrel, R.drawable.im_dog,
+                R.drawable.im_white_bear, R.drawable.im_wolf, R.drawable.im_horse, R.drawable.im_antilope,
+                R.drawable.im_leopard, R.drawable.im_owl, R.drawable.im_eagle};
 
 
         //фон заднего экрана
-        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level4);
+        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level5);
 
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
@@ -90,7 +88,7 @@ public class Level5 extends AppCompatActivity {
 
 
         //установка номера уровня
-        binding.tvLevelNumber.setText(R.string.level_4);
+        binding.tvLevelNumber.setText(R.string.level_5);
 
 
         //скругление углов картинок
@@ -110,11 +108,11 @@ public class Level5 extends AppCompatActivity {
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview_level3);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level5);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
-        ivDialog.setImageResource(R.drawable.two_cards_level4);
+        ivDialog.setImageResource(R.drawable.two_cards_level5);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
-        tvDescription.setText(getResources().getString(R.string.exercise_level4));
+        tvDescription.setText(getResources().getString(R.string.exercise_level5));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogStart.setCancelable(false);
@@ -139,10 +137,10 @@ public class Level5 extends AppCompatActivity {
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.end_dialog);
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview_level3);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level5);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
-        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level4));
+        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level5));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
         dialogEnd.show();
@@ -164,7 +162,7 @@ public class Level5 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
-            Intent intent = new Intent(Level5.this, Level3.class);
+            Intent intent = new Intent(Level5.this, Level11.class);
 
             if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(intent, Level5.this);
@@ -312,20 +310,20 @@ public class Level5 extends AppCompatActivity {
 
     public void initCardViews() {
 
-        heavyThingsTextArray = getResources().getStringArray(R.array.heavy_things);
+        fastAnimalsTextArray = getResources().getStringArray(R.array.fast_animals);
 
         Random random = new Random();
-        leftNumCard = random.nextInt(heavyThingsTextArray.length);
-        rightNumCard = random.nextInt(heavyThingsTextArray.length);
+        leftNumCard = random.nextInt(fastAnimalsTextArray.length);
+        rightNumCard = random.nextInt(fastAnimalsTextArray.length);
 
         while (leftNumCard == rightNumCard) {
-            rightNumCard = random.nextInt(heavyThingsTextArray.length);
+            rightNumCard = random.nextInt(fastAnimalsTextArray.length);
         }
 
-        binding.tvLeftNumber.setBackgroundResource(heavyThingsArray[leftNumCard]);
-        binding.tvRightNumber.setBackgroundResource(heavyThingsArray[rightNumCard]);
-        binding.tvLeftNumberText.setText(heavyThingsTextArray[leftNumCard]);
-        binding.tvRightNumberText.setText(heavyThingsTextArray[rightNumCard]);
+        binding.tvLeftNumber.setBackgroundResource(fastAnimalsArray[leftNumCard]);
+        binding.tvRightNumber.setBackgroundResource(fastAnimalsArray[rightNumCard]);
+        binding.tvLeftNumberText.setText(fastAnimalsTextArray[leftNumCard]);
+        binding.tvRightNumberText.setText(fastAnimalsTextArray[rightNumCard]);
 
     }
 

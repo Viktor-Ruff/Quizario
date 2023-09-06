@@ -68,6 +68,8 @@ public class Level11 extends AppCompatActivity {
         myRewardedAd = MyRewardedAd.getInstance();
         myRewardedAd.loadRewardedAd(this);
 
+        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level11);
+
         livesSingleton = LivesSingleton.getInstance();
         binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
 
@@ -118,7 +120,7 @@ public class Level11 extends AppCompatActivity {
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level11);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
         ivDialog.setImageResource(R.drawable.two_cards_level11);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
@@ -148,7 +150,7 @@ public class Level11 extends AppCompatActivity {
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.end_dialog);
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_preview);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level1);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
         tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level11));
