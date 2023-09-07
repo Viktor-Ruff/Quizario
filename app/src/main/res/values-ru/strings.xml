@@ -36,13 +36,13 @@
     <string name="_30">30</string>
     <string name="start">Start</string>
     <string name="level">Level:</string>
-    <string name="exercise_level1">Choose the number that is higher. Questions can be repeated until you score 10 points</string>
-    <string name="exercise_level2">Choose a card with an edible item. Questions can be repeated until you score 10 points</string>
-    <string name="exercise_level3">Choose a card with a predatory animal. Questions can be repeated until you score 10 points</string>
-    <string name="exercise_level4">Choose an object whose mass is greater. Questions can be repeated until you score 10 points</string>
-    <string name="exercise_level5"> </string>
-    <string name="exercise_level6"> </string>
-    <string name="exercise_level7"> </string>
+    <string name="exercise_level1">Выберете число, которое больше. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
+    <string name="exercise_level2">Выберете карточку со съедобным предметом. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
+    <string name="exercise_level3">Выберете карточку с хищным животным. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
+    <string name="exercise_level4">Выберете карточку с предметом, масса которого больше. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
+    <string name="exercise_level5">Выберете карточку с существом, которое быстрее. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
+    <string name="exercise_level6">Выберете карточку с изображением фрукта. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
+    <string name="exercise_level7">Выберете карточку с изображением предмета для занятий спортом. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
     <string name="exercise_level8"> </string>
     <string name="exercise_level9"> </string>
     <string name="exercise_level10"> </string>
@@ -122,7 +122,9 @@
         Сапсан — самая быстрая птица и самое быстрое животное в мире. Скорость его пикирования превышает 300 км/час, а максимальная возможная скорость достигает невероятных 390 км/час. "</string>
     <string name="interesting_fact_level6">"Поздравляем, вы прошли уровень!\n
         Японская дыня – самый дорогой фрукт в мире. Две японские дыни Юбари проданы на аукционе за 23 500 долларов. Жители Японии платят огромные деньги за роскошные фрукты."</string>
-    <string name="interesting_fact_level7"> </string>
+
+    <string name="interesting_fact_level7">"Поздравляем, вы прошли уровень!\n
+        Как пловцы-синхронисты слышат музыку под водой?Чтобы во время выступлений синхронисты не сбивались и слышали музыку даже под водой, в бассейн встроены специальные подводные динамики. Безусловно, из-за плотности воды звук слышно гораздо хуже, но это помогает пловцам слышать хотя бы ритм и вовремя выполнять элементы программы."</string>
     <string name="interesting_fact_level8"> </string>
     <string name="interesting_fact_level9"> </string>
     <string name="interesting_fact_level10"> </string>

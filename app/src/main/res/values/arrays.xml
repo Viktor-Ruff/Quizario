@@ -136,8 +136,59 @@
         <item>Pumpkin</item>
         <item>Hat</item>
         <item>Phone</item>
+    </string-array>
+
+
+    <string-array name="sport_array">
+        <item>Ball</item>
+        <item>Ball</item>
+        <item>Bat</item>
+        <item>Board</item>
+        <item>Racket</item>
+        <item>Racket</item>
+        <item>Shoes</item>
+        <item>Skates</item>
+        <item>Skis</item>
+        <item>Stick</item>
+    </string-array>
+
+    <string-array name="not_sport_array">
+        <item>Belt</item>
+        <item>Compass</item>
+        <item>Mouse</item>
+        <item>Pliers</item>
+        <item>Pouch</item>
+        <item>Ring</item>
+        <item>Rope</item>
+        <item>Scissors</item>
+        <item>Shoes</item>
+        <item>Trumpet</item>
+    </string-array>
+
+
+    <string-array name="home_animals">
+        <item>Camel</item>
+        <item>Cat</item>
+        <item>Cow</item>
+        <item>Dog</item>
+        <item>Horse</item>
+        <item>Pig</item>
 
     </string-array>
 
+
+    <string-array name="homeless_animals">
+        <item>Antelope</item>
+        <item>Bear</item>
+        <item>Fox</item>
+        <item>Leon</item>
+        <item>Leopard</item>
+        <item>Owl</item>
+        <item>Snail</item>
+        <item>Squirrel</item>
+        <item>Turtle</item>
+        <item>Wolf</item>
+
+    </string-array>
 
 </resources>

@@ -23,6 +23,8 @@ import com.ruff.game_lesson_1.levels.Level3;
 import com.ruff.game_lesson_1.levels.Level4;
 import com.ruff.game_lesson_1.levels.Level5;
 import com.ruff.game_lesson_1.levels.Level6;
+import com.ruff.game_lesson_1.levels.Level7;
+import com.ruff.game_lesson_1.levels.Level8;
 
 public class GameLevels extends AppCompatActivity {
 
@@ -39,7 +41,6 @@ public class GameLevels extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityGameLevelsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
 
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
         myRewardedAd = MyRewardedAd.getInstance();
@@ -171,6 +172,22 @@ public class GameLevels extends AppCompatActivity {
             if (livesSingleton.getCurrentLives() > 0) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level7.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.d(MY_LOG, e.getMessage());
+                }
+            } else {
+                initLivesDialog();
+            }
+        });
+
+
+        //enter to level 7
+        binding.tvLevel8.setOnClickListener(v -> {
+
+            if (livesSingleton.getCurrentLives() > 0) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level8.class);
                     startActivity(intent);
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
