@@ -72,17 +72,17 @@ public class Level8 extends AppCompatActivity {
         soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
-        homeAnimalsArray = new int[]{R.drawable.im_banana, R.drawable.im_kiwi, R.drawable.im_lemon,
-                R.drawable.im_mango, R.drawable.im_passion_fruit, R.drawable.im_pomelo, R.drawable.im_orange,
-                R.drawable.im_peach, R.drawable.im_pear, R.drawable.im_pomegranate, R.drawable.im_apple};
+        homeAnimalsArray = new int[]{R.drawable.im_camel, R.drawable.im_cat, R.drawable.im_cow,
+                R.drawable.im_dog, R.drawable.im_horse, R.drawable.im_pig, R.drawable.im_goat,
+                R.drawable.im_goose, R.drawable.im_hen, R.drawable.im_sheep};
 
-        homelessAnimalsArray = new int[]{R.drawable.im_cabbage, R.drawable.im_carrot, R.drawable.im_corn,
-                R.drawable.im_cucumber, R.drawable.im_toy, R.drawable.im_nut, R.drawable.im_ball,
-                R.drawable.im_tomato, R.drawable.im_pumpkin, R.drawable.im_hat, R.drawable.im_phone};
+        homelessAnimalsArray = new int[]{R.drawable.im_antilope, R.drawable.im_bear, R.drawable.im_fox,
+                R.drawable.im_leon, R.drawable.im_leopard, R.drawable.im_owl, R.drawable.im_snail,
+                R.drawable.im_squirrel, R.drawable.im_turtle, R.drawable.im_wolf};
 
 
         //фон заднего экрана
-        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level6);
+        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level8);
 
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
@@ -91,7 +91,7 @@ public class Level8 extends AppCompatActivity {
 
 
         //установка номера уровня
-        binding.tvLevelNumber.setText(R.string.level_6);
+        binding.tvLevelNumber.setText(R.string.level_8);
 
 
         //скругление углов картинок
@@ -111,11 +111,11 @@ public class Level8 extends AppCompatActivity {
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level6);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level8);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
-        ivDialog.setImageResource(R.drawable.two_cards_level6);
+        ivDialog.setImageResource(R.drawable.two_cards_level8);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
-        tvDescription.setText(getResources().getString(R.string.exercise_level6));
+        tvDescription.setText(getResources().getString(R.string.exercise_level8));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogStart.setCancelable(false);
@@ -140,10 +140,10 @@ public class Level8 extends AppCompatActivity {
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.end_dialog);
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level6);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level8);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
-        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level6));
+        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level8));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
         dialogEnd.show();
@@ -165,7 +165,7 @@ public class Level8 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
-            Intent intent = new Intent(Level8.this, Level7.class);
+            Intent intent = new Intent(Level8.this, Level11.class);
 
             if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(intent, Level8.this);
@@ -312,8 +312,8 @@ public class Level8 extends AppCompatActivity {
 
     public void initCardViews() {
 
-        homeAnimalsTextArray = getResources().getStringArray(R.array.fruit_array);
-        homelessAnimalsTextArray = getResources().getStringArray(R.array.not_fruit_array);
+        homeAnimalsTextArray = getResources().getStringArray(R.array.home_animals);
+        homelessAnimalsTextArray = getResources().getStringArray(R.array.homeless_animals);
 
 
         Random random = new Random();

@@ -43,7 +43,7 @@
     <string name="exercise_level5">Choose the animal that is faster. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level6">Choose a fruit card. Questions can be repeated until you score 20 points </string>
     <string name="exercise_level7">Choose a subject for sports. Questions can be repeated until you score 20 points</string>
-    <string name="exercise_level8"> </string>
+    <string name="exercise_level8">Choose a card with an animal that a person has tamed.  Questions can be repeated until you score 20 points</string>
     <string name="exercise_level9"> </string>
     <string name="exercise_level10"> </string>
     <string name="exercise_level11">Choose the roman number that is higher. Questions can be repeated until you score 20 points</string>
@@ -123,15 +123,20 @@
 
     <string name="interesting_fact_level6">"Congratulations, you've completed the level!\n
         Japanese melon is the most expensive fruit in the world. Two Japanese Yubari melons sold at auction for $23,500. Residents of Japan pay huge amounts of money for luxurious fruits."</string>
-    <string name="interesting_fact_level7"> </string>
-    <string name="interesting_fact_level8"> </string>
+
+    <string name="interesting_fact_level7">"Congratulations, you've completed the level!\n
+        How do synchronized swimmers hear music underwater? To ensure that synchronized swimmers do not get confused during performances and hear music even under water, special underwater speakers are built into the pool. "</string>
+
+    <string name="interesting_fact_level8">"Congratulations, you've completed the level!\n
+        Dogs have very sensitive noses, but not as sensitive as cows. Ordinary domestic cows can detect odors at a distance of up to ten kilometers."</string>
     <string name="interesting_fact_level9"> </string>
     <string name="interesting_fact_level10"> </string>
 
     <string name="interesting_fact_level11">"Congratulations, you've completed the level!\n
         Zero Is the Only Number That Can't Be Represented In Roman Numerals. sn't a number because you couldn't divide by zero. There are a total of zero zeros in Roman numerals. While the ancient Greeks were aware of zero as a concept, they didn't consider zero to be a number at all. For example, Aristotle decided zero wasn't a number because you couldn't divide by zero. Instead of a Roman numeral, the Latin word "nulla" would have been used to represent the concept of zero. The reason no numeral existed for zero is because there was no need for a numeral to represent it."</string>
 
-    <string name="interesting_fact_level12"> </string>
+    <string name="interesting_fact_level12">"Congratulations, you've completed the level!\n
+        It has been proven that sport is an excellent cure for stress. To “reboot” your brain, in particular to distract yourself from heavy thoughts, you need to concentrate on something else. It's better to do physical exercise. Swing your arms or legs, pedal a bicycle, and concentrate on your movements and breathing. 20 minutes of exercise a day will help reduce your stress levels and also improve your fitness."</string>
     <string name="interesting_fact_level13"> </string>
     <string name="interesting_fact_level14"> </string>
     <string name="interesting_fact_level15"> </string>

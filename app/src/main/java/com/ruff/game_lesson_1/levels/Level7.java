@@ -165,7 +165,7 @@ public class Level7 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
-            Intent intent = new Intent(Level7.this, Level11.class);
+            Intent intent = new Intent(Level7.this, Level8.class);
 
             if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(intent, Level7.this);

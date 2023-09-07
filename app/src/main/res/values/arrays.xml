@@ -173,6 +173,10 @@
         <item>Dog</item>
         <item>Horse</item>
         <item>Pig</item>
+        <item>Goat</item>
+        <item>Goose</item>
+        <item>Hen</item>
+        <item>Sheep</item>
 
     </string-array>
 
