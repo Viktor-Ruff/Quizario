@@ -44,7 +44,7 @@
     <string name="exercise_level6">Выберите карточку с изображением фрукта. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
     <string name="exercise_level7">Выберите карточку с изображением предмета для занятий спортом. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
     <string name="exercise_level8">Выберите карточку с животным, которое приручил человек. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
-    <string name="exercise_level9"> </string>
+    <string name="exercise_level9">Выберите карточку с несуществующим персонажем или предметом. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
     <string name="exercise_level10"> </string>
     <string name="exercise_level11">Choose the roman number that is higher. Questions can be repeated until you score 10 points</string>
     <string name="exercise_level12"> </string>
@@ -128,7 +128,9 @@
 
     <string name="interesting_fact_level8">"Поздравляем, вы прошли уровень!\n
         У собак очень чуткие нос, но не настолько чуткий, как у коров. Обычные домашние коровы способны уловить запахи на расстоянии до десяти километров."</string>
-    <string name="interesting_fact_level9"> </string>
+
+    <string name="interesting_fact_level9">"Поздравляем, вы прошли уровень!\n
+        Йети — одно из названий Снежного человека. Ученые уже более 60-ти лет пытаются найти реальные факты его существования, но пока что безуспешно. Если предположить, что йети существуют, то это должны быть человекообразные существа до 3-х метров ростом, ходящие на двух задних лапах и покрытые густой шерстью."</string>
     <string name="interesting_fact_level10"> </string>
 
     <string name="interesting_fact_level11">"Поздравляем, вы прошли уровень!\n

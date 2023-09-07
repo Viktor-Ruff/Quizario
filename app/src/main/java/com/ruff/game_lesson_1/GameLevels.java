@@ -25,6 +25,7 @@ import com.ruff.game_lesson_1.levels.Level5;
 import com.ruff.game_lesson_1.levels.Level6;
 import com.ruff.game_lesson_1.levels.Level7;
 import com.ruff.game_lesson_1.levels.Level8;
+import com.ruff.game_lesson_1.levels.Level9;
 
 public class GameLevels extends AppCompatActivity {
 
@@ -182,12 +183,28 @@ public class GameLevels extends AppCompatActivity {
         });
 
 
-        //enter to level 7
+        //enter to level 8
         binding.tvLevel8.setOnClickListener(v -> {
 
             if (livesSingleton.getCurrentLives() > 0) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level8.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.d(MY_LOG, e.getMessage());
+                }
+            } else {
+                initLivesDialog();
+            }
+        });
+
+
+        //enter to level 9
+        binding.tvLevel9.setOnClickListener(v -> {
+
+            if (livesSingleton.getCurrentLives() > 0) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level9.class);
                     startActivity(intent);
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());

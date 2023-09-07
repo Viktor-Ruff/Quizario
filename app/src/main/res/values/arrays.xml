@@ -177,7 +177,6 @@
         <item>Goose</item>
         <item>Hen</item>
         <item>Sheep</item>
-
     </string-array>
 
 
@@ -192,7 +191,34 @@
         <item>Squirrel</item>
         <item>Turtle</item>
         <item>Wolf</item>
-
     </string-array>
 
+
+    <string-array name="artifice_array">
+        <item>Bingo bongo</item>
+        <item>Bulbasaur</item>
+        <item>Chip and Dale</item>
+        <item>Ghost</item>
+        <item>Grinch</item>
+        <item>Mermaid</item>
+        <item>Pikachu</item>
+        <item>Tom and Jerry</item>
+        <item>Wolf</item>
+        <item>Yeti</item>
+    </string-array>
+
+
+    <string-array name="real_array">
+        <item>Virus</item>
+        <item>Car</item>
+        <item>Airplane</item>
+        <item>Watch</item>
+        <item>Hammer</item>
+        <item>Rubber</item>
+        <item>Orange</item>
+        <item>Nut</item>
+        <item>Bike</item>
+        <item>Pear</item>
+
+    </string-array>
 </resources>

@@ -44,7 +44,7 @@
     <string name="exercise_level6">Choose a fruit card. Questions can be repeated until you score 20 points </string>
     <string name="exercise_level7">Choose a subject for sports. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level8">Choose a card with an animal that a person has tamed.  Questions can be repeated until you score 20 points</string>
-    <string name="exercise_level9"> </string>
+    <string name="exercise_level9">Choose a card with a non-existent character or item. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level10"> </string>
     <string name="exercise_level11">Choose the roman number that is higher. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level12"> </string>
@@ -129,7 +129,9 @@
 
     <string name="interesting_fact_level8">"Congratulations, you've completed the level!\n
         Dogs have very sensitive noses, but not as sensitive as cows. Ordinary domestic cows can detect odors at a distance of up to ten kilometers."</string>
-    <string name="interesting_fact_level9"> </string>
+
+    <string name="interesting_fact_level9">"Congratulations, you've completed the level!\n
+        Yeti is one of the names of Bigfoot. Scientists have been trying to find real facts of its existence for more than 60 years, but so far have been unsuccessful. If we assume that yetis exist, then they should be humanoid creatures up to 3 meters tall, walking on two hind legs and covered with thick hair."</string>
     <string name="interesting_fact_level10"> </string>
 
     <string name="interesting_fact_level11">"Congratulations, you've completed the level!\n
