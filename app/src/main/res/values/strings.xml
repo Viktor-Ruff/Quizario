@@ -48,8 +48,8 @@
     <string name="exercise_level10">Choose a card with an object that is made of metal. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level11">Choose the roman number that is higher. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level12">Choose a card with an animal that lays eggs. Questions can be repeated until you score 20 points</string>
-    <string name="exercise_level13"> </string>
-    <string name="exercise_level14"> </string>
+    <string name="exercise_level13"></string>
+    <string name="exercise_level14">Choose a card with an even number. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level15"> </string>
     <string name="exercise_level16"> </string>
     <string name="exercise_level17"> </string>
@@ -146,7 +146,8 @@
     <string name="interesting_fact_level13">"Congratulations, you've completed the level!\n
         It has been proven that sport is an excellent cure for stress. To “reboot” your brain, in particular to distract yourself from heavy thoughts, you need to concentrate on something else. It's better to do physical exercise. Swing your arms or legs, pedal a bicycle, and concentrate on your movements and breathing. 20 minutes of exercise a day will help reduce your stress levels and also improve your fitness."</string>
 
-    <string name="interesting_fact_level14"> </string>
+    <string name="interesting_fact_level14">"Congratulations, you've completed the level!\n
+        It is enough to simply divide single-digit numbers by two and determine whether they are even or odd. What about multi-digit numbers? Let's share a secret! You can figure out what a number is by looking at its last digits. If a multi-digit number ends with the digits 0, 2, 4, 6, 8, it is even. If a multi-digit number ends with one of the following digits 1,3,5,7,9, the number you have is odd."</string>
     <string name="interesting_fact_level15"> </string>
     <string name="interesting_fact_level16"> </string>
     <string name="interesting_fact_level17"> </string>

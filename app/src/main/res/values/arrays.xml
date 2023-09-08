@@ -259,7 +259,6 @@
         <item>Goose</item>
         <item>Hen</item>
         <item>Turtle</item>
-
     </string-array>
 
     <string-array name="not_egs_animal_array">
@@ -277,7 +276,33 @@
         <item>Pig</item>
         <item>Sheep</item>
         <item>Wolf</item>
+    </string-array>
 
+
+    <string-array name="even_num_array">
+        <item>Two</item>
+        <item>Four</item>
+        <item>Six</item>
+        <item>Eight</item>
+        <item>Ten</item>
+        <item>Twelve</item>
+        <item>Fourteen</item>
+        <item>Sixteen</item>
+        <item>Eighteen</item>
+        <item>Twenty</item>
+    </string-array>
+
+    <string-array name="odd_num_array">
+        <item>One</item>
+        <item>Three</item>
+        <item>Five</item>
+        <item>Seven</item>
+        <item>Nine</item>
+        <item>Eleven</item>
+        <item>Thirteen</item>
+        <item>Fifteen</item>
+        <item>Seventeen</item>
+        <item>Nineteen</item>
     </string-array>
 
 
