@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import com.google.android.material.button.MaterialButton;
 import com.ruff.game_lesson_1.databinding.ActivityGameLevelsBinding;
 import com.ruff.game_lesson_1.levels.Level1;
+import com.ruff.game_lesson_1.levels.Level10;
 import com.ruff.game_lesson_1.levels.Level11;
 import com.ruff.game_lesson_1.levels.Level2;
 import com.ruff.game_lesson_1.levels.Level3;
@@ -205,6 +206,22 @@ public class GameLevels extends AppCompatActivity {
             if (livesSingleton.getCurrentLives() > 0) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level9.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.d(MY_LOG, e.getMessage());
+                }
+            } else {
+                initLivesDialog();
+            }
+        });
+
+
+        //enter to level 10
+        binding.tvLevel10.setOnClickListener(v -> {
+
+            if (livesSingleton.getCurrentLives() > 0) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level10.class);
                     startActivity(intent);
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());

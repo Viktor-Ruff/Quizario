@@ -219,6 +219,31 @@
         <item>Nut</item>
         <item>Bike</item>
         <item>Pear</item>
+    </string-array>
 
+    <string-array name="metal_array">
+        <item>Chain</item>
+        <item>Container</item>
+        <item>Dumbbell</item>
+        <item>Dumbbell</item>
+        <item>Key</item>
+        <item>Lock</item>
+        <item>Safe</item>
+        <item>Ring</item>
+        <item>Scissors</item>
+        <item>Compass</item>
+    </string-array>
+
+    <string-array name="not_metal_array">
+        <item>Ball</item>
+        <item>Ball</item>
+        <item>Bat</item>
+        <item>Mouse</item>
+        <item>Pouch</item>
+        <item>Rope</item>
+        <item>Shoes</item>
+        <item>Belt</item>
+        <item>Racket</item>
+        <item>Skis</item>
     </string-array>
 </resources>

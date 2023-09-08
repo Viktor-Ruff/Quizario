@@ -60,6 +60,11 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".levels.Level10"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".levels.Level11"
             android:exported="false"
             android:screenOrientation="portrait" />

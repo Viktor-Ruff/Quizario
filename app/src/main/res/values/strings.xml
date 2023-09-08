@@ -43,9 +43,9 @@
     <string name="exercise_level5">Choose the animal that is faster. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level6">Choose a fruit card. Questions can be repeated until you score 20 points </string>
     <string name="exercise_level7">Choose a subject for sports. Questions can be repeated until you score 20 points</string>
-    <string name="exercise_level8">Choose a card with an animal that a person has tamed.  Questions can be repeated until you score 20 points</string>
+    <string name="exercise_level8">Choose a card with an animal that a person has tamed. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level9">Choose a card with a non-existent character or item. Questions can be repeated until you score 20 points</string>
-    <string name="exercise_level10"> </string>
+    <string name="exercise_level10">Choose a card with an object that is made of metal. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level11">Choose the roman number that is higher. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level12"> </string>
     <string name="exercise_level13"> </string>
@@ -132,7 +132,9 @@
 
     <string name="interesting_fact_level9">"Congratulations, you've completed the level!\n
         Yeti is one of the names of Bigfoot. Scientists have been trying to find real facts of its existence for more than 60 years, but so far have been unsuccessful. If we assume that yetis exist, then they should be humanoid creatures up to 3 meters tall, walking on two hind legs and covered with thick hair."</string>
-    <string name="interesting_fact_level10"> </string>
+
+    <string name="interesting_fact_level10">"Congratulations, you've completed the level!\n
+        Lithium is the lightest metal in the world, its density is 0.534 g/cm3. If you put a piece of lithium in a glass of water, it will remain floating on the surface. By comparison, lithium is 42 times lighter than osmium, which is the densest metal known to mankind."</string>
 
     <string name="interesting_fact_level11">"Congratulations, you've completed the level!\n
         Zero Is the Only Number That Can't Be Represented In Roman Numerals. sn't a number because you couldn't divide by zero. There are a total of zero zeros in Roman numerals. While the ancient Greeks were aware of zero as a concept, they didn't consider zero to be a number at all. For example, Aristotle decided zero wasn't a number because you couldn't divide by zero. Instead of a Roman numeral, the Latin word "nulla" would have been used to represent the concept of zero. The reason no numeral existed for zero is because there was no need for a numeral to represent it."</string>
