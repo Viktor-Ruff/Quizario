@@ -19,6 +19,9 @@ import com.ruff.game_lesson_1.databinding.ActivityGameLevelsBinding;
 import com.ruff.game_lesson_1.levels.Level1;
 import com.ruff.game_lesson_1.levels.Level10;
 import com.ruff.game_lesson_1.levels.Level11;
+import com.ruff.game_lesson_1.levels.Level12;
+import com.ruff.game_lesson_1.levels.Level13;
+import com.ruff.game_lesson_1.levels.Level14;
 import com.ruff.game_lesson_1.levels.Level2;
 import com.ruff.game_lesson_1.levels.Level3;
 import com.ruff.game_lesson_1.levels.Level4;
@@ -215,7 +218,6 @@ public class GameLevels extends AppCompatActivity {
             }
         });
 
-
         //enter to level 10
         binding.tvLevel10.setOnClickListener(v -> {
 
@@ -247,6 +249,51 @@ public class GameLevels extends AppCompatActivity {
             }
         });
 
+        //enter to level 12
+        binding.tvLevel12.setOnClickListener(v -> {
+
+            if (livesSingleton.getCurrentLives() > 0) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level12.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.d(MY_LOG, e.getMessage());
+                }
+            } else {
+                initLivesDialog();
+            }
+        });
+
+
+        //enter to level 13
+        binding.tvLevel13.setOnClickListener(v -> {
+
+            if (livesSingleton.getCurrentLives() > 0) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level13.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.d(MY_LOG, e.getMessage());
+                }
+            } else {
+                initLivesDialog();
+            }
+        });
+
+        //enter to level 14
+        binding.tvLevel14.setOnClickListener(v -> {
+
+            if (livesSingleton.getCurrentLives() > 0) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level14.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.d(MY_LOG, e.getMessage());
+                }
+            } else {
+                initLivesDialog();
+            }
+        });
     }
 
 

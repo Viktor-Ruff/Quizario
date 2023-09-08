@@ -246,4 +246,39 @@
         <item>Racket</item>
         <item>Skis</item>
     </string-array>
+
+
+    <string-array name="egs_animal_array">
+        <item>Chameleon</item>
+        <item>Crocodile</item>
+        <item>Echidna</item>
+        <item>Lizard</item>
+        <item>Partridge</item>
+        <item>Platypus</item>
+        <item>Snake</item>
+        <item>Goose</item>
+        <item>Hen</item>
+        <item>Turtle</item>
+
+    </string-array>
+
+    <string-array name="not_egs_animal_array">
+        <item>Antelope</item>
+        <item>Bear</item>
+        <item>Camel</item>
+        <item>Cat</item>
+        <item>Cow</item>
+        <item>Dog</item>
+        <item>Fox</item>
+        <item>Goat</item>
+        <item>Horse</item>
+        <item>Leon</item>
+        <item>Leopard</item>
+        <item>Pig</item>
+        <item>Sheep</item>
+        <item>Wolf</item>
+
+    </string-array>
+
+
 </resources>
