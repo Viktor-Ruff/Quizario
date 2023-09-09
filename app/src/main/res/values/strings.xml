@@ -50,7 +50,7 @@
     <string name="exercise_level12">Choose a card with an animal that lays eggs. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level13"></string>
     <string name="exercise_level14">Choose a card with an even number. Questions can be repeated until you score 20 points</string>
-    <string name="exercise_level15"> </string>
+    <string name="exercise_level15">Choose a card with an animal that can fly. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level16"> </string>
     <string name="exercise_level17"> </string>
     <string name="exercise_level18"> </string>
@@ -148,7 +148,9 @@
 
     <string name="interesting_fact_level14">"Congratulations, you've completed the level!\n
         It is enough to simply divide single-digit numbers by two and determine whether they are even or odd. What about multi-digit numbers? Let's share a secret! You can figure out what a number is by looking at its last digits. If a multi-digit number ends with the digits 0, 2, 4, 6, 8, it is even. If a multi-digit number ends with one of the following digits 1,3,5,7,9, the number you have is odd."</string>
-    <string name="interesting_fact_level15"> </string>
+
+    <string name="interesting_fact_level15">"Congratulations, you've completed the level!\n
+        The flying squirrel is a very interesting creature, reminiscent of a bat, only very cute. Between the hind and front legs of this animal there is a leather membrane. When a squirrel jumps, it spreads its limbs out to the sides and the membrane stretches, acting like a parachute and allowing the rodent to plan and control its flight and turn 90 degrees. During flight, its forelimbs are widely spaced, and its hind limbs are pressed to its tail, forming a triangular silhouette, which is sometimes compared to a flounder fish."</string>
     <string name="interesting_fact_level16"> </string>
     <string name="interesting_fact_level17"> </string>
     <string name="interesting_fact_level18"> </string>

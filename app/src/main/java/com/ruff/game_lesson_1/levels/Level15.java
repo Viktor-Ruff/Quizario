@@ -39,10 +39,10 @@ public class Level15 extends AppCompatActivity {
     private int leftNumCard;
     int rightNumCard;
 
-    int[] metalArray;
-    String[] metalTextArray;
-    int[] notMetalArray;
-    String[] notMetalTextArray;
+    int[] flyAnimalArray;
+    String[] flyAnimalTextArray;
+    int[] notFlyAnimalArray;
+    String[] notFlyAnimalTextArray;
     int order;
     MyMediaPlayer soundEndDialog, soundLivesDialog;
     LivesSingleton livesSingleton;
@@ -72,17 +72,17 @@ public class Level15 extends AppCompatActivity {
         soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
-        metalArray = new int[]{R.drawable.im_chain, R.drawable.im_container, R.drawable.im_dumbbell,
-                R.drawable.im_dumbbell_o, R.drawable.im_key, R.drawable.im_lock, R.drawable.im_safe,
-                R.drawable.im_ring, R.drawable.im_scissors, R.drawable.im_compass};
+        flyAnimalArray = new int[]{R.drawable.im_bat_animal, R.drawable.im_butterfly, R.drawable.im_flying_squirrel,
+                R.drawable.im_peacock, R.drawable.im_eagle, R.drawable.im_owl, R.drawable.im_goose,
+                R.drawable.im_hen, R.drawable.im_partridge, R.drawable.im_flying_fish};
 
-        notMetalArray = new int[]{R.drawable.im_ball_f, R.drawable.im_ball_b, R.drawable.im_bat,
-                R.drawable.im_mouse, R.drawable.im_pouch, R.drawable.im_rope, R.drawable.im_shoes,
-                R.drawable.im_belt, R.drawable.im_racket, R.drawable.im_skis};
+        notFlyAnimalArray = new int[]{R.drawable.im_gold_fish, R.drawable.im_kiwi_animal, R.drawable.im_ostrich,
+                R.drawable.im_penguin, R.drawable.im_squirrel, R.drawable.im_ant, R.drawable.im_spider,
+                R.drawable.im_snail, R.drawable.im_platypus, R.drawable.im_chameleon, R.drawable.im_lizard};
 
 
         //фон заднего экрана
-        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level10);
+        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level15);
 
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
@@ -91,7 +91,7 @@ public class Level15 extends AppCompatActivity {
 
 
         //установка номера уровня
-        binding.tvLevelNumber.setText(R.string.level_10);
+        binding.tvLevelNumber.setText(R.string.level_15);
 
 
         //скругление углов картинок
@@ -111,11 +111,11 @@ public class Level15 extends AppCompatActivity {
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level10);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level15);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
-        ivDialog.setImageResource(R.drawable.two_cards_level10);
+        ivDialog.setImageResource(R.drawable.two_cards_level15);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
-        tvDescription.setText(getResources().getString(R.string.exercise_level10));
+        tvDescription.setText(getResources().getString(R.string.exercise_level15));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogStart.setCancelable(false);
@@ -140,10 +140,10 @@ public class Level15 extends AppCompatActivity {
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.end_dialog);
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level10);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level15);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
-        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level10));
+        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level15));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
         dialogEnd.show();
@@ -312,25 +312,25 @@ public class Level15 extends AppCompatActivity {
 
     public void initCardViews() {
 
-        metalTextArray = getResources().getStringArray(R.array.metal_array);
-        notMetalTextArray = getResources().getStringArray(R.array.not_metal_array);
+        flyAnimalTextArray = getResources().getStringArray(R.array.fly_animal_array);
+        notFlyAnimalTextArray = getResources().getStringArray(R.array.not_fly_animal_array);
 
 
         Random random = new Random();
         order = random.nextInt(2);
-        leftNumCard = random.nextInt(metalArray.length);
-        rightNumCard = random.nextInt(notMetalArray.length);
+        leftNumCard = random.nextInt(flyAnimalArray.length);
+        rightNumCard = random.nextInt(notFlyAnimalArray.length);
 
         if (order > 0) {
-            binding.tvLeftNumber.setBackgroundResource(metalArray[leftNumCard]);
-            binding.tvRightNumber.setBackgroundResource(notMetalArray[rightNumCard]);
-            binding.tvLeftNumberText.setText(metalTextArray[leftNumCard]);
-            binding.tvRightNumberText.setText(notMetalTextArray[rightNumCard]);
+            binding.tvLeftNumber.setBackgroundResource(flyAnimalArray[leftNumCard]);
+            binding.tvRightNumber.setBackgroundResource(notFlyAnimalArray[rightNumCard]);
+            binding.tvLeftNumberText.setText(flyAnimalTextArray[leftNumCard]);
+            binding.tvRightNumberText.setText(notFlyAnimalTextArray[rightNumCard]);
         } else {
-            binding.tvRightNumber.setBackgroundResource(metalArray[leftNumCard]);
-            binding.tvLeftNumber.setBackgroundResource(notMetalArray[rightNumCard]);
-            binding.tvRightNumberText.setText(metalTextArray[leftNumCard]);
-            binding.tvLeftNumberText.setText(notMetalTextArray[rightNumCard]);
+            binding.tvRightNumber.setBackgroundResource(flyAnimalArray[leftNumCard]);
+            binding.tvLeftNumber.setBackgroundResource(notFlyAnimalArray[rightNumCard]);
+            binding.tvRightNumberText.setText(flyAnimalTextArray[leftNumCard]);
+            binding.tvLeftNumberText.setText(notFlyAnimalTextArray[rightNumCard]);
         }
     }
 

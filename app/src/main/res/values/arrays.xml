@@ -306,4 +306,33 @@
     </string-array>
 
 
+    <string-array name="fly_animal_array">
+        <item>Bat</item>
+        <item>Butterfly</item>
+        <item>Squirrel</item>
+        <item>Peacock</item>
+        <item>Eagle</item>
+        <item>Owl</item>
+        <item>Goose</item>
+        <item>Hen</item>
+        <item>Partridge</item>
+        <item>Fish</item>
+    </string-array>
+
+
+    <string-array name="not_fly_animal_array">
+        <item>Fish</item>
+        <item>Kiwi</item>
+        <item>Ostrich</item>
+        <item>Penguin</item>
+        <item>Squirrel</item>
+        <item>Ant</item>
+        <item>Spider</item>
+        <item>Snail</item>
+        <item>Platypus</item>
+        <item>Chameleon</item>
+        <item>Lizard</item>
+    </string-array>
+
+
 </resources>
