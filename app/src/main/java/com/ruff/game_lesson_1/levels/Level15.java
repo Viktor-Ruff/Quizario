@@ -58,6 +58,10 @@ public class Level15 extends AppCompatActivity {
         binding = UniversalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Window w = getWindow();
+        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
+
         //загрузка рекламы в память
         myInterstitialAd = MyInterstitialAd.getInstance();
         myInterstitialAd.loadInterstitialAd(this);
@@ -74,11 +78,13 @@ public class Level15 extends AppCompatActivity {
 
         flyAnimalArray = new int[]{R.drawable.im_bat_animal, R.drawable.im_butterfly, R.drawable.im_flying_squirrel,
                 R.drawable.im_peacock, R.drawable.im_eagle, R.drawable.im_owl, R.drawable.im_goose,
-                R.drawable.im_hen, R.drawable.im_partridge, R.drawable.im_flying_fish};
+                R.drawable.im_hen, R.drawable.im_partridge, R.drawable.im_flying_fish, R.drawable.im_chafer,
+                R.drawable.im_ladybug, R.drawable.im_mantis, R.drawable.im_rhinoceros_beetle};
 
         notFlyAnimalArray = new int[]{R.drawable.im_gold_fish, R.drawable.im_kiwi_animal, R.drawable.im_ostrich,
                 R.drawable.im_penguin, R.drawable.im_squirrel, R.drawable.im_ant, R.drawable.im_spider,
-                R.drawable.im_snail, R.drawable.im_platypus, R.drawable.im_chameleon, R.drawable.im_lizard};
+                R.drawable.im_snail, R.drawable.im_platypus, R.drawable.im_chameleon, R.drawable.im_lizard,
+                R.drawable.im_grasshopper};
 
 
         //фон заднего экрана

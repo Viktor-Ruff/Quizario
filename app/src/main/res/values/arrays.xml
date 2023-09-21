@@ -317,6 +317,10 @@
         <item>Hen</item>
         <item>Partridge</item>
         <item>Fish</item>
+        <item>Chafer</item>
+        <item>Ladybug</item>
+        <item>Mantis</item>
+        <item>Rhinoceros</item>
     </string-array>
 
 
@@ -332,6 +336,7 @@
         <item>Platypus</item>
         <item>Chameleon</item>
         <item>Lizard</item>
+        <item>Grasshopper</item>
     </string-array>
 
 
