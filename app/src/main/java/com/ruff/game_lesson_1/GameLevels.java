@@ -58,9 +58,14 @@ public class GameLevels extends AppCompatActivity {
         //Запрещаем ночную тему.
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
+        //плеер для проигрывания звука окончания жизней
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
+
+        //инициализация рекламы с вознаграждением
         myRewardedAd = MyRewardedAd.getInstance();
         myRewardedAd.loadRewardedAd(this);
+
+        //инициализация синглтона жизней
         livesSingleton = LivesSingleton.getInstance();
 
         //проверка на бесконечные жизни (покупка инапа в приложении)
@@ -70,21 +75,18 @@ public class GameLevels extends AppCompatActivity {
             binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
         }
 
-
-
-
-
+        //инициализация слушателей нажатий на кнопки уровней
         levelListeners();
 
-        //click handling button back
+        //обработка нажатий на кнопку назад
         binding.btBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try {
                     Intent intent = new Intent(GameLevels.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    startActivity(intent); //переход на мэйн активити
+                    finish(); //уничтожение активности
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -95,11 +97,10 @@ public class GameLevels extends AppCompatActivity {
 
     private void levelListeners() {
 
-
         //enter to level 1
         binding.tvLevel1.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level1.class);
                     startActivity(intent);
@@ -117,7 +118,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 2
         binding.tvLevel2.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level2.class);
                     startActivity(intent);
@@ -134,7 +135,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 3
         binding.tvLevel3.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level3.class);
                     startActivity(intent);
@@ -151,7 +152,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 4
         binding.tvLevel4.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level4.class);
                     startActivity(intent);
@@ -167,7 +168,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 5
         binding.tvLevel5.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level5.class);
                     startActivity(intent);
@@ -184,7 +185,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 6
         binding.tvLevel6.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level6.class);
                     startActivity(intent);
@@ -201,7 +202,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 7
         binding.tvLevel7.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level7.class);
                     startActivity(intent);
@@ -218,7 +219,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 8
         binding.tvLevel8.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level8.class);
                     startActivity(intent);
@@ -235,7 +236,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 9
         binding.tvLevel9.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level9.class);
                     startActivity(intent);
@@ -251,7 +252,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 10
         binding.tvLevel10.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level10.class);
                     startActivity(intent);
@@ -268,7 +269,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 11
         binding.tvLevel11.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level11.class);
                     startActivity(intent);
@@ -284,7 +285,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 12
         binding.tvLevel12.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level12.class);
                     startActivity(intent);
@@ -301,7 +302,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 13
         binding.tvLevel13.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level13.class);
                     startActivity(intent);
@@ -317,7 +318,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 14
         binding.tvLevel14.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level14.class);
                     startActivity(intent);
@@ -333,7 +334,7 @@ public class GameLevels extends AppCompatActivity {
         //enter to level 15
         binding.tvLevel15.setOnClickListener(v -> {
 
-            if (livesSingleton.getCurrentLives() > 0) {
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level15.class);
                     startActivity(intent);
@@ -349,28 +350,37 @@ public class GameLevels extends AppCompatActivity {
 
 
     private void initLivesDialog() {
-        soundLivesDialog.play();
+        soundLivesDialog.play(); //проигрывание звука окончания жизней
         Dialog dialogLives = new Dialog(this);
-        dialogLives.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogLives.setContentView(R.layout.lives_dialog);
-        dialogLives.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialogLives.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-        dialogLives.setCancelable(false);
-        dialogLives.show();
+        dialogLives.requestWindowFeature(Window.FEATURE_NO_TITLE); //диалог без названия
+        dialogLives.setContentView(R.layout.lives_dialog); //выбор макета для диалога
 
+        Window w = dialogLives.getWindow();
+        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
+
+        dialogLives.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); //затемнение заднего фона диалога
+        dialogLives.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //растягивания диалога на экране
+        dialogLives.setCancelable(false); //отключение системной кнопки назад
+        dialogLives.show(); //отображение диалога
+
+        //обработка кнопки закрыть (крестик) - начало.
         MaterialButton close = dialogLives.findViewById(R.id.bt_close_dialog);
         close.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
-            dialogLives.cancel();
+            dialogLives.cancel(); //закрытие диалогового окна
         });
+        //обработка кнопки закрыть (крестик) - конец.
 
+        //обработка кнопки продолжить - начало
         MaterialButton restore = dialogLives.findViewById(R.id.bt_restore);
         restore.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
-            myRewardedAd.showRewardedAd(GameLevels.this, binding.tvHeartCounter);
-            dialogLives.cancel();
-            myRewardedAd.loadRewardedAd(this);
+            myRewardedAd.showRewardedAd(GameLevels.this, binding.tvHeartCounter); //просмотр рекламы c вознаграждением
+            dialogLives.cancel(); //закрытие диалогового окна
+            myRewardedAd.loadRewardedAd(this); //загрузка в фоне новой рекламы
         });
+        //обработка кнопки продолжить - конец
 
     }
 

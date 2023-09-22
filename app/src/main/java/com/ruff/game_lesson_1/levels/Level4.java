@@ -186,6 +186,7 @@ public class Level4 extends AppCompatActivity {
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
+                finish();
             }
         });
 

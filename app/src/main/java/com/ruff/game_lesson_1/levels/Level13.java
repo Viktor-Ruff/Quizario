@@ -190,6 +190,7 @@ public class Level13 extends AppCompatActivity  {
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
+                finish();
             }
         });
 

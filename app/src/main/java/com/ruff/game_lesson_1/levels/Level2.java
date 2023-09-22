@@ -31,6 +31,11 @@ import com.ruff.game_lesson_1.databinding.UniversalBinding;
 
 import java.util.Random;
 
+/**
+ * Задание уровня!
+ * Выберите карточку со съедобным предметом.
+ */
+
 
 public class Level2 extends AppCompatActivity {
 
@@ -191,6 +196,7 @@ public class Level2 extends AppCompatActivity {
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -241,17 +247,17 @@ public class Level2 extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvRightNumber.setEnabled(false);
-                    if (order > 0) {
+                    if (order > 0) { //правильный ответ
                         binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_true));
-                    } else {
+                    } else { //неверный ответ
                         binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (order > 0) {
+                    if (order > 0) { //правильный ответ
                         if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
-                    } else {
+                    } else { //неверный ответ
                         if (livesSingleton.getCurrentLives() > 0) {
                             livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive);
                             binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
@@ -337,20 +343,21 @@ public class Level2 extends AppCompatActivity {
 
     public void initCardViews() {
 
-        edibleTextArray = getResources().getStringArray(R.array.edibleArray);
-        inedibleTextArray = getResources().getStringArray(R.array.inedibleArray);
+        edibleTextArray = getResources().getStringArray(R.array.edibleArray); //cоздание массива на основе массива из ресурсов
+        inedibleTextArray = getResources().getStringArray(R.array.inedibleArray); //cоздание массива на основе массива из ресурсов
 
         Random random = new Random();
-        order = random.nextInt(2);
-        leftNumCard = random.nextInt(edibleArray.length);
-        rightNumCard = random.nextInt(inedibleArray.length);
+        order = random.nextInt(2); //генерация рандомного числа (либо 0, либо 1)
+        leftNumCard = random.nextInt(edibleArray.length); //выбор случайного значения в диапозано длины массива.
+        rightNumCard = random.nextInt(inedibleArray.length); //выбор случайного значения в диапозано длины массива.
 
-        if (order > 0) {
+        //Присваивание карточкам картинки в зависимости от 'order'
+        if (order > 0) { //если order - 1 на левой карточке будет правильный ответ
             binding.tvLeftNumber.setBackgroundResource(edibleArray[leftNumCard]);
             binding.tvRightNumber.setBackgroundResource(inedibleArray[rightNumCard]);
             binding.tvLeftNumberText.setText(edibleTextArray[leftNumCard]);
             binding.tvRightNumberText.setText(inedibleTextArray[rightNumCard]);
-        } else {
+        } else { //если order - 0 на правой карточке будет правильный ответ
             binding.tvRightNumber.setBackgroundResource(edibleArray[leftNumCard]);
             binding.tvLeftNumber.setBackgroundResource(inedibleArray[rightNumCard]);
             binding.tvRightNumberText.setText(edibleTextArray[leftNumCard]);

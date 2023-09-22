@@ -192,6 +192,7 @@ public class Level15 extends AppCompatActivity {
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
+                finish();
             }
         });
 

@@ -17,7 +17,7 @@ public class LivesSingleton {
     private LivesSingleton() {
         maxLives = 10;
         currentLives = maxLives;
-        endlessLives = false;
+        endlessLives = true;
     }
 
     public static LivesSingleton getInstance() {

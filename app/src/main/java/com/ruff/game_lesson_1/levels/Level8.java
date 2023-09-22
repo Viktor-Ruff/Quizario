@@ -190,6 +190,7 @@ public class Level8 extends AppCompatActivity {
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
+                finish();
             }
         });
 

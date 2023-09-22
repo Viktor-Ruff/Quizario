@@ -191,6 +191,7 @@ public class Level3 extends AppCompatActivity {
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -220,7 +221,6 @@ public class Level3 extends AppCompatActivity {
         MaterialButton restore = dialogLives.findViewById(R.id.bt_restore);
         restore.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
-            //TODO реализовать просмотр рекламы c вознаграждением
             myRewardedAd.showRewardedAd(Level3.this, binding.tvHeartCounter);
             dialogLives.cancel();
             myRewardedAd.loadRewardedAd(this);

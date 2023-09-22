@@ -82,17 +82,31 @@ public class Level1 extends AppCompatActivity {
         //Запрещаем ночную тему.
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        //загрузка межстраничной рекламы в память
-        myInterstitialAd = MyInterstitialAd.getInstance();
-        myInterstitialAd.loadInterstitialAd(this);
-
-        //загрузка рекламы с вознаграждением в память
-        myRewardedAd = MyRewardedAd.getInstance();
-        myRewardedAd.loadRewardedAd(this);
 
         //создаем синглтон с количеством жизней.
         livesSingleton = LivesSingleton.getInstance();
         binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
+        //проверка на бесконечные жизни (покупка инапа в приложении) - начало
+        if (livesSingleton.isEndlessLives()) {
+            binding.tvHeartCounter.setText("∞");
+        } else {
+            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+        }
+
+
+        //Проверка на премиум доступ
+        if (livesSingleton.isEndlessLives()) { //если есть премиум
+            myInterstitialAd = null;
+        } else { //если нет премиума
+            //загрузка межстраничной рекламы в память
+            myInterstitialAd = MyInterstitialAd.getInstance();
+            myInterstitialAd.loadInterstitialAd(this);
+
+            //загрузка рекламы с вознаграждением в память
+            myRewardedAd = MyRewardedAd.getInstance();
+            myRewardedAd.loadRewardedAd(this);
+        }
 
         //инициализируем плеер для проигрывания в конце диалога
         soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
@@ -100,7 +114,7 @@ public class Level1 extends AppCompatActivity {
         //инициализируем плеер для проигрывания звука конца жизней
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
-        //кнопка назад
+        //обработка нажатия кнопки назад
         binding.btBack.setOnClickListener(v -> {
             onBackPressed();
         });
@@ -112,72 +126,84 @@ public class Level1 extends AppCompatActivity {
         binding.tvLeftNumber.setClipToOutline(true);
         binding.tvRightNumber.setClipToOutline(true);
 
-        //вызов диалогового окна
+        //вызов стартового диалогового окна
         initStartDialog();
 
-        //инициализация цифр на карточках
+        //метод инициализация цифр на карточках
         initCards();
     }
 
 
+    /**
+     * Метод вызова стартового диалогового окна
+     * Появляеться перед началом уровня.
+     */
     private void initStartDialog() {
         Dialog dialogStart = new Dialog(this);
-        dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogStart.setContentView(R.layout.preview_dialog);
+        dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE); //диалог без названия
+        dialogStart.setContentView(R.layout.preview_dialog); //выбор макета для диалога
 
         Window w = dialogStart.getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level1);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level1); //выбор заднего фона для главного контейнера диалога
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
         ivDialog.setImageResource(R.drawable.two_cards_level1);
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-        dialogStart.setCancelable(false);
-        dialogStart.show();
+        dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //растягивания диалога на экране
+        dialogStart.setCancelable(false); //отключение системной кнопки назад
+        dialogStart.show(); // отображение диалога
+
 
         MaterialButton close = dialogStart.findViewById(R.id.bt_close_dialog);
-        close.setOnClickListener(v -> {
-            onBackPressed();
+        close.setOnClickListener(v -> { //обработки кнопки закрытия диалога
+            onBackPressed(); // вызов переопределенного метода
         });
 
         MaterialButton _continue = dialogStart.findViewById(R.id.bt_continue);
-        _continue.setOnClickListener(v -> {
+        _continue.setOnClickListener(v -> { //обработка нажатия кнопки "продолжить"
             dialogStart.cancel();
         });
 
 
     }
 
+
+    /**
+     * Метод вызова диалогового окна в конце уровня
+     * Появляеться после успешного завершения уровня.
+     */
     private void initEndDialog() {
 
-        soundEndDialog.play();
+        soundEndDialog.play(); //воспроизведение звука прохождения уровня
         Dialog dialogEnd = new Dialog(this);
-        dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogEnd.setContentView(R.layout.end_dialog);
+        dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);  //диалог без названия
+        dialogEnd.setContentView(R.layout.end_dialog); //выбор макета для диалога
 
         Window w = dialogEnd.getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level1);
-        dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level1); //выбор заднего фона для главного контейнера диалога
+        dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); //затемнение заднего фона диалога
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
         tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level1));
-        dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-        dialogEnd.setCancelable(false);
-        dialogEnd.show();
+        dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //растягивания диалога на экране
+        dialogEnd.setCancelable(false); //отключение системной кнопки назад
+        dialogEnd.show(); //отображение диалога
 
         MaterialButton close = dialogEnd.findViewById(R.id.bt_close_dialog);
-        //обработка кнопки закрыть (крестик)
+        MaterialButton _continue = dialogEnd.findViewById(R.id.bt_continue);
+
+        //обработка кнопки закрыть (крестик) - начало.
         close.setOnClickListener(v -> {
-            soundEndDialog.stopPlay();
+            soundEndDialog.stopPlay(); //завершение проигрывания звука
 
             //показ рекламы
-            if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
+            if (!livesSingleton.isEndlessLives() && myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(null, Level1.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
@@ -185,45 +211,59 @@ public class Level1 extends AppCompatActivity {
             }
 
         });
+        //обработка кнопки закрыть (крестик) - конец.
 
-        MaterialButton _continue = dialogEnd.findViewById(R.id.bt_continue);
-        //обработка кнопки продолжить
+
+        //обработка кнопки продолжить - начало
         _continue.setOnClickListener(v -> {
-            soundEndDialog.stopPlay();
+            soundEndDialog.stopPlay(); //завершение проигрывания звука
             Intent intent = new Intent(Level1.this, Level2.class);
-            if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
+
+            if (!livesSingleton.isEndlessLives() && myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(intent, Level1.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
+                finish();
             }
 
             dialogEnd.cancel();
         });
+        //обработка кнопки продолжить - конец
 
     }
 
+
+    /**
+     * Метод вызова диалогового окна конца жизней
+     * Появляеться после того как все жизни потрачены.
+     * Пользователю предлогается посмотреть рекламу или купить премиум.
+     */
     private void initLivesDialog() {
-        soundLivesDialog.play();
+        soundLivesDialog.play(); //проигрывание звука окончания жизней
         Dialog dialogLives = new Dialog(this);
-        dialogLives.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogLives.setContentView(R.layout.lives_dialog);
+        dialogLives.requestWindowFeature(Window.FEATURE_NO_TITLE); //диалог без названия
+        dialogLives.setContentView(R.layout.lives_dialog); //выбор макета для диалога
 
         Window w = dialogLives.getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
-        dialogLives.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialogLives.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-        dialogLives.setCancelable(false);
-        dialogLives.show();
+        dialogLives.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); //затемнение заднего фона диалога
+        dialogLives.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //растягивания диалога на экране
+        dialogLives.setCancelable(false); //отключение системной кнопки назад
+        dialogLives.show(); //отображение диалога
 
+        //обработка кнопки закрыть (крестик) - начало.
         MaterialButton close = dialogLives.findViewById(R.id.bt_close_dialog);
         close.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
             onBackPressed();
         });
+        //обработка кнопки закрыть (крестик) - конец.
 
+
+        //обработка кнопки продолжить - начало
         MaterialButton restore = dialogLives.findViewById(R.id.bt_restore);
         restore.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
@@ -232,122 +272,210 @@ public class Level1 extends AppCompatActivity {
             dialogLives.cancel();
             myRewardedAd.loadRewardedAd(this);
         });
+        //обработка кнопки продолжить - конец
 
     }
 
 
+    /**
+     * Метод работы карточек
+     */
     @SuppressLint("ClickableViewAccessibility")
     private void initCards() {
 
-        animation = AnimationUtils.loadAnimation(this, R.anim.my_animation);
-        slider = binding.slider;
+        animation = AnimationUtils.loadAnimation(this, R.anim.my_animation); //инициализация анимации
+        slider = binding.slider; //инициализации слайдера.
 
+        //вызов метода инициализации вьюшек макета и присваивания рандомных значений карточкам
         initCardViews();
 
+        //обработка нажатия на левую карточку - начало
         binding.tvLeftNumber.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+
+                //условие на касание карточки - начало
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    binding.tvRightNumber.setEnabled(false);
-                    if (leftNumCard > rightNumCard) {
+                    binding.tvRightNumber.setEnabled(false); //отключаем правую карточку на время взаимодействия с левой карточкой
+
+                    //сравнение значений карточек - начало
+                    if (leftNumCard > rightNumCard) { //если левая карточка больше - верный ответ
                         binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_green_40));
-                    } else {
+                    } else { //если правая карточка больше - неверный ответ
                         binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_red_40));
                     }
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (leftNumCard > rightNumCard) {
+                    //сравнение значений карточек - конец
+                }
+                //условие на касание карточки - конец
+
+                //условие на отпускание карточки - начало
+                else if (event.getAction() == MotionEvent.ACTION_UP) {
+
+                    //сравнение значений карточек - начало
+                    if (leftNumCard > rightNumCard) { //если левая карточка больше - верный ответ
+
+                        //начисление очка за правильный ответ - начало
                         if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
-                    } else {
-                        if (livesSingleton.getCurrentLives() > 0) {
-                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive);
-                            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
-                            if (livesSingleton.getCurrentLives() == 0) {
-                                initLivesDialog();
+                        //начисление очка за правильный ответ - конец
+
+                    } else { //если правая карточка больше - неверный ответ
+
+
+                        //проверка на премиум доступ - начало
+                        if (!livesSingleton.isEndlessLives()) { //если бесконечных жизней нет
+
+                            //проверка на оставшиеся жизни - начало
+                            if (livesSingleton.getCurrentLives() > 0) {
+                                livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive); //вычитание жизни из текущего количества жизней
+                                binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
+                                //условие при окончании жизней - начало
+                                if (livesSingleton.getCurrentLives() == 0) {
+                                    initLivesDialog(); //вызов диалога конца жизней
+                                }
+                                // //условие при окончании жизней - конец
                             }
+                            //проверка на оставшиеся жизни - конец
                         }
+                        //проверка на премиум доступ - конец
+
+
+                        //отнимание поинта за неверный ответ - начало
                         if (slider.getValue() > 1) {
                             slider.setValue(slider.getValue() - wrongAnswerPoint);
                         } else if (slider.getValue() == 1) {
                             slider.setValue(0);
                         }
+                        //отнимание поинта за неверный ответ - конец
                     }
+                    //сравнение значений карточек - конец
 
-                    if (slider.getValue() == slider.getValueTo()) {
-                        myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1);
-                        initEndDialog();
-                    } else {
-                        binding.tvLeftNumber.startAnimation(animation);
-                        initCardViews();
+                    //проверка на завершение уровня - начало
+                    if (slider.getValue() == slider.getValueTo()) {//если строка состояния заполнена
+
+                        if (!livesSingleton.isEndlessLives()) {
+                            myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1); //наращивание счетчика завершенных уровневней для показа рекламы
+                        }
+                        initEndDialog(); //вызов диалога конца уровня
+                    } else {//если строка незаполнена
+                        binding.tvLeftNumber.startAnimation(animation); //проигрывание анимации
+                        initCardViews(); //присваиваем новые значения
                     }
+                    //проверка строки прогресса игры на заполненность - конец
 
-                    binding.tvRightNumber.setEnabled(true);
+                    binding.tvRightNumber.setEnabled(true); //делаем правую карточку активной
                 }
+                //проверка на завершение уровня - конец
 
                 return true;
             }
         });
+        //обработка нажатия на левую карточку - конец
 
 
+        //обработка нажатия на правую карточку - начало
         binding.tvRightNumber.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+
+                //условие на касание карточки - начало
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    binding.tvLeftNumber.setEnabled(false);
-                    if (rightNumCard > leftNumCard) {
+                    binding.tvLeftNumber.setEnabled(false); //отключаем левую карточку на время взаимодействия с левой карточкой
+
+                    //сравнение значений карточек - начало
+                    if (rightNumCard > leftNumCard) { //если правая карточка больше - верный ответ
                         binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_green_40));
-                    } else {
+                    } else { //если левая карточка больше - неверный ответ
                         binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_red_40));
                     }
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (rightNumCard > leftNumCard) {
+                    //сравнение значений карточек - конец
+                }
+                //условие на касание карточки - конец
+
+                //условие на отпускание карточки - начало
+                else if (event.getAction() == MotionEvent.ACTION_UP) {
+
+                    //сравнение значений карточек - начало
+                    if (rightNumCard > leftNumCard) { //если правая карточка больше - верный ответ
+
+                        //начисление очка за правильный ответ - начало
                         if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
-                    } else {
-                        if (livesSingleton.getCurrentLives() > 0) {
-                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive);
-                            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
-                            if (livesSingleton.getCurrentLives() == 0) {
-                                initLivesDialog();
+                        //начисление очка за правильный ответ - конец
+
+                    } else { //если левая карточка больше - неверный ответ
+
+                        //проверка на премиум доступ - начало
+                        if (!livesSingleton.isEndlessLives()) { //если премиума нет
+
+                            //проверка на оставшиеся жизни - начало
+                            if (livesSingleton.getCurrentLives() > 0) {
+                                livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive); //вычитание жизни из текущего количества жизней
+                                binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
+                                //условие при окончании жизней - начало
+                                if (livesSingleton.getCurrentLives() == 0) {
+                                    initLivesDialog(); //вызов диалога конца жизней
+                                }
+                                //условие при окончании жизней - конец
                             }
+                            //проверка на оставшиеся жизни - конец
                         }
+                        //проверка на премиум доступ - конец
+
+                        //отнимание поинта за неверный ответ - начало
                         if (slider.getValue() > 1) {
                             slider.setValue(slider.getValue() - wrongAnswerPoint);
                         } else if (slider.getValue() == 1) {
                             slider.setValue(0);
                         }
+                        //отнимание жизни за неверный ответ - конец
                     }
+                    //сравнение значений карточек - конец
 
-                    if (slider.getValue() == slider.getValueTo()) {
-                        myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1);
-                        initEndDialog();
-                    } else {
-                        binding.tvRightNumber.startAnimation(animation);
-                        initCardViews();
+                    //проверка на завершение уровня - начало
+                    if (slider.getValue() == slider.getValueTo()) {//если строка состояния заполнена
 
+                        if (!livesSingleton.isEndlessLives()) {
+                            myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1); //наращивание счетчика завершенных уровневней для показа рекламы
+                        }
+                        initEndDialog(); //вызов диалога завершения уровня
+                    } else { //если строка незаполнена
+                        binding.tvRightNumber.startAnimation(animation); //проигрывание анимации
+                        initCardViews(); //присваивание карточкам новых значений
                     }
+                    //проверка на завершение уровня - конец
 
-                    binding.tvLeftNumber.setEnabled(true);
+                    binding.tvLeftNumber.setEnabled(true); //активация левой карточки.
                 }
+                //условие на отпускание карточки - конец
 
                 return true;
             }
         });
+        //обработка нажатия на правую карточку - конец
     }
 
 
+    /**
+     * метода инициализации вьюшек макета
+     * и присваивание рандомных значений карточкам
+     */
     public void initCardViews() {
 
-        String[] textArray = getResources().getStringArray(R.array.textArray);
+        String[] textArray = getResources().getStringArray(R.array.textArray); //создание массива на основе массива из ресурсов
         Random random = new Random();
-        leftNumCard = random.nextInt(textArray.length);
-        rightNumCard = random.nextInt(textArray.length);
+        leftNumCard = random.nextInt(textArray.length); //рандом значение для левой карты
+        rightNumCard = random.nextInt(textArray.length); //рандом значение для правой карты
 
-        while (leftNumCard == rightNumCard) {
+        //цикл для получения разных значений - начало
+        while (leftNumCard == rightNumCard) { //если значения равны - правая карта получает новое значение
             rightNumCard = random.nextInt(textArray.length);
         }
+        //цикл для получения разных значений - конец
 
         binding.tvLeftNumber.setText(String.valueOf(leftNumCard));
         binding.tvRightNumber.setText(String.valueOf(rightNumCard));
@@ -358,22 +486,32 @@ public class Level1 extends AppCompatActivity {
     }
 
 
+    /**
+     * Метод системной кнопки назад
+     */
     @Override
     public void onBackPressed() {
-        soundEndDialog.stopPlay();
-        soundLivesDialog.stopPlay();
+        soundEndDialog.stopPlay(); //выключение звука в конце уровня
+        soundLivesDialog.stopPlay(); //выключение звука конца жизней
         Intent intent = new Intent(Level1.this, GameLevels.class);
-        startActivity(intent);
-        finish();
+        startActivity(intent); //переход к активити выбора уровней
+        finish(); //уничтожение активити
     }
 
+
+    /**
+     * Метод уничтожения активити
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        //выключение звука в конце уровня
         if (soundEndDialog.isPlaying()) {
             soundEndDialog.stopPlay();
         }
 
+        //выключение звука конца жизней
         if (soundLivesDialog.isPlaying()) {
             soundLivesDialog.stopPlay();
         }
