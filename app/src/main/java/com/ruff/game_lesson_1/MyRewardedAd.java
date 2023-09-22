@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -85,6 +86,7 @@ public class MyRewardedAd {
                     LivesSingleton livesSingleton = LivesSingleton.getInstance();
                     livesSingleton.setCurrentLives(livesSingleton.getMaxLives());
                     textView.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
                 }
             });
         } else {
@@ -107,6 +109,7 @@ public class MyRewardedAd {
                 // Called when ad is dismissed.
                 // Set the ad reference to null so you don't show the ad a second time.
                 Log.d(TAG, "Ad dismissed fullscreen content.");
+
                 //rewardedAd = null;
             }
 

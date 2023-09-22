@@ -3,6 +3,7 @@ package com.ruff.game_lesson_1.levels;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 
@@ -78,6 +79,9 @@ public class Level1 extends AppCompatActivity {
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
+        //Запрещаем ночную тему.
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         //загрузка межстраничной рекламы в память
         myInterstitialAd = MyInterstitialAd.getInstance();
         myInterstitialAd.loadInterstitialAd(this);
@@ -86,11 +90,16 @@ public class Level1 extends AppCompatActivity {
         myRewardedAd = MyRewardedAd.getInstance();
         myRewardedAd.loadRewardedAd(this);
 
+        //создаем синглтон с количеством жизней.
         livesSingleton = LivesSingleton.getInstance();
         binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
 
+        //инициализируем плеер для проигрывания в конце диалога
         soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
+
+        //инициализируем плеер для проигрывания звука конца жизней
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
+
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
             onBackPressed();
@@ -112,10 +121,14 @@ public class Level1 extends AppCompatActivity {
 
 
     private void initStartDialog() {
-
         Dialog dialogStart = new Dialog(this);
         dialogStart.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogStart.setContentView(R.layout.preview_dialog);
+
+        Window w = dialogStart.getWindow();
+        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
+
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
         constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level1);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
@@ -144,6 +157,11 @@ public class Level1 extends AppCompatActivity {
         Dialog dialogEnd = new Dialog(this);
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.end_dialog);
+
+        Window w = dialogEnd.getWindow();
+        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
+
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
         constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level1);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -190,6 +208,11 @@ public class Level1 extends AppCompatActivity {
         Dialog dialogLives = new Dialog(this);
         dialogLives.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogLives.setContentView(R.layout.lives_dialog);
+
+        Window w = dialogLives.getWindow();
+        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
+
         dialogLives.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogLives.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogLives.setCancelable(false);
@@ -204,7 +227,7 @@ public class Level1 extends AppCompatActivity {
         MaterialButton restore = dialogLives.findViewById(R.id.bt_restore);
         restore.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
-            //TODO реализовать просмотр рекламы c вознаграждением
+            //просмотр рекламы c вознаграждением
             myRewardedAd.showRewardedAd(Level1.this, binding.tvHeartCounter);
             dialogLives.cancel();
             myRewardedAd.loadRewardedAd(this);

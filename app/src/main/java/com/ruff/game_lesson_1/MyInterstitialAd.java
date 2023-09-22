@@ -125,6 +125,7 @@ public class MyInterstitialAd {
                 // Called when ad is shown.
                 Log.d(TAG, "Ad showed fullscreen content.");
             }
+
         });
     }
 

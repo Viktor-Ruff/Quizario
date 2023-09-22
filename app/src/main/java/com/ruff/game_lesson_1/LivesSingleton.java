@@ -10,11 +10,14 @@ public class LivesSingleton {
     private int currentLives;
     private int maxLives;
 
+    private boolean endlessLives;
+
     private static LivesSingleton instance;
 
     private LivesSingleton() {
         maxLives = 10;
         currentLives = maxLives;
+        endlessLives = false;
     }
 
     public static LivesSingleton getInstance() {
@@ -35,5 +38,13 @@ public class LivesSingleton {
 
     public int getMaxLives() {
         return maxLives;
+    }
+
+    public boolean isEndlessLives() {
+        return endlessLives;
+    }
+
+    public void setEndlessLives(boolean endlessLives) {
+        this.endlessLives = endlessLives;
     }
 }

@@ -1,6 +1,7 @@
 package com.ruff.game_lesson_1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,9 +28,13 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Скрываем нижнюю панель навигации.
         Window w = getWindow();
-        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
+        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
+
+        //Запрещаем ночную тему.
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
 
         //click handling button start
@@ -39,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(MainActivity.this, GameLevels.class);
                     startActivity(intent);
+                    finish();
 
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (backPressedTime + 2000 > System.currentTimeMillis()) {
             backToast.cancel();
-            super.onBackPressed();
+            finish();
             return;
         } else {
             backToast = Toast.makeText(this, "Click again to exit", Toast.LENGTH_SHORT);

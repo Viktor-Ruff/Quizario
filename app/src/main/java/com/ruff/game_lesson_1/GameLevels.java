@@ -3,6 +3,7 @@ package com.ruff.game_lesson_1;
 import static com.ruff.game_lesson_1.MainActivity.MY_LOG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -48,15 +49,29 @@ public class GameLevels extends AppCompatActivity {
         binding = ActivityGameLevelsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
         Window w = getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
+
+        //Запрещаем ночную тему.
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
         myRewardedAd = MyRewardedAd.getInstance();
         myRewardedAd.loadRewardedAd(this);
         livesSingleton = LivesSingleton.getInstance();
-        binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
+        //проверка на бесконечные жизни (покупка инапа в приложении)
+        if (livesSingleton.isEndlessLives()) {
+            binding.tvHeartCounter.setText("∞");
+        } else {
+            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+        }
+
+
+
 
 
         levelListeners();
@@ -69,6 +84,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, MainActivity.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -87,6 +103,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level1.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -104,6 +121,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level2.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -120,6 +138,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level3.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -136,6 +155,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level4.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -151,6 +171,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level5.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -167,6 +188,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level6.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -183,6 +205,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level7.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -199,6 +222,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level8.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -215,6 +239,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level9.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -230,6 +255,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level10.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -246,6 +272,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level11.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -261,6 +288,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level12.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -277,6 +305,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level13.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -292,6 +321,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level14.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -307,6 +337,7 @@ public class GameLevels extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level15.class);
                     startActivity(intent);
+                    finish();
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
