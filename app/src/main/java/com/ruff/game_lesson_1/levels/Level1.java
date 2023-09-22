@@ -82,10 +82,8 @@ public class Level1 extends AppCompatActivity {
         //Запрещаем ночную тему.
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-
         //создаем синглтон с количеством жизней.
         livesSingleton = LivesSingleton.getInstance();
-        binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
 
         //проверка на бесконечные жизни (покупка инапа в приложении) - начало
         if (livesSingleton.isEndlessLives()) {

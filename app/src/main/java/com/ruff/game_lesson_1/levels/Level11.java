@@ -69,18 +69,29 @@ public class Level11 extends AppCompatActivity {
         //Запрещаем ночную тему.
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        //загрузка рекламы в память
-        myInterstitialAd = MyInterstitialAd.getInstance();
-        myInterstitialAd.loadInterstitialAd(this);
-
-        //загрузка рекламы с вознаграждением в память
-        myRewardedAd = MyRewardedAd.getInstance();
-        myRewardedAd.loadRewardedAd(this);
-
         binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level11);
 
         livesSingleton = LivesSingleton.getInstance();
-        binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
+        //проверка на бесконечные жизни (покупка инапа в приложении) - начало
+        if (livesSingleton.isEndlessLives()) {
+            binding.tvHeartCounter.setText("∞");
+        } else {
+            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+        }
+
+        //Проверка на премиум доступ
+        if (livesSingleton.isEndlessLives()) { //если есть премиум
+            myInterstitialAd = null;
+        } else { //если нет премиума
+            //загрузка межстраничной рекламы в память
+            myInterstitialAd = MyInterstitialAd.getInstance();
+            myInterstitialAd.loadInterstitialAd(this);
+
+            //загрузка рекламы с вознаграждением в память
+            myRewardedAd = MyRewardedAd.getInstance();
+            myRewardedAd.loadRewardedAd(this);
+        }
 
         soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
@@ -182,7 +193,7 @@ public class Level11 extends AppCompatActivity {
             soundEndDialog.stopPlay();
 
             //показ рекламы
-            if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
+            if (!livesSingleton.isEndlessLives() && myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(null, Level11.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
@@ -195,7 +206,7 @@ public class Level11 extends AppCompatActivity {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
             Intent intent = new Intent(Level11.this, Level12.class);
-            if (myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
+            if (!livesSingleton.isEndlessLives() && myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(intent, Level11.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
@@ -262,13 +273,23 @@ public class Level11 extends AppCompatActivity {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
                     } else {
-                        if (livesSingleton.getCurrentLives() > 0) {
-                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive);
-                            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
-                            if (livesSingleton.getCurrentLives() == 0) {
-                                initLivesDialog();
+                        //проверка на премиум доступ - начало
+                        if (!livesSingleton.isEndlessLives()) { //если бесконечных жизней нет
+
+                            //проверка на оставшиеся жизни - начало
+                            if (livesSingleton.getCurrentLives() > 0) {
+                                livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive); //вычитание жизни из текущего количества жизней
+                                binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
+                                //условие при окончании жизней - начало
+                                if (livesSingleton.getCurrentLives() == 0) {
+                                    initLivesDialog(); //вызов диалога конца жизней
+                                }
+                                // //условие при окончании жизней - конец
                             }
+                            //проверка на оставшиеся жизни - конец
                         }
+                        //проверка на премиум доступ - конец
 
                         if (slider.getValue() > 1) {
                             slider.setValue(slider.getValue() - wrongAnswerPoint);
@@ -278,7 +299,9 @@ public class Level11 extends AppCompatActivity {
                     }
 
                     if (slider.getValue() == slider.getValueTo()) {
-                        myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1);
+                        if (!livesSingleton.isEndlessLives()) {
+                            myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1); //наращивание счетчика завершенных уровневней для показа рекламы
+                        }
                         initEndDialog();
                     } else {
                         binding.tvLeftNumber.startAnimation(animation);
@@ -309,13 +332,23 @@ public class Level11 extends AppCompatActivity {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
                     } else {
-                        if (livesSingleton.getCurrentLives() > 0) {
-                            livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive);
-                            binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
-                            if (livesSingleton.getCurrentLives() == 0) {
-                                initLivesDialog();
+                        //проверка на премиум доступ - начало
+                        if (!livesSingleton.isEndlessLives()) { //если бесконечных жизней нет
+
+                            //проверка на оставшиеся жизни - начало
+                            if (livesSingleton.getCurrentLives() > 0) {
+                                livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive); //вычитание жизни из текущего количества жизней
+                                binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
+                                //условие при окончании жизней - начало
+                                if (livesSingleton.getCurrentLives() == 0) {
+                                    initLivesDialog(); //вызов диалога конца жизней
+                                }
+                                // //условие при окончании жизней - конец
                             }
+                            //проверка на оставшиеся жизни - конец
                         }
+                        //проверка на премиум доступ - конец
 
                         if (slider.getValue() > 1) {
                             slider.setValue(slider.getValue() - wrongAnswerPoint);
@@ -325,7 +358,9 @@ public class Level11 extends AppCompatActivity {
                     }
 
                     if (slider.getValue() == slider.getValueTo()) {
-                        myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1);
+                        if (!livesSingleton.isEndlessLives()) {
+                            myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1); //наращивание счетчика завершенных уровневней для показа рекламы
+                        }
                         initEndDialog();
                     } else {
                         binding.tvRightNumber.startAnimation(animation);
