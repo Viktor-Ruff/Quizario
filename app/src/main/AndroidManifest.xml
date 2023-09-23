@@ -91,6 +91,16 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".levels.Level17"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".levels.Level18"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".GameLevels"
             android:exported="false"
             android:screenOrientation="portrait" />

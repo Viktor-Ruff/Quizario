@@ -32,7 +32,7 @@ import com.ruff.game_lesson_1.databinding.UniversalBinding;
 import java.util.Random;
 
 
-public class Level9 extends AppCompatActivity {
+public class Level17 extends AppCompatActivity {
 
     private UniversalBinding binding;
     Slider slider;
@@ -40,10 +40,11 @@ public class Level9 extends AppCompatActivity {
     private int leftNumCard;
     int rightNumCard;
 
-    int[] artificeArray;
-    String[] artificeTextArray;
-    int[] realArray;
-    String[] realTextArray;
+
+    int[] divideNumArray;
+    String[] divideNumTextArray;
+    int[] notDivideNumArray;
+    String[] notDivideNumTextArray;
     int order;
     MyMediaPlayer soundEndDialog, soundLivesDialog;
     LivesSingleton livesSingleton;
@@ -75,6 +76,7 @@ public class Level9 extends AppCompatActivity {
             binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
         }
 
+
         //Проверка на премиум доступ
         if (livesSingleton.isEndlessLives()) { //если есть премиум
             myInterstitialAd = null;
@@ -91,28 +93,21 @@ public class Level9 extends AppCompatActivity {
         soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
-        artificeArray = new int[]{R.drawable.im_bingo_bongo, R.drawable.im_bulbasaur, R.drawable.im_chip_dale,
-                R.drawable.im_ghost, R.drawable.im_grinch, R.drawable.im_mermaid, R.drawable.im_pikachu,
-                R.drawable.im_tom_jerry, R.drawable.im_wolf_np, R.drawable.im_yeti, R.drawable.im_tiger,
-                R.drawable.im_triceratop, R.drawable.im_unicorn, R.drawable.im_mammoth,
-                R.drawable.im_grefon, R.drawable.im_dragon};
-
-        realArray = new int[]{R.drawable.im_virus, R.drawable.im_car, R.drawable.im_airplane,
-                R.drawable.im_watch, R.drawable.im_hammer, R.drawable.im_rubber, R.drawable.im_orange,
-                R.drawable.im_nut, R.drawable.im_bike, R.drawable.im_pear, R.drawable.im_earth};
-
 
         //фон заднего экрана
-        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level9);
+        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level17);
 
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
             onBackPressed();
         });
 
+        divideNumArray = new int[]{3, 6, 9, 12, 15, 18, 21, 24, 27, 30};
+        notDivideNumArray = new int[]{4, 5, 7, 8, 10, 11, 14, 16, 17, 19, 23, 26};
+
 
         //установка номера уровня
-        binding.tvLevelNumber.setText(R.string.level_9);
+        binding.tvLevelNumber.setText(R.string.level_17);
 
 
         //скругление углов картинок
@@ -137,11 +132,11 @@ public class Level9 extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level9);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level17);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
-        ivDialog.setImageResource(R.drawable.two_cards_level9);
+        ivDialog.setImageResource(R.drawable.two_cards_level17_red);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
-        tvDescription.setText(getResources().getString(R.string.exercise_level9));
+        tvDescription.setText(getResources().getString(R.string.exercise_level17));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogStart.setCancelable(false);
@@ -171,10 +166,10 @@ public class Level9 extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level9);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level17);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
-        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level9));
+        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level17));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
         dialogEnd.show();
@@ -185,7 +180,7 @@ public class Level9 extends AppCompatActivity {
 
             //показ рекламы
             if (!livesSingleton.isEndlessLives() && myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
-                myInterstitialAd.showInterstitialAd(null, Level9.this);
+                myInterstitialAd.showInterstitialAd(null, Level17.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 onBackPressed();
@@ -196,10 +191,10 @@ public class Level9 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
-            Intent intent = new Intent(Level9.this, Level10.class);
+            Intent intent = new Intent(Level17.this, Level18.class);
 
             if (!livesSingleton.isEndlessLives() && myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
-                myInterstitialAd.showInterstitialAd(intent, Level9.this);
+                myInterstitialAd.showInterstitialAd(intent, Level17.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
@@ -234,7 +229,7 @@ public class Level9 extends AppCompatActivity {
         restore.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
             //TODO реализовать просмотр рекламы c вознаграждением
-            myRewardedAd.showRewardedAd(Level9.this, binding.tvHeartCounter);
+            myRewardedAd.showRewardedAd(Level17.this, binding.tvHeartCounter);
             dialogLives.cancel();
             myRewardedAd.loadRewardedAd(this);
         });
@@ -255,9 +250,9 @@ public class Level9 extends AppCompatActivity {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvRightNumber.setEnabled(false);
                     if (order > 0) {
-                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_true));
+                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_green_40));
                     } else {
-                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
+                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_red_40));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (order > 0) {
@@ -315,9 +310,9 @@ public class Level9 extends AppCompatActivity {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvLeftNumber.setEnabled(false);
                     if (order <= 0) {
-                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.im_back_true));
+                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_green_40));
                     } else {
-                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
+                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_red_40));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (order <= 0) {
@@ -373,25 +368,29 @@ public class Level9 extends AppCompatActivity {
 
     public void initCardViews() {
 
-        artificeTextArray = getResources().getStringArray(R.array.artifice_array);
-        realTextArray = getResources().getStringArray(R.array.real_array);
+        divideNumTextArray = getResources().getStringArray(R.array.divide_num_array);
+        notDivideNumTextArray = getResources().getStringArray(R.array.not_divide_num_array);
 
 
         Random random = new Random();
         order = random.nextInt(2);
-        leftNumCard = random.nextInt(artificeArray.length);
-        rightNumCard = random.nextInt(realArray.length);
+        leftNumCard = random.nextInt(divideNumArray.length);
+        rightNumCard = random.nextInt(notDivideNumArray.length);
 
         if (order > 0) {
-            binding.tvLeftNumber.setBackgroundResource(artificeArray[leftNumCard]);
-            binding.tvRightNumber.setBackgroundResource(realArray[rightNumCard]);
-            binding.tvLeftNumberText.setText(artificeTextArray[leftNumCard]);
-            binding.tvRightNumberText.setText(realTextArray[rightNumCard]);
+            binding.tvLeftNumber.setText(String.valueOf(divideNumArray[leftNumCard]));
+            binding.tvRightNumber.setText(String.valueOf(notDivideNumArray[rightNumCard]));
+            binding.tvLeftNumberText.setText(divideNumTextArray[leftNumCard]);
+            binding.tvRightNumberText.setText(notDivideNumTextArray[rightNumCard]);
+            binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
+            binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
         } else {
-            binding.tvRightNumber.setBackgroundResource(artificeArray[leftNumCard]);
-            binding.tvLeftNumber.setBackgroundResource(realArray[rightNumCard]);
-            binding.tvRightNumberText.setText(artificeTextArray[leftNumCard]);
-            binding.tvLeftNumberText.setText(realTextArray[rightNumCard]);
+            binding.tvRightNumber.setText(String.valueOf(divideNumArray[leftNumCard]));
+            binding.tvLeftNumber.setText(String.valueOf(notDivideNumArray[rightNumCard]));
+            binding.tvRightNumberText.setText(divideNumTextArray[leftNumCard]);
+            binding.tvLeftNumberText.setText(notDivideNumTextArray[rightNumCard]);
+            binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
+            binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
         }
     }
 
@@ -399,7 +398,7 @@ public class Level9 extends AppCompatActivity {
     public void onBackPressed() {
         soundEndDialog.stopPlay();
         soundLivesDialog.stopPlay();
-        Intent intent = new Intent(Level9.this, GameLevels.class);
+        Intent intent = new Intent(Level17.this, GameLevels.class);
         startActivity(intent);
         finish();
     }

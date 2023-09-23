@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+   <!--level 1-->
     <integer-array name="numArray">
         <item>0</item>
         <item>1</item>
@@ -27,7 +27,7 @@
         <item>Nine</item>
     </string-array>
 
-
+    <!--level 2-->
     <string-array name="animalsPredatorArray">
         <item>Bear</item>
         <item>Wolf</item>
@@ -48,6 +48,7 @@
         <item>Antelope</item>
     </string-array>
 
+    <!--level 3-->
     <string-array name="edibleArray">
         <item>Apple</item>
         <item>Cabbage</item>
@@ -75,6 +76,7 @@
     </string-array>
 
 
+    <!--level 4-->
     <string-array name="heavy_things">
         <item>Virus</item>
         <item>Pin</item>
@@ -93,6 +95,7 @@
     </string-array>
 
 
+    <!--level 5-->
     <string-array name="fast_animals">
         <item>Snail</item>
         <item>Ant</item>
@@ -110,6 +113,7 @@
         <item>Eagle</item>
     </string-array>
 
+    <!--level 6-->
     <string-array name="fruit_array">
         <item>Banana</item>
         <item>Kiwi</item>
@@ -139,6 +143,7 @@
     </string-array>
 
 
+    <!--level 7-->
     <string-array name="sport_array">
         <item>Ball</item>
         <item>Ball</item>
@@ -166,6 +171,7 @@
     </string-array>
 
 
+    <!--level 8-->
     <string-array name="home_animals">
         <item>Camel</item>
         <item>Cat</item>
@@ -194,6 +200,7 @@
     </string-array>
 
 
+    <!--level 9-->
     <string-array name="artifice_array">
         <item>Bingo bongo</item>
         <item>Bulbasaur</item>
@@ -205,6 +212,13 @@
         <item>Tom and Jerry</item>
         <item>Wolf</item>
         <item>Yeti</item>
+        <item>Tiger</item>
+        <item>Triceratops</item>
+        <item>Unicorn</item>
+        <item>Mammoth</item>
+        <item>Griffin</item>
+        <item>Dragon</item>
+
     </string-array>
 
 
@@ -219,8 +233,10 @@
         <item>Nut</item>
         <item>Bike</item>
         <item>Pear</item>
+        <item>Earth</item>
     </string-array>
 
+    <!--level 10-->
     <string-array name="metal_array">
         <item>Chain</item>
         <item>Container</item>
@@ -248,6 +264,7 @@
     </string-array>
 
 
+    <!--level 11-->
     <string-array name="egs_animal_array">
         <item>Chameleon</item>
         <item>Crocodile</item>
@@ -279,6 +296,7 @@
     </string-array>
 
 
+    <!--level 14-->
     <string-array name="even_num_array">
         <item>Two</item>
         <item>Four</item>
@@ -306,6 +324,7 @@
     </string-array>
 
 
+    <!--level 15-->
     <string-array name="fly_animal_array">
         <item>Bat</item>
         <item>Butterfly</item>
@@ -340,4 +359,32 @@
     </string-array>
 
 
+    <!--level 17-->
+    <string-array name="divide_num_array">
+        <item>Three</item>
+        <item>Six</item>
+        <item>Nine</item>
+        <item>Twelve</item>
+        <item>Fifteen</item>
+        <item>Eighteen</item>
+        <item>Twenty one</item>
+        <item>Twenty four</item>
+        <item>Twenty Seven</item>
+        <item>Thirty</item>
+    </string-array>
+
+    <string-array name="not_divide_num_array">
+        <item>Four</item>
+        <item>Five</item>
+        <item>Seven</item>
+        <item>Eight</item>
+        <item>Ten</item>
+        <item>Eleven</item>
+        <item>Fourteen</item>
+        <item>Sixteen</item>
+        <item>Seventeen</item>
+        <item>Nineteen</item>
+        <item>Twenty three</item>
+        <item>Twenty six</item>
+    </string-array>
 </resources>
