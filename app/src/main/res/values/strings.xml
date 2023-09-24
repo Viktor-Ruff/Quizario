@@ -53,7 +53,7 @@
     <string name="exercise_level15">Choose a card with an animal that can fly. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level16"> </string>
     <string name="exercise_level17">Choose a card with a number that is divisible by 3 without a remainder. Questions can be repeated until you score 20 points</string>
-    <string name="exercise_level18"> </string>
+    <string name="exercise_level18">Choose a card with an animal that can swim. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level19"> </string>
     <string name="exercise_level20"> </string>
     <string name="exercise_level21"> </string>
@@ -156,7 +156,8 @@
     <string name="interesting_fact_level17">"Congratulations, you've completed the level!\n
         The number three is considered a lucky number in Chinese culture. The reason it is considered such is because the word "three" sounds very similar to the word "alive". This is completely contrary to Western traditions, which have sayings such as “third time's the charm”, which puts forward the idea that the number three is actually unlucky."</string>
 
-    <string name="interesting_fact_level18"> </string>
+    <string name="interesting_fact_level18">"Congratulations, you've completed the level!\n
+        Despite all the achievements of modern science, most of the underwater world has still not been studied. Zoologists to this day regularly discover new species of marine life."</string>
     <string name="interesting_fact_level19"> </string>
     <string name="interesting_fact_level20"> </string>
     <string name="interesting_fact_level21"> </string>

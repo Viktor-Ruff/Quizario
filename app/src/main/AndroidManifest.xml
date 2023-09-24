@@ -101,6 +101,11 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".levels.Level19"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".GameLevels"
             android:exported="false"
             android:screenOrientation="portrait" />

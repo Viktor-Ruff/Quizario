@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-   <!--level 1-->
+    <!--level 1-->
     <integer-array name="numArray">
         <item>0</item>
         <item>1</item>
@@ -387,4 +387,40 @@
         <item>Twenty three</item>
         <item>Twenty six</item>
     </string-array>
+
+
+    <!--level 18-->
+    <string-array name="swim_animal_array">
+        <item>Dolphin</item>
+        <item>Jellyfish</item>
+        <item>Killer whale</item>
+        <item>Octopus</item>
+        <item>Seal</item>
+        <item>Walrus</item>
+        <item>Turtle</item>
+        <item>Goose</item>
+        <item>Crocodile</item>
+        <item>Platypus</item>
+        <item>Gold fish</item>
+        <item>Penguin</item>
+    </string-array>
+
+    <string-array name="not_swim_animal_array">
+        <item>Squirrel</item>
+        <item>Ant</item>
+        <item>Cat</item>
+        <item>Owl</item>
+        <item>Snail</item>
+        <item>Spider</item>
+        <item>Hen</item>
+        <item>Chameleon</item>
+        <item>Butterfly</item>
+        <item>Chafer</item>
+        <item>Grasshopper</item>
+        <item>Ladybug</item>
+        <item>Mantis</item>
+        <item>Peacock</item>
+
+    </string-array>
+
 </resources>

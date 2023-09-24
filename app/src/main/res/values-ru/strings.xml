@@ -53,7 +53,7 @@
     <string name="exercise_level15">Выберите карточку с животным, которое умеет летать.  Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
     <string name="exercise_level16"> </string>
     <string name="exercise_level17">Выберите карточку с числом, которое делится на 3 без остатка.  Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
-    <string name="exercise_level18"> </string>
+    <string name="exercise_level18">Выберете карточку с животным которое умеет плавать.  Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
     <string name="exercise_level19"> </string>
     <string name="exercise_level20"> </string>
     <string name="exercise_level21"> </string>
@@ -154,7 +154,8 @@
     <string name="interesting_fact_level17">"Поздравляем, вы прошли уровень!\n
         Число три считается счастливым числом в китайской культуре. Причина, по которой это считается таковой, заключается в том, что слово " три "звучит очень похоже на слово "живой". Это совершенно противоречит западным традициям, в которых есть такие поговорки, как “в третий раз очарование”, которые выдвигают идею о том, что число три на самом деле  несчастливое."</string>
 
-    <string name="interesting_fact_level18"> </string>
+    <string name="interesting_fact_level18">"Поздравляем, вы прошли уровень!\n
+        Несмотря на все достижения современной науки, большая часть подводного мира до сих пор не изучена. Зоологи и по сей день регулярно открывают новые виды морских обитателей."</string>
     <string name="interesting_fact_level19"> </string>
     <string name="interesting_fact_level20"> </string>
     <string name="interesting_fact_level21"> </string>
