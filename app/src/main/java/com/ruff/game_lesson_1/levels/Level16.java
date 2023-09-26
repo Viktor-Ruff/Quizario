@@ -32,7 +32,7 @@ import com.ruff.game_lesson_1.databinding.UniversalBinding;
 import java.util.Random;
 
 
-public class Level13 extends AppCompatActivity {
+public class Level16 extends AppCompatActivity {
 
     private UniversalBinding binding;
     Slider slider;
@@ -40,8 +40,8 @@ public class Level13 extends AppCompatActivity {
     private int leftNumCard;
     int rightNumCard;
 
-    int[] sizePlanetArray;
-    String[] sizePlanetTextArray;
+    int[] distancePlanetArray;
+    String[] distancePlanetTextArray;
 
     MyMediaPlayer soundEndDialog, soundLivesDialog;
     LivesSingleton livesSingleton;
@@ -91,13 +91,13 @@ public class Level13 extends AppCompatActivity {
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
 
-        sizePlanetArray = new int[]{R.drawable.im_pluto, R.drawable.im_merkuri, R.drawable.im_mars,
-                R.drawable.im_venus, R.drawable.im_earth_planet, R.drawable.im_neptune, R.drawable.im_uranus,
-                R.drawable.im_saturn, R.drawable.im_jupiter};
+        distancePlanetArray = new int[]{R.drawable.im_pluto, R.drawable.im_neptune, R.drawable.im_uranus,
+                R.drawable.im_saturn, R.drawable.im_jupiter, R.drawable.im_mars, R.drawable.im_earth_planet,
+                R.drawable.im_venus, R.drawable.im_merkuri};
 
 
         //фон заднего экрана
-        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level13);
+        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level16);
 
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
@@ -106,7 +106,7 @@ public class Level13 extends AppCompatActivity {
 
 
         //установка номера уровня
-        binding.tvLevelNumber.setText(R.string.level_13);
+        binding.tvLevelNumber.setText(R.string.level_16);
 
 
         //скругление углов картинок
@@ -131,11 +131,11 @@ public class Level13 extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level13);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level16);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
-        ivDialog.setImageResource(R.drawable.two_cards_level13);
+        ivDialog.setImageResource(R.drawable.two_cards_level16);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
-        tvDescription.setText(getResources().getString(R.string.exercise_level13));
+        tvDescription.setText(getResources().getString(R.string.exercise_level16));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogStart.setCancelable(false);
@@ -165,10 +165,10 @@ public class Level13 extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level13);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level16);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
-        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level13));
+        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level16));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
         dialogEnd.show();
@@ -179,7 +179,7 @@ public class Level13 extends AppCompatActivity {
 
             //показ рекламы
             if (!livesSingleton.isEndlessLives() && myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
-                myInterstitialAd.showInterstitialAd(null, Level13.this);
+                myInterstitialAd.showInterstitialAd(null, Level16.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 onBackPressed();
@@ -190,10 +190,10 @@ public class Level13 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
-            Intent intent = new Intent(Level13.this, Level14.class);
+            Intent intent = new Intent(Level16.this, Level17.class);
 
             if (!livesSingleton.isEndlessLives() && myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
-                myInterstitialAd.showInterstitialAd(intent, Level13.this);
+                myInterstitialAd.showInterstitialAd(intent, Level16.this);
                 myInterstitialAd.setLevelCompleteCounter(0);
             } else {
                 startActivity(intent);
@@ -228,7 +228,7 @@ public class Level13 extends AppCompatActivity {
         restore.setOnClickListener(v -> {
             soundLivesDialog.stopPlay();
             //TODO реализовать просмотр рекламы c вознаграждением
-            myRewardedAd.showRewardedAd(Level13.this, binding.tvHeartCounter);
+            myRewardedAd.showRewardedAd(Level16.this, binding.tvHeartCounter);
             dialogLives.cancel();
             myRewardedAd.loadRewardedAd(this);
         });
@@ -368,20 +368,20 @@ public class Level13 extends AppCompatActivity {
 
     public void initCardViews() {
 
-        sizePlanetTextArray = getResources().getStringArray(R.array.size_planet_array);
+        distancePlanetTextArray = getResources().getStringArray(R.array.distance_planet_array);
 
         Random random = new Random();
-        leftNumCard = random.nextInt(sizePlanetTextArray.length);
-        rightNumCard = random.nextInt(sizePlanetTextArray.length);
+        leftNumCard = random.nextInt(distancePlanetTextArray.length);
+        rightNumCard = random.nextInt(distancePlanetTextArray.length);
 
         while (leftNumCard == rightNumCard) {
-            rightNumCard = random.nextInt(sizePlanetTextArray.length);
+            rightNumCard = random.nextInt(distancePlanetTextArray.length);
         }
 
-        binding.tvLeftNumber.setBackgroundResource(sizePlanetArray[leftNumCard]);
-        binding.tvRightNumber.setBackgroundResource(sizePlanetArray[rightNumCard]);
-        binding.tvLeftNumberText.setText(sizePlanetTextArray[leftNumCard]);
-        binding.tvRightNumberText.setText(sizePlanetTextArray[rightNumCard]);
+        binding.tvLeftNumber.setBackgroundResource(distancePlanetArray[leftNumCard]);
+        binding.tvRightNumber.setBackgroundResource(distancePlanetArray[rightNumCard]);
+        binding.tvLeftNumberText.setText(distancePlanetTextArray[leftNumCard]);
+        binding.tvRightNumberText.setText(distancePlanetTextArray[rightNumCard]);
 
     }
 
@@ -389,7 +389,7 @@ public class Level13 extends AppCompatActivity {
     public void onBackPressed() {
         soundEndDialog.stopPlay();
         soundLivesDialog.stopPlay();
-        Intent intent = new Intent(Level13.this, GameLevels.class);
+        Intent intent = new Intent(Level16.this, GameLevels.class);
         startActivity(intent);
         finish();
     }

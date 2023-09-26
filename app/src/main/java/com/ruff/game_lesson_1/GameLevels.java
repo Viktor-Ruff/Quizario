@@ -24,6 +24,7 @@ import com.ruff.game_lesson_1.levels.Level12;
 import com.ruff.game_lesson_1.levels.Level13;
 import com.ruff.game_lesson_1.levels.Level14;
 import com.ruff.game_lesson_1.levels.Level15;
+import com.ruff.game_lesson_1.levels.Level16;
 import com.ruff.game_lesson_1.levels.Level17;
 import com.ruff.game_lesson_1.levels.Level18;
 import com.ruff.game_lesson_1.levels.Level19;
@@ -52,7 +53,6 @@ public class GameLevels extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityGameLevelsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
 
 
         Window w = getWindow();
@@ -341,6 +341,23 @@ public class GameLevels extends AppCompatActivity {
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
                     Intent intent = new Intent(GameLevels.this, Level15.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    Log.d(MY_LOG, e.getMessage());
+                }
+            } else {
+                initLivesDialog();
+            }
+        });
+
+
+        //enter to level 16
+        binding.tvLevel16.setOnClickListener(v -> {
+
+            if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level16.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {

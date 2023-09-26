@@ -296,6 +296,19 @@
     </string-array>
 
 
+    <!--level 13-->
+    <string-array name="size_planet_array">
+        <item>Pluto</item>
+        <item>Mercury</item>
+        <item>Mars</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Neptune</item>
+        <item>Uranus</item>
+        <item>Saturn</item>
+        <item>Jupiter</item>
+    </string-array>
+
     <!--level 14-->
     <string-array name="even_num_array">
         <item>Two</item>
@@ -356,6 +369,20 @@
         <item>Chameleon</item>
         <item>Lizard</item>
         <item>Grasshopper</item>
+    </string-array>
+
+
+    <!--level 16-->
+    <string-array name="distance_planet_array">
+        <item>Pluto</item>
+        <item>Neptune</item>
+        <item>Uranus</item>
+        <item>Saturn</item>
+        <item>Jupiter</item>
+        <item>Mars</item>
+        <item>Earth</item>
+        <item>Venus</item>
+        <item>Mercury</item>
     </string-array>
 
 
@@ -422,7 +449,7 @@
         <item>Peacock</item>
     </string-array>
 
-    <!--level 18-->
+    <!--level 19-->
     <string-array name="engine_array">
         <item>Airplane</item>
         <item>Airship</item>
@@ -446,7 +473,6 @@
         <item>Bike</item>
         <item>Scooter</item>
         <item>Coach</item>
-
     </string-array>
 
 

@@ -40,12 +40,9 @@ public class Level20 extends AppCompatActivity {
     private int leftNumCard;
     int rightNumCard;
 
+    int[] sizePlanetArray;
+    String[] sizePlanetTextArray;
 
-    int[] evenNumArray;
-    String[] evenNumTextArray;
-    int[] oddNumArray;
-    String[] oddNumTextArray;
-    int order;
     MyMediaPlayer soundEndDialog, soundLivesDialog;
     LivesSingleton livesSingleton;
     private MyInterstitialAd myInterstitialAd;
@@ -94,20 +91,22 @@ public class Level20 extends AppCompatActivity {
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
 
+        sizePlanetArray = new int[]{R.drawable.im_jupiter, R.drawable.im_saturn, R.drawable.im_uranus,
+                R.drawable.im_neptune, R.drawable.im_earth_planet, R.drawable.im_venus, R.drawable.im_mars,
+                R.drawable.im_merkuri, R.drawable.im_pluto};
+
+
         //фон заднего экрана
-        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level14);
+        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level4);
 
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
             onBackPressed();
         });
 
-        evenNumArray = new int[]{2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
-        oddNumArray = new int[]{1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
-
 
         //установка номера уровня
-        binding.tvLevelNumber.setText(R.string.level_14);
+        binding.tvLevelNumber.setText(R.string.level_4);
 
 
         //скругление углов картинок
@@ -132,11 +131,11 @@ public class Level20 extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level14);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level4);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
-        ivDialog.setImageResource(R.drawable.two_cards_level14);
+        ivDialog.setImageResource(R.drawable.two_cards_level4);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
-        tvDescription.setText(getResources().getString(R.string.exercise_level14));
+        tvDescription.setText(getResources().getString(R.string.exercise_level4));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogStart.setCancelable(false);
@@ -166,10 +165,10 @@ public class Level20 extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level14);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level4);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
-        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level14));
+        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level4));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
         dialogEnd.show();
@@ -191,7 +190,7 @@ public class Level20 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
-            Intent intent = new Intent(Level20.this, Level15.class);
+            Intent intent = new Intent(Level20.this, Level5.class);
 
             if (!livesSingleton.isEndlessLives() && myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(intent, Level20.this);
@@ -249,13 +248,13 @@ public class Level20 extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvRightNumber.setEnabled(false);
-                    if (order > 0) {
-                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_green_40));
+                    if (leftNumCard > rightNumCard) {
+                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_true));
                     } else {
-                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_red_40));
+                        binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (order > 0) {
+                    if (leftNumCard > rightNumCard) {
                         if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
@@ -309,13 +308,13 @@ public class Level20 extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvLeftNumber.setEnabled(false);
-                    if (order <= 0) {
-                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_green_40));
+                    if (rightNumCard > leftNumCard) {
+                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.im_back_true));
                     } else {
-                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_red_40));
+                        binding.tvRightNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (order <= 0) {
+                    if (rightNumCard > leftNumCard) {
                         if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
@@ -353,6 +352,7 @@ public class Level20 extends AppCompatActivity {
                     } else {
                         binding.tvRightNumber.startAnimation(animation);
                         initCardViews();
+
                     }
 
                     binding.tvLeftNumber.setEnabled(true);
@@ -368,30 +368,21 @@ public class Level20 extends AppCompatActivity {
 
     public void initCardViews() {
 
-        evenNumTextArray = getResources().getStringArray(R.array.even_num_array);
-        oddNumTextArray = getResources().getStringArray(R.array.odd_num_array);
-
+        sizePlanetTextArray = getResources().getStringArray(R.array.heavy_things);
 
         Random random = new Random();
-        order = random.nextInt(2);
-        leftNumCard = random.nextInt(evenNumTextArray.length);
-        rightNumCard = random.nextInt(oddNumTextArray.length);
+        leftNumCard = random.nextInt(sizePlanetTextArray.length);
+        rightNumCard = random.nextInt(sizePlanetTextArray.length);
 
-        if (order > 0) {
-            binding.tvLeftNumber.setText(String.valueOf(evenNumArray[leftNumCard]));
-            binding.tvRightNumber.setText(String.valueOf(oddNumArray[rightNumCard]));
-            binding.tvLeftNumberText.setText(evenNumTextArray[leftNumCard]);
-            binding.tvRightNumberText.setText(oddNumTextArray[rightNumCard]);
-            binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
-            binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
-        } else {
-            binding.tvRightNumber.setText(String.valueOf(evenNumArray[leftNumCard]));
-            binding.tvLeftNumber.setText(String.valueOf(oddNumArray[rightNumCard]));
-            binding.tvRightNumberText.setText(evenNumTextArray[leftNumCard]);
-            binding.tvLeftNumberText.setText(oddNumTextArray[rightNumCard]);
-            binding.tvLeftNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
-            binding.tvRightNumber.setBackground(getDrawable(R.drawable.tv_style_white_40));
+        while (leftNumCard == rightNumCard) {
+            rightNumCard = random.nextInt(sizePlanetTextArray.length);
         }
+
+        binding.tvLeftNumber.setBackgroundResource(sizePlanetArray[leftNumCard]);
+        binding.tvRightNumber.setBackgroundResource(sizePlanetArray[rightNumCard]);
+        binding.tvLeftNumberText.setText(sizePlanetTextArray[leftNumCard]);
+        binding.tvRightNumberText.setText(sizePlanetTextArray[rightNumCard]);
+
     }
 
     @Override
