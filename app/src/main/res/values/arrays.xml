@@ -88,7 +88,7 @@
         <item>Scooter</item>
         <item>Motorbike</item>
         <item>Car</item>
-        <item>Track</item>
+        <item>Truck</item>
         <item>Airplane</item>
         <item>Ship</item>
         <item>Earth</item>
@@ -420,7 +420,34 @@
         <item>Ladybug</item>
         <item>Mantis</item>
         <item>Peacock</item>
+    </string-array>
+
+    <!--level 18-->
+    <string-array name="engine_array">
+        <item>Airplane</item>
+        <item>Airship</item>
+        <item>Boat</item>
+        <item>Hoverboard</item>
+        <item>Locomotive</item>
+        <item>Car</item>
+        <item>Truck</item>
+        <item>Airplane</item>
+        <item>Motorbike</item>
 
     </string-array>
+
+    <string-array name="not_engine_array">
+        <item>Balloon</item>
+        <item>Catamaran</item>
+        <item>Catamaran</item>
+        <item>Glider</item>
+        <item>Paraglider</item>
+        <item>Sailboat</item>
+        <item>Bike</item>
+        <item>Scooter</item>
+        <item>Coach</item>
+
+    </string-array>
+
 
 </resources>

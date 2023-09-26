@@ -8,10 +8,34 @@
     android:background="@drawable/im_back_levels"
     tools:context=".GameLevels">
 
+    <ImageView
+        android:id="@+id/iv_heart"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/xlarge_size_indent_32dp"
+        android:src="@drawable/ic_heart_fil_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textColor="@color/black_95"
+        android:paddingBottom="8dp"
+        android:id="@+id/tv_heart_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/middle_size_indent_16dp"
+        android:fontFamily="@font/didact_gothic_regular"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_heart"
+        app:layout_constraintEnd_toStartOf="@+id/iv_heart"
+        app:layout_constraintTop_toTopOf="@+id/iv_heart"
+        tools:text="1" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_back"
         style="@style/my_button_style.xlarge"
-        android:layout_width="216dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -33,8 +57,8 @@
         <TextView
             android:id="@+id/tv_level_1"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:text="@string/_1" />
@@ -42,8 +66,8 @@
         <TextView
             android:id="@+id/tv_level_2"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:text="@string/_2" />
@@ -51,8 +75,8 @@
         <TextView
             android:id="@+id/tv_level_3"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:text="@string/_3" />
@@ -60,8 +84,8 @@
         <TextView
             android:id="@+id/tv_level_4"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:text="@string/_4" />
@@ -69,148 +93,148 @@
         <TextView
             android:id="@+id/tv_level_5"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="4"
+            android:layout_column="0"
             android:text="@string/_5" />
 
         <TextView
             android:id="@+id/tv_level_6"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="0"
+            android:layout_column="1"
             android:text="@string/_6" />
 
         <TextView
             android:id="@+id/tv_level_7"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="1"
+            android:layout_column="2"
             android:text="@string/_7" />
 
         <TextView
             android:id="@+id/tv_level_8"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="2"
+            android:layout_column="3"
             android:text="@string/_8" />
 
         <TextView
             android:id="@+id/tv_level_9"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="3"
+            android:layout_column="0"
             android:text="@string/_9" />
 
         <TextView
             android:id="@+id/tv_level_10"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="4"
+            android:layout_column="1"
             android:text="@string/_10" />
 
         <TextView
             android:id="@+id/tv_level_11"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="0"
+            android:layout_column="2"
             android:text="@string/_11" />
 
         <TextView
             android:id="@+id/tv_level_12"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="1"
+            android:layout_column="3"
             android:text="@string/_12" />
 
         <TextView
             android:id="@+id/tv_level_13"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="2"
+            android:layout_column="0"
             android:text="@string/_13" />
 
         <TextView
             android:id="@+id/tv_level_14"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="3"
+            android:layout_column="1"
             android:text="@string/_14" />
 
         <TextView
             android:id="@+id/tv_level_15"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="4"
+            android:layout_column="2"
             android:text="@string/_15" />
 
         <TextView
             android:id="@+id/tv_level_16"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="0"
+            android:layout_column="3"
             android:text="@string/_16" />
 
         <TextView
             android:id="@+id/tv_level_17"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="1"
+            android:layout_column="0"
             android:text="@string/_17" />
 
         <TextView
             android:id="@+id/tv_level_18"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="2"
+            android:layout_column="1"
             android:text="@string/_18" />
 
         <TextView
             android:id="@+id/tv_level_19"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="3"
+            android:layout_column="2"
             android:text="@string/_19" />
 
         <TextView
             android:id="@+id/tv_level_20"
             style="@style/levels_tv_style.xlarge"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_rowWeight="1"
-            android:layout_column="4"
+            android:layout_column="3"
             android:text="@string/_20" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/tv_level_21"
             style="@style/levels_tv_style.xlarge"
             android:layout_width="100dp"
@@ -298,7 +322,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="4"
-            android:text="@string/_30" />
+            android:text="@string/_30" />-->
 
     </GridLayout>
 
