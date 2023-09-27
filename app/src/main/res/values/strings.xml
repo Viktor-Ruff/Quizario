@@ -9,6 +9,12 @@
     <string name="back">Back</string>
     <string name="x">X</string>
     <string name="block">🔒</string>
+    <string name="gameplay_text">"Gameplay!\n
+        The game has 20 levels, each of them has its own unique task, which is displayed before the start of the level. In order to pass the level you need to give the correct answer 20 times. Having passed the first level you can proceed to the second, having passed the second - to the third and so on. If you do not complete a level and close the game, your progress will be lost.
+        For every wrong answer, you lose a life, lives can be restored by watching advertisements. The maximum reserve of lives is restored immediately - 10 units.
+        I wish you good luck and new knowledge, I really hope you enjoy the game!"</string>
+    <string name="finish_game">Congratulations!\nThe game is completed.</string>
+    <string name="select_level">Select level</string>
     <string name="restore_lives">"You've run out of lives! To restore your maximum number of lives, click the “Restore” button and watch the ad."</string>
 
 

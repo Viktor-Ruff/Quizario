@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Quizario</string>
-    <string name="reward_received">Reward received</string>
-    <string name="start">Start</string>
-    <string name="level">Level:</string>
-    <string name="_continue">Continue</string>
-    <string name="restore">Restore</string>
-    <string name="back">Back</string>
+    <string name="reward_received">Вознаграждение получено</string>
+    <string name="start">Начать</string>
+    <string name="level">Уровень:</string>
+    <string name="_continue">Продолжить</string>
+    <string name="restore">Восстановить</string>
+    <string name="back">Назад</string>
     <string name="x">X</string>
     <string name="block">🔒</string>
-    <string name="restore_lives">"У вас кончились жизни! Чтобы восстановить максимальное количество жизней, нажмите кнопку «Восстановить» и посмотрите рекламу." button."</string>
+    <string name="gameplay_text">"Игровой процесс!\n
+        В игре 20 уровней, каждый из них имеет свое уникальное задание, которое отображается перед началом уровня. Для того, что бы пройти уровень вам нужно дать верный ответ 20 раз. Пройдя первый уровень, вы можете приступить ко второму, пройдя второй - к третьему и так далее. Если вы не завершили прохождения уровня до конца и закрыли игру, прогресс будет утрачен.
+        За каждый неверный ответ у вас расходуется жизнь, жизни можно восстановить просмотрев рекламу. Восстанавливается максимальный запаз жизней - 10 едениц.
+        Желаю вам удачи и новых знаний, я очень надеюсь что игра вам понравится!"</string>
+    <string name="finish_game">Поздравляю!\nИгра полностью пройдена.</string>
+    <string name="select_level">Выбрать уровень</string>
+    <string name="restore_lives">"У вас кончились жизни! Чтобы восстановить максимальное количество жизней, нажмите кнопку «Восстановить» и посмотрите рекламу."</string>
 
 
     <string name="_1">1</string>
@@ -44,7 +50,7 @@
         <string name="_29">29</string>
         <string name="_30">30</string>-->
 
-    <string name="exercise_level1">Выберите число, которое больше. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
+    <string name="exercise_level1">Выберите карточку c числом, которое больше. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
     <string name="exercise_level2">Выберите карточку со съедобным предметом. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
     <string name="exercise_level3">Выберите карточку с хищным животным. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
     <string name="exercise_level4">Выберите карточку с предметом, масса которого больше. Вопросы могут повторяться, до тех пор пока вы не наберете 20 очков</string>
@@ -78,26 +84,26 @@
       <string name="exercise_level30"> </string>-->
 
 
-    <string name="level_1">Level 1</string>
-    <string name="level_2">Level 2</string>
-    <string name="level_3">Level 3</string>
-    <string name="level_4">Level 4</string>
-    <string name="level_5">Level 5</string>
-    <string name="level_6">Level 6</string>
-    <string name="level_7">Level 7</string>
-    <string name="level_8">Level 8</string>
-    <string name="level_9">Level 9</string>
-    <string name="level_10">Level 10</string>
-    <string name="level_11">Level 11</string>
-    <string name="level_12">Level 12</string>
-    <string name="level_13">Level 13</string>
-    <string name="level_14">Level 14</string>
-    <string name="level_15">Level 15</string>
-    <string name="level_16">Level 16</string>
-    <string name="level_17">Level 17</string>
-    <string name="level_18">Level 18</string>
-    <string name="level_19">Level 19</string>
-    <string name="level_20">Level 20</string>
+    <string name="level_1">Уровень 1</string>
+    <string name="level_2">Уровень 2</string>
+    <string name="level_3">Уровень 3</string>
+    <string name="level_4">Уровень 4</string>
+    <string name="level_5">Уровень 5</string>
+    <string name="level_6">Уровень 6</string>
+    <string name="level_7">Уровень 7</string>
+    <string name="level_8">Уровень 8</string>
+    <string name="level_9">Уровень 9</string>
+    <string name="level_10">Уровень 10</string>
+    <string name="level_11">Уровень 11</string>
+    <string name="level_12">Уровень 12</string>
+    <string name="level_13">Уровень 13</string>
+    <string name="level_14">Уровень 14</string>
+    <string name="level_15">Уровень 15</string>
+    <string name="level_16">Уровень 16</string>
+    <string name="level_17">Уровень 17</string>
+    <string name="level_18">Уровень 18</string>
+    <string name="level_19">Уровень 19</string>
+    <string name="level_20">Уровень 20</string>
 
 
     <!--<string name="level_21">Level 21</string>

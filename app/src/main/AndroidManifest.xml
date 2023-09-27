@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,9 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Game_lesson_1"
         tools:targetApi="33">
-
-
-
+        <activity
+            android:name=".FinishActivity"
+            android:exported="false" />
         <activity
             android:name=".levels.Level1"
             android:exported="false"
@@ -33,88 +33,70 @@
             android:name=".levels.Level4"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level5"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level6"
             android:exported="false"
             android:screenOrientation="portrait" />
-
-
         <activity
             android:name=".levels.Level7"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level8"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level9"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level10"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level11"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level12"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level13"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level14"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level15"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level16"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level17"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level18"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level19"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".levels.Level20"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".GameLevels"
             android:exported="false"
@@ -125,6 +107,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

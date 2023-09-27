@@ -2,16 +2,25 @@ package com.ruff.game_lesson_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
 import com.ruff.game_lesson_1.databinding.ActivityMainBinding;
+import com.ruff.game_lesson_1.levels.Level1;
+import com.ruff.game_lesson_1.levels.Level2;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,8 +60,54 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.ivInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDialog();
+            }
+        });
     }
 
+
+    private void initDialog() {
+
+        Dialog dialogEnd = new Dialog(this);
+        dialogEnd.setContentView(R.layout.end_dialog); //выбор макета для диалога
+
+        Window w = dialogEnd.getWindow();
+        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
+
+        ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level1); //выбор заднего фона для главного контейнера диалога
+        dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); //затемнение заднего фона диалога
+        TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
+        tvTextDialogEnd.setText(getResources().getString(R.string.gameplay_text));
+        dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //растягивания диалога на экране
+        dialogEnd.setCancelable(false); //отключение системной кнопки назад
+        dialogEnd.show(); //отображение диалога
+
+        MaterialButton close = dialogEnd.findViewById(R.id.bt_close_dialog);
+        MaterialButton _continue = dialogEnd.findViewById(R.id.bt_continue);
+
+        //обработка кнопки закрыть (крестик) - начало.
+        close.setOnClickListener(v -> {
+            dialogEnd.cancel();
+        });
+        //обработка кнопки закрыть (крестик) - конец.
+
+
+        //обработка кнопки продолжить - начало
+        _continue.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, GameLevels.class);
+            startActivity(intent);
+            finish();
+            dialogEnd.cancel();
+        });
+        //обработка кнопки продолжить - конец
+
+    }
 
 
     //click handling system button back

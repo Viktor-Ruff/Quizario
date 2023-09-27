@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--level 1-->
+    <integer-array name="numArray">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </integer-array>
+
+    <string-array name="textArray">
+        <item>Ноль</item>
+        <item>Один</item>
+        <item>Два</item>
+        <item>Три</item>
+        <item>Четыре</item>
+        <item>Пять</item>
+        <item>Шесть</item>
+        <item>Семь</item>
+        <item>Восемь</item>
+        <item>Девять</item>
+    </string-array>
+
+    <!--level 2-->
+    <string-array name="animalsPredatorArray">
+        <item>Медведь</item>
+        <item>Волк</item>
+        <item>Лиса</item>
+        <item>Лев</item>
+        <item>Леопард</item>
+        <item>Орел</item>
+        <item>Белый медведь</item>
+    </string-array>
+
+    <string-array name="animalsHerbivorousArray">
+        <item>Корова</item>
+        <item>Верблюд</item>
+        <item>Слон</item>
+        <item>Белка</item>
+        <item>Свинья</item>
+        <item>Лошадь</item>
+        <item>Антилопа</item>
+    </string-array>
+
+    <!--level 3-->
+    <string-array name="edibleArray">
+        <item>Яблоко</item>
+        <item>Капуста</item>
+        <item>Морковь</item>
+        <item>Кукуруза</item>
+        <item>Огурец</item>
+        <item>Апельсин</item>
+        <item>Персик</item>
+        <item>Груша</item>
+        <item>Гранат</item>
+        <item>Клубника</item>
+    </string-array>
+
+    <string-array name="inedibleArray">
+        <item>Рюкзак</item>
+        <item>Мячь</item>
+        <item>Велосипед</item>
+        <item>Молоток</item>
+        <item>Шапка</item>
+        <item>Шлем</item>
+        <item>Гайка</item>
+        <item>Резина</item>
+        <item>Медвежонок</item>
+        <item>Игрушка</item>
+    </string-array>
+
+
+    <!--level 4-->
+    <string-array name="heavy_things">
+        <item>Вирус</item>
+        <item>Скрепка</item>
+        <item>Гайка</item>
+        <item>Часы</item>
+        <item>Телефон</item>
+        <item>Молоток</item>
+        <item>Резина</item>
+        <item>Самокат</item>
+        <item>Мотоцикл</item>
+        <item>Машина</item>
+        <item>Грузовик</item>
+        <item>Самолет</item>
+        <item>Корабль</item>
+        <item>Земля</item>
+    </string-array>
+
+
+    <!--level 5-->
+    <string-array name="fast_animals">
+        <item>Улитка</item>
+        <item>Муравей</item>
+        <item>Паук</item>
+        <item>Свинья</item>
+        <item>Кошка</item>
+        <item>Белка</item>
+        <item>Собака</item>
+        <item>Белый медведь</item>
+        <item>Вокл</item>
+        <item>Лошадь</item>
+        <item>Антилопа</item>
+        <item>Леопард</item>
+        <item>Сова</item>
+        <item>Орел</item>
+    </string-array>
+
+    <!--level 6-->
+    <string-array name="fruit_array">
+        <item>Банан</item>
+        <item>Киви</item>
+        <item>Лемон</item>
+        <item>Манго</item>
+        <item>Маракуйя</item>
+        <item>Помело</item>
+        <item>Апельсин</item>
+        <item>Персик</item>
+        <item>Груша</item>
+        <item>Гранат</item>
+        <item>Яблоко</item>
+    </string-array>
+
+    <string-array name="not_fruit_array">
+        <item>Капуста</item>
+        <item>Морковь</item>
+        <item>Кукуруза</item>
+        <item>Огурец</item>
+        <item>Игрушка</item>
+        <item>Гайка</item>
+        <item>Мяч</item>
+        <item>Помидор</item>
+        <item>Тыква</item>
+        <item>Шапка</item>
+        <item>Телефон</item>
+    </string-array>
+
+
+    <!--level 7-->
+    <string-array name="sport_array">
+        <item>Мяч</item>
+        <item>Мяч</item>
+        <item>Летучая мышь</item>
+        <item>Сноуборд</item>
+        <item>Ракетка</item>
+        <item>Ракетка</item>
+        <item>Обувь</item>
+        <item>Коньки</item>
+        <item>Лыжи</item>
+        <item>Клюшка</item>
+    </string-array>
+
+    <string-array name="not_sport_array">
+        <item>Ремень</item>
+        <item>Циркуль</item>
+        <item>Мышь</item>
+        <item>Пассатижи</item>
+        <item>Мешок</item>
+        <item>Кольцо</item>
+        <item>Трос</item>
+        <item>Ножницы</item>
+        <item>Обувь</item>
+        <item>Труба</item>
+    </string-array>
+
+
+    <!--level 8-->
+    <string-array name="home_animals">
+        <item>Верблюд</item>
+        <item>Кошка</item>
+        <item>Корова</item>
+        <item>Собака</item>
+        <item>Лошадь</item>
+        <item>Свинья</item>
+        <item>Коза</item>
+        <item>Гусь</item>
+        <item>Курица</item>
+        <item>Овца</item>
+    </string-array>
+
+
+    <string-array name="homeless_animals">
+        <item>Антилопа</item>
+        <item>Медведь</item>
+        <item>Лиса</item>
+        <item>Лев</item>
+        <item>Леопард</item>
+        <item>Сова</item>
+        <item>Улитка</item>
+        <item>Белка</item>
+        <item>Черепаха</item>
+        <item>Волк</item>
+    </string-array>
+
+
+    <!--level 9-->
+    <string-array name="artifice_array">
+        <item>Бинго бонго</item>
+        <item>Бульбазавр</item>
+        <item>Чип и Дэйл</item>
+        <item>Приведение</item>
+        <item>Гринч</item>
+        <item>Русалка</item>
+        <item>Пикачу</item>
+        <item>Том и Джери</item>
+        <item>Волк</item>
+        <item>Йети</item>
+        <item>Тигр</item>
+        <item>Трицератопс</item>
+        <item>Единорог</item>
+        <item>Мамонт</item>
+        <item>Грифон</item>
+        <item>Дракон</item>
+
+    </string-array>
+
+
+    <string-array name="real_array">
+        <item>Вирус</item>
+        <item>Машина</item>
+        <item>Самолет</item>
+        <item>Часы</item>
+        <item>Молоток</item>
+        <item>Резина</item>
+        <item>Апельсин</item>
+        <item>Гайка</item>
+        <item>Велосипед</item>
+        <item>Груша</item>
+        <item>Земля</item>
+    </string-array>
+
+    <!--level 10-->
+    <string-array name="metal_array">
+        <item>Chain</item>
+        <item>Контейнер</item>
+        <item>Гантель</item>
+        <item>Гиря</item>
+        <item>Ключ</item>
+        <item>Замок</item>
+        <item>Сейф</item>
+        <item>Кольцо</item>
+        <item>Ножницы</item>
+        <item>Циркуль</item>
+    </string-array>
+
+    <string-array name="not_metal_array">
+        <item>Мяч</item>
+        <item>Мяч</item>
+        <item>Лутучая мышь</item>
+        <item>Мышь</item>
+        <item>Мешочек</item>
+        <item>Трос</item>
+        <item>Обувь</item>
+        <item>Ремень</item>
+        <item>Ракетка</item>
+        <item>Лыжи</item>
+    </string-array>
+
+
+    <!--level 11-->
+    <string-array name="egs_animal_array">
+        <item>Хамелеон</item>
+        <item>Крокодил</item>
+        <item>Ехидна</item>
+        <item>Ящерица</item>
+        <item>Куропатка</item>
+        <item>Утконос</item>
+        <item>Змея</item>
+        <item>Гусь</item>
+        <item>Курица</item>
+        <item>Черепаха</item>
+    </string-array>
+
+    <string-array name="not_egs_animal_array">
+        <item>Антилопа</item>
+        <item>Медведь</item>
+        <item>Верблюд</item>
+        <item>Кошка</item>
+        <item>Корова</item>
+        <item>Собака</item>
+        <item>Лиса</item>
+        <item>Коза</item>
+        <item>Лошадь</item>
+        <item>Лев</item>
+        <item>Леопард</item>
+        <item>Свинья</item>
+        <item>Овца</item>
+        <item>Волк</item>
+    </string-array>
+
+
+    <!--level 13-->
+    <string-array name="size_planet_array">
+        <item>Плутон</item>
+        <item>Меркурий</item>
+        <item>Марс</item>
+        <item>Венера</item>
+        <item>Земля</item>
+        <item>Нептун</item>
+        <item>Уран</item>
+        <item>Сатурн</item>
+        <item>Юпитер</item>
+    </string-array>
+
+    <!--level 14-->
+    <string-array name="even_num_array">
+        <item>Два</item>
+        <item>Четыре</item>
+        <item>Шесть</item>
+        <item>Восемь</item>
+        <item>Десять</item>
+        <item>Двенадцать</item>
+        <item>Четырнадцать</item>
+        <item>Шестнадцать</item>
+        <item>Восемнадцать</item>
+        <item>Двадцать</item>
+    </string-array>
+
+    <string-array name="odd_num_array">
+        <item>Один</item>
+        <item>Три</item>
+        <item>Пять</item>
+        <item>Семь</item>
+        <item>Девять</item>
+        <item>Одиннадцать</item>
+        <item>Тринадцать</item>
+        <item>Пятнадцать</item>
+        <item>Семнадцать</item>
+        <item>Девятнадцать</item>
+    </string-array>
+
+
+    <!--level 15-->
+    <string-array name="fly_animal_array">
+        <item>Летучая мышь</item>
+        <item>Бабочка</item>
+        <item>Белка</item>
+        <item>Павлин</item>
+        <item>Орел</item>
+        <item>Сова</item>
+        <item>Гусь</item>
+        <item>Курица</item>
+        <item>Куропатка</item>
+        <item>Рыба</item>
+        <item>Майский жук</item>
+        <item>Божья коровка</item>
+        <item>Богомол</item>
+        <item>Жук носорог</item>
+    </string-array>
+
+
+    <string-array name="not_fly_animal_array">
+        <item>Рыба</item>
+        <item>Киви</item>
+        <item>Страус</item>
+        <item>Пингвин</item>
+        <item>Белка</item>
+        <item>Муравей</item>
+        <item>Паук</item>
+        <item>Улитка</item>
+        <item>Утконос</item>
+        <item>Хамелеон</item>
+        <item>Ящерица</item>
+        <item>Кузнечик</item>
+    </string-array>
+
+
+    <!--level 16-->
+    <string-array name="distance_planet_array">
+        <item>Плутон</item>
+        <item>Нептун</item>
+        <item>Уран</item>
+        <item>Сатурн</item>
+        <item>Юпитер</item>
+        <item>Марс</item>
+        <item>Земля</item>
+        <item>Венера</item>
+        <item>Меркурий</item>
+    </string-array>
+
+
+    <!--level 17-->
+    <string-array name="divide_num_array">
+        <item>Три</item>
+        <item>Шесть</item>
+        <item>Девять</item>
+        <item>Двенадцать</item>
+        <item>Пятнадцать</item>
+        <item>Восемнадцать</item>
+        <item>Двадцать один</item>
+        <item>Двадцать четыре</item>
+        <item>Двадцать семь</item>
+        <item>Тридцать</item>
+    </string-array>
+
+    <string-array name="not_divide_num_array">
+        <item>Четыре</item>
+        <item>Пять</item>
+        <item>Семь</item>
+        <item>Восемь</item>
+        <item>Десять</item>
+        <item>Одиннадцать</item>
+        <item>Четырнадцать</item>
+        <item>Шестнадцать</item>
+        <item>Семнадцать</item>
+        <item>Девятнадцать</item>
+        <item>Двадцать три</item>
+        <item>Двадцать шесть</item>
+    </string-array>
+
+
+    <!--level 18-->
+    <string-array name="swim_animal_array">
+        <item>Дельфин</item>
+        <item>Медуза</item>
+        <item>Косатка</item>
+        <item>Осьминог</item>
+        <item>Тюлень</item>
+        <item>Морж</item>
+        <item>Черепаха</item>
+        <item>Гусь</item>
+        <item>Крокодил</item>
+        <item>Утконос</item>
+        <item>Золотая рыбка</item>
+        <item>Пингвин</item>
+    </string-array>
+
+    <string-array name="not_swim_animal_array">
+        <item>Белка</item>
+        <item>Муравей</item>
+        <item>Кошка</item>
+        <item>Сова</item>
+        <item>Улитка</item>
+        <item>Паук</item>
+        <item>Курица</item>
+        <item>Хамелеон</item>
+        <item>Бабочка</item>
+        <item>Майский жук</item>
+        <item>Кузнечик</item>
+        <item>Божья коровка</item>
+        <item>Богомол</item>
+        <item>Павлин</item>
+    </string-array>
+
+    <!--level 19-->
+    <string-array name="engine_array">
+        <item>Самолет</item>
+        <item>Дирижабль</item>
+        <item>Лодка</item>
+        <item>Ховерборд</item>
+        <item>Паровоз</item>
+        <item>Машина</item>
+        <item>Грузовик</item>
+        <item>Самолет</item>
+        <item>Мотоцикл</item>
+
+    </string-array>
+
+    <string-array name="not_engine_array">
+        <item>Воздушный шар</item>
+        <item>Катамаран</item>
+        <item>Катамаран</item>
+        <item>Планер</item>
+        <item>Параплан</item>
+        <item>Парусная лодка</item>
+        <item>Велосипед</item>
+        <item>Самокат</item>
+        <item>Карета</item>
+    </string-array>
+
+
+</resources>
