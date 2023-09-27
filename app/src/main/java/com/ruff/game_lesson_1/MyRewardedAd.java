@@ -3,6 +3,7 @@ package com.ruff.game_lesson_1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,12 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
  * Time: 18:44
  */
 public class MyRewardedAd {
+
+    private static final String LIVE_FILE = "LIVE_FILE";
+    private static final String LIVE_KEY = "LIVE_KEY";
+
+    SharedPreferences getLivePref;
+    SharedPreferences.Editor saveLivePref;
 
     private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
     private static MyRewardedAd instance;
@@ -81,11 +88,18 @@ public class MyRewardedAd {
             rewardedAd.show(activity, new OnUserEarnedRewardListener() {
                 @Override
                 public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+
+                    getLivePref = activity.getSharedPreferences(LIVE_FILE, activity.MODE_PRIVATE);
+                    saveLivePref = getLivePref.edit();
+
                     // Handle the reward.
                     Log.d(TAG, "The user earned the reward.");
-                    LivesSingleton livesSingleton = LivesSingleton.getInstance();
+                    LivesSingleton livesSingleton = LivesSingleton.getInstance(activity);
                     livesSingleton.setCurrentLives(livesSingleton.getMaxLives());
                     textView.setText(String.valueOf(livesSingleton.getCurrentLives()));
+
+                    saveLivePref.putInt(LIVE_KEY, livesSingleton.getCurrentLives());
+                    saveLivePref.apply();
 
                 }
             });

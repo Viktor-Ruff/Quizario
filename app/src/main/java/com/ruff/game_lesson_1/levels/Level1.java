@@ -57,10 +57,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Level1 extends AppCompatActivity {
 
     private static final String SAVE_FILE = "SAVE_FILE";
+
     private static final String LEVEL_KEY = "LEVEL_KEY";
+
+    private static final String LIVE_FILE = "LIVE_FILE";
+    private static final String LIVE_KEY = "LIVE_KEY";
     private int levelCounter;
     SharedPreferences getProgress;
     SharedPreferences.Editor saveProgress;
+
+    SharedPreferences getLivePref;
+    SharedPreferences.Editor saveLivePref;
 
     private UniversalBinding binding;
 
@@ -82,6 +89,10 @@ public class Level1 extends AppCompatActivity {
         binding = UniversalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+        getLivePref = getSharedPreferences(LIVE_FILE, MODE_PRIVATE);
+        saveLivePref = getLivePref.edit();
+
         Window w = getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
@@ -90,7 +101,7 @@ public class Level1 extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         //создаем синглтон с количеством жизней.
-        livesSingleton = LivesSingleton.getInstance();
+        livesSingleton = LivesSingleton.getInstance(this);
 
         //проверка на бесконечные жизни (покупка инапа в приложении) - начало
         if (livesSingleton.isEndlessLives()) {
@@ -100,7 +111,7 @@ public class Level1 extends AppCompatActivity {
         }
 
 
-        //Проверка на премиум доступ
+        //Проверка на премиум доступ - начало
         if (livesSingleton.isEndlessLives()) { //если есть премиум
             myInterstitialAd = null;
         } else { //если нет премиума
@@ -112,6 +123,7 @@ public class Level1 extends AppCompatActivity {
             myRewardedAd = MyRewardedAd.getInstance();
             myRewardedAd.loadRewardedAd(this);
         }
+        //Проверка на премиум доступ - конец
 
         //инициализируем плеер для проигрывания в конце диалога
         soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
@@ -327,7 +339,6 @@ public class Level1 extends AppCompatActivity {
 
                     } else { //если правая карточка больше - неверный ответ
 
-
                         //проверка на премиум доступ - начало
                         if (!livesSingleton.isEndlessLives()) { //если бесконечных жизней нет
 
@@ -335,6 +346,8 @@ public class Level1 extends AppCompatActivity {
                             if (livesSingleton.getCurrentLives() > 0) {
                                 livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive); //вычитание жизни из текущего количества жизней
                                 binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+                                saveLivePref.putInt(LIVE_KEY, livesSingleton.getCurrentLives());
+                                saveLivePref.apply();
 
                                 //условие при окончании жизней - начало
                                 if (livesSingleton.getCurrentLives() == 0) {
@@ -433,6 +446,8 @@ public class Level1 extends AppCompatActivity {
                             if (livesSingleton.getCurrentLives() > 0) {
                                 livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive); //вычитание жизни из текущего количества жизней
                                 binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+                                saveLivePref.putInt(LIVE_KEY, livesSingleton.getCurrentLives());
+                                saveLivePref.apply();
 
                                 //условие при окончании жизней - начало
                                 if (livesSingleton.getCurrentLives() == 0) {

@@ -3,6 +3,7 @@ package com.ruff.game_lesson_1.levels;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -34,6 +35,12 @@ import java.util.Random;
 
 public class Level20 extends AppCompatActivity {
 
+    private static final String LIVE_FILE = "LIVE_FILE";
+    private static final String LIVE_KEY = "LIVE_KEY";
+
+    SharedPreferences getLivePref;
+    SharedPreferences.Editor saveLivePref;
+
     private UniversalBinding binding;
     Slider slider;
     Animation animation;
@@ -57,6 +64,9 @@ public class Level20 extends AppCompatActivity {
         binding = UniversalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        getLivePref = getSharedPreferences(LIVE_FILE, MODE_PRIVATE);
+        saveLivePref = getLivePref.edit();
+
         Window w = getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
@@ -64,7 +74,7 @@ public class Level20 extends AppCompatActivity {
         //Запрещаем ночную тему.
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        livesSingleton = LivesSingleton.getInstance();
+        livesSingleton = LivesSingleton.getInstance(this);
 
         //проверка на бесконечные жизни (покупка инапа в приложении) - начало
         if (livesSingleton.isEndlessLives()) {
@@ -266,6 +276,8 @@ public class Level20 extends AppCompatActivity {
                             if (livesSingleton.getCurrentLives() > 0) {
                                 livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive); //вычитание жизни из текущего количества жизней
                                 binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+                                saveLivePref.putInt(LIVE_KEY, livesSingleton.getCurrentLives());
+                                saveLivePref.apply();
 
                                 //условие при окончании жизней - начало
                                 if (livesSingleton.getCurrentLives() == 0) {
@@ -326,6 +338,8 @@ public class Level20 extends AppCompatActivity {
                             if (livesSingleton.getCurrentLives() > 0) {
                                 livesSingleton.setCurrentLives(livesSingleton.getCurrentLives() - oneLive); //вычитание жизни из текущего количества жизней
                                 binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
+                                saveLivePref.putInt(LIVE_KEY, livesSingleton.getCurrentLives());
+                                saveLivePref.apply();
 
                                 //условие при окончании жизней - начало
                                 if (livesSingleton.getCurrentLives() == 0) {

@@ -45,9 +45,11 @@ public class GameLevels extends AppCompatActivity {
 
     private static final String SAVE_FILE = "SAVE_FILE";
     private static final String LEVEL_KEY = "LEVEL_KEY";
+
+
     private int levelCounter;
     SharedPreferences getProgress;
-    SharedPreferences.Editor saveProgress;
+
 
     private ActivityGameLevelsBinding binding;
 
@@ -55,6 +57,8 @@ public class GameLevels extends AppCompatActivity {
 
     MyMediaPlayer soundLivesDialog;
     private MyRewardedAd myRewardedAd;
+
+
 
 
     @Override
@@ -65,7 +69,6 @@ public class GameLevels extends AppCompatActivity {
 
         getProgress = getSharedPreferences(SAVE_FILE, MODE_PRIVATE);
         levelCounter = getProgress.getInt(LEVEL_KEY, 1);
-
 
         Window w = getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.
@@ -82,7 +85,7 @@ public class GameLevels extends AppCompatActivity {
         myRewardedAd.loadRewardedAd(this);
 
         //инициализация синглтона жизней
-        livesSingleton = LivesSingleton.getInstance();
+        livesSingleton = LivesSingleton.getInstance(this);
 
         //проверка на бесконечные жизни (покупка инапа в приложении)
         if (livesSingleton.isEndlessLives()) {
@@ -531,6 +534,7 @@ public class GameLevels extends AppCompatActivity {
             myRewardedAd.showRewardedAd(GameLevels.this, binding.tvHeartCounter); //просмотр рекламы c вознаграждением
             dialogLives.cancel(); //закрытие диалогового окна
             myRewardedAd.loadRewardedAd(this); //загрузка в фоне новой рекламы
+
         });
         //обработка кнопки продолжить - конец
 
