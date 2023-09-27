@@ -8,6 +8,7 @@
     <string name="restore">Restore</string>
     <string name="back">Back</string>
     <string name="x">X</string>
+    <string name="block">🔒</string>
     <string name="restore_lives">"У вас кончились жизни! Чтобы восстановить максимальное количество жизней, нажмите кнопку «Восстановить» и посмотрите рекламу." button."</string>
 
 

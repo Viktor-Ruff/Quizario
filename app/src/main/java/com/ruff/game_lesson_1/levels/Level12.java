@@ -3,6 +3,7 @@ package com.ruff.game_lesson_1.levels;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -33,6 +34,12 @@ import java.util.Random;
 
 
 public class Level12 extends AppCompatActivity {
+
+    private static final String SAVE_FILE = "SAVE_FILE";
+    private static final String LEVEL_KEY = "LEVEL_KEY";
+    private int levelCounter;
+    SharedPreferences getProgress;
+    SharedPreferences.Editor saveProgress;
 
     private UniversalBinding binding;
     Slider slider;
@@ -295,6 +302,18 @@ public class Level12 extends AppCompatActivity {
                         if (!livesSingleton.isEndlessLives()) {
                             myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1); //наращивание счетчика завершенных уровневней для показа рекламы
                         }
+
+                        getProgress = getSharedPreferences(SAVE_FILE, MODE_PRIVATE); //Получение данных из файла c сохранением
+                        levelCounter = getProgress.getInt(LEVEL_KEY, 1); //Получение значениея пройденных уровней.
+
+                        //Условие по счетчику пройденных уровней - начало
+                        if (levelCounter <= 12) { //если кол-во пройденных уровней 1 или меньше
+                            saveProgress = getProgress.edit();
+                            saveProgress.putInt(LEVEL_KEY, 13); //сохраняем в файл значение 2
+                            saveProgress.apply();
+                        }
+                        //Условие по счетчику пройденных уровней - конец
+
                         initEndDialog();
                     } else {
                         binding.tvLeftNumber.startAnimation(animation);
@@ -355,6 +374,18 @@ public class Level12 extends AppCompatActivity {
                         if (!livesSingleton.isEndlessLives()) {
                             myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1); //наращивание счетчика завершенных уровневней для показа рекламы
                         }
+
+                        getProgress = getSharedPreferences(SAVE_FILE, MODE_PRIVATE); //Получение данных из файла c сохранением
+                        levelCounter = getProgress.getInt(LEVEL_KEY, 1); //Получение значениея пройденных уровней.
+
+                        //Условие по счетчику пройденных уровней - начало
+                        if (levelCounter <= 12) { //если кол-во пройденных уровней 1 или меньше
+                            saveProgress = getProgress.edit();
+                            saveProgress.putInt(LEVEL_KEY, 13); //сохраняем в файл значение 2
+                            saveProgress.apply();
+                        }
+                        //Условие по счетчику пройденных уровней - конец
+
                         initEndDialog();
                     } else {
                         binding.tvRightNumber.startAnimation(animation);

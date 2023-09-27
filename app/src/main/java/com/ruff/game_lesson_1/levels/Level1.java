@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -54,6 +55,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class Level1 extends AppCompatActivity {
+
+    private static final String SAVE_FILE = "SAVE_FILE";
+    private static final String LEVEL_KEY = "LEVEL_KEY";
+    private int levelCounter;
+    SharedPreferences getProgress;
+    SharedPreferences.Editor saveProgress;
 
     private UniversalBinding binding;
 
@@ -356,7 +363,20 @@ public class Level1 extends AppCompatActivity {
                         if (!livesSingleton.isEndlessLives()) {
                             myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1); //наращивание счетчика завершенных уровневней для показа рекламы
                         }
+
+                        getProgress = getSharedPreferences(SAVE_FILE, MODE_PRIVATE); //Получение данных из файла c сохранением
+                        levelCounter = getProgress.getInt(LEVEL_KEY, 1); //Получение значениея пройденных уровней.
+
+                        //Условие по счетчику пройденных уровней - начало
+                        if (levelCounter <= 1) { //если кол-во пройденных уровней 1 или меньше
+                            saveProgress = getProgress.edit();
+                            saveProgress.putInt(LEVEL_KEY, 2); //сохраняем в файл значение 2
+                            saveProgress.apply();
+                        }
+                        //Условие по счетчику пройденных уровней - конец
+
                         initEndDialog(); //вызов диалога конца уровня
+
                     } else {//если строка незаполнена
                         binding.tvLeftNumber.startAnimation(animation); //проигрывание анимации
                         initCardViews(); //присваиваем новые значения
@@ -440,6 +460,18 @@ public class Level1 extends AppCompatActivity {
                         if (!livesSingleton.isEndlessLives()) {
                             myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1); //наращивание счетчика завершенных уровневней для показа рекламы
                         }
+
+                        getProgress = getSharedPreferences(SAVE_FILE, MODE_PRIVATE); //Получение данных из файла c сохранением
+                        levelCounter = getProgress.getInt(LEVEL_KEY, 1); //Получение значениея пройденных уровней.
+
+                        //Условие по счетчику пройденных уровней - начало
+                        if (levelCounter <= 1) { //если кол-во пройденных уровней 1 или меньше
+                            saveProgress = getProgress.edit();
+                            saveProgress.putInt(LEVEL_KEY, 2); //сохраняем в файл значение 2
+                            saveProgress.apply();
+                        }
+                        //Условие по счетчику пройденных уровней - конец
+
                         initEndDialog(); //вызов диалога завершения уровня
                     } else { //если строка незаполнена
                         binding.tvRightNumber.startAnimation(animation); //проигрывание анимации

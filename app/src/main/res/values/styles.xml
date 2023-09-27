@@ -5,7 +5,7 @@
         <item name="android:fontFamily">@font/didact_gothic_regular</item>
         <item name="android:background">@drawable/selector_game_level</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/middle_size_font_24sp</item>
+        <item name="android:textSize">@dimen/large_size_font_32sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_margin">5dp</item>
@@ -17,14 +17,14 @@
     </style>
 
     <style name="levels_tv_style.large">
-        <item name="android:textSize">@dimen/large_size_font_32sp</item>
+        <item name="android:textSize">@dimen/xlarge_size_font_40sp</item>
         <item name="android:background">@drawable/selector_game_level_large</item>
         <item name="android:layout_margin">5dp</item>
     </style>
 
     <style name="levels_tv_style.xlarge">
         <item name="android:background">@drawable/selector_game_level_xlarge</item>
-        <item name="android:textSize">@dimen/xlarge_size_font_40sp</item>
+        <item name="android:textSize">50sp</item>
         <item name="android:layout_margin">10dp</item>
     </style>
 

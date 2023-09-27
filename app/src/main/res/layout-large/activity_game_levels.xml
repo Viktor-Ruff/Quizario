@@ -71,7 +71,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:text="@string/_2" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_3"
@@ -80,7 +80,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="2"
-            android:text="@string/_3" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_4"
@@ -89,7 +89,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="3"
-            android:text="@string/_4" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_5"
@@ -98,7 +98,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="0"
-            android:text="@string/_5" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_6"
@@ -107,7 +107,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:text="@string/_6" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_7"
@@ -116,7 +116,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="2"
-            android:text="@string/_7" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_8"
@@ -125,7 +125,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="3"
-            android:text="@string/_8" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_9"
@@ -134,7 +134,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="0"
-            android:text="@string/_9" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_10"
@@ -143,7 +143,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:text="@string/_10" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_11"
@@ -152,7 +152,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="2"
-            android:text="@string/_11" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_12"
@@ -161,7 +161,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="3"
-            android:text="@string/_12" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_13"
@@ -170,7 +170,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="0"
-            android:text="@string/_13" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_14"
@@ -179,7 +179,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:text="@string/_14" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_15"
@@ -188,7 +188,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="2"
-            android:text="@string/_15" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_16"
@@ -197,7 +197,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="3"
-            android:text="@string/_16" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_17"
@@ -206,7 +206,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="0"
-            android:text="@string/_17" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_18"
@@ -215,7 +215,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:text="@string/_18" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_19"
@@ -224,7 +224,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="2"
-            android:text="@string/_19" />
+            android:text="@string/block" />
 
         <TextView
             android:id="@+id/tv_level_20"
@@ -233,7 +233,7 @@
             android:layout_height="100dp"
             android:layout_rowWeight="1"
             android:layout_column="3"
-            android:text="@string/_20" />
+            android:text="@string/block" />
 
         <!--<TextView
             android:id="@+id/tv_level_21"

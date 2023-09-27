@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 import com.ruff.game_lesson_1.databinding.ActivityGameLevelsBinding;
@@ -40,6 +42,13 @@ import com.ruff.game_lesson_1.levels.Level9;
 
 public class GameLevels extends AppCompatActivity {
 
+
+    private static final String SAVE_FILE = "SAVE_FILE";
+    private static final String LEVEL_KEY = "LEVEL_KEY";
+    private int levelCounter;
+    SharedPreferences getProgress;
+    SharedPreferences.Editor saveProgress;
+
     private ActivityGameLevelsBinding binding;
 
     private LivesSingleton livesSingleton;
@@ -53,6 +62,9 @@ public class GameLevels extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityGameLevelsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        getProgress = getSharedPreferences(SAVE_FILE, MODE_PRIVATE);
+        levelCounter = getProgress.getInt(LEVEL_KEY, 1);
 
 
         Window w = getWindow();
@@ -87,6 +99,7 @@ public class GameLevels extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 try {
                     Intent intent = new Intent(GameLevels.this, MainActivity.class);
                     startActivity(intent); //переход на мэйн активити
@@ -97,6 +110,17 @@ public class GameLevels extends AppCompatActivity {
             }
         });
 
+
+        int[] openedLevels = {R.id.tv_level_1, R.id.tv_level_2, R.id.tv_level_3, R.id.tv_level_4, R.id.tv_level_5,
+                R.id.tv_level_6, R.id.tv_level_7, R.id.tv_level_8, R.id.tv_level_9, R.id.tv_level_10, R.id.tv_level_11,
+                R.id.tv_level_12, R.id.tv_level_13, R.id.tv_level_14, R.id.tv_level_15, R.id.tv_level_16, R.id.tv_level_17,
+                R.id.tv_level_18, R.id.tv_level_19, R.id.tv_level_20};
+
+        for (int i = 1; i < levelCounter; i++) {
+            TextView tv = findViewById(openedLevels[i]);
+            tv.setText(String.valueOf(i + 1));
+        }
+
     }
 
     private void levelListeners() {
@@ -106,9 +130,12 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level1.class);
-                    startActivity(intent);
-                    finish();
+
+                    if (levelCounter >= 1) {
+                        Intent intent = new Intent(GameLevels.this, Level1.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -124,9 +151,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level2.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 2) {
+                        Intent intent = new Intent(GameLevels.this, Level2.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -141,9 +170,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level3.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 3) {
+                        Intent intent = new Intent(GameLevels.this, Level3.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -158,9 +189,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level4.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 4) {
+                        Intent intent = new Intent(GameLevels.this, Level4.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -174,9 +207,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level5.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 5) {
+                        Intent intent = new Intent(GameLevels.this, Level5.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -191,9 +226,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level6.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 6) {
+                        Intent intent = new Intent(GameLevels.this, Level6.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -208,9 +245,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level7.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 7) {
+                        Intent intent = new Intent(GameLevels.this, Level7.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -225,9 +264,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level8.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 8) {
+                        Intent intent = new Intent(GameLevels.this, Level8.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -242,9 +283,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level9.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 9) {
+                        Intent intent = new Intent(GameLevels.this, Level9.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -258,9 +301,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level10.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 10) {
+                        Intent intent = new Intent(GameLevels.this, Level10.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -275,9 +320,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level11.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 11) {
+                        Intent intent = new Intent(GameLevels.this, Level11.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -291,9 +338,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level12.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 12) {
+                        Intent intent = new Intent(GameLevels.this, Level12.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -308,9 +357,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level13.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 13) {
+                        Intent intent = new Intent(GameLevels.this, Level13.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -324,9 +375,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level14.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 14) {
+                        Intent intent = new Intent(GameLevels.this, Level14.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -340,9 +393,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level15.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 15) {
+                        Intent intent = new Intent(GameLevels.this, Level15.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -357,9 +412,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level16.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 16) {
+                        Intent intent = new Intent(GameLevels.this, Level16.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -374,9 +431,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level17.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 17) {
+                        Intent intent = new Intent(GameLevels.this, Level17.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -390,9 +449,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level18.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 18) {
+                        Intent intent = new Intent(GameLevels.this, Level18.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -406,9 +467,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level19.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 19) {
+                        Intent intent = new Intent(GameLevels.this, Level19.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
@@ -423,9 +486,11 @@ public class GameLevels extends AppCompatActivity {
 
             if (livesSingleton.getCurrentLives() > 0 || livesSingleton.isEndlessLives()) {
                 try {
-                    Intent intent = new Intent(GameLevels.this, Level20.class);
-                    startActivity(intent);
-                    finish();
+                    if (levelCounter >= 20) {
+                        Intent intent = new Intent(GameLevels.this, Level20.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.d(MY_LOG, e.getMessage());
                 }
