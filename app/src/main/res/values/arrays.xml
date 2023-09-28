@@ -27,7 +27,7 @@
         <item>Nine</item>
     </string-array>
 
-    <!--level 2-->
+    <!--level 3-->
     <string-array name="animalsPredatorArray">
         <item>Bear</item>
         <item>Wolf</item>
@@ -35,7 +35,7 @@
         <item>Lion</item>
         <item>Leopard</item>
         <item>Eagle</item>
-        <item>White bear</item>
+        <item>Bear</item>
     </string-array>
 
     <string-array name="animalsHerbivorousArray">
@@ -48,7 +48,7 @@
         <item>Antelope</item>
     </string-array>
 
-    <!--level 3-->
+    <!--level 2-->
     <string-array name="edibleArray">
         <item>Apple</item>
         <item>Cabbage</item>
@@ -104,7 +104,7 @@
         <item>Cat</item>
         <item>Squirrel</item>
         <item>Dog</item>
-        <item>White bear</item>
+        <item>Bear</item>
         <item>Wolf</item>
         <item>Horse</item>
         <item>Antelope</item>
@@ -202,18 +202,18 @@
 
     <!--level 9-->
     <string-array name="artifice_array">
-        <item>Bingo bongo</item>
+        <item>Bingobongo</item>
         <item>Bulbasaur</item>
-        <item>Chip and Dale</item>
+        <item>Chip, Dale</item>
         <item>Ghost</item>
         <item>Grinch</item>
         <item>Mermaid</item>
         <item>Pikachu</item>
-        <item>Tom and Jerry</item>
+        <item>Tom, Jerry</item>
         <item>Wolf</item>
         <item>Yeti</item>
         <item>Tiger</item>
-        <item>Triceratops</item>
+        <item>Dinosaur</item>
         <item>Unicorn</item>
         <item>Mammoth</item>
         <item>Griffin</item>
@@ -473,6 +473,32 @@
         <item>Bike</item>
         <item>Scooter</item>
         <item>Coach</item>
+    </string-array>
+
+
+    <!--level 20-->
+    <string-array name="team_sport_array">
+        <item>Baseball</item>
+        <item>Basketball</item>
+        <item>Bobsled</item>
+        <item>Football</item>
+        <item>Handball</item>
+        <item>Hockey</item>
+        <item>Rugby</item>
+        <item>Volleyball</item>
+        <item>Relay race</item>
+    </string-array>
+
+    <string-array name="not_team_sport_array">
+        <item>Bicycle race</item>
+        <item>Golf</item>
+        <item>Marathon</item>
+        <item>Pole vaulting</item>
+        <item>Ski race</item>
+        <item>Snowboarding</item>
+        <item>Tennis</item>
+        <item>Weightlifting</item>
+        <item>Wrestling</item>
     </string-array>
 
 

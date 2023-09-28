@@ -59,8 +59,6 @@ public class GameLevels extends AppCompatActivity {
     private MyRewardedAd myRewardedAd;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +67,10 @@ public class GameLevels extends AppCompatActivity {
 
         getProgress = getSharedPreferences(SAVE_FILE, MODE_PRIVATE);
         levelCounter = getProgress.getInt(LEVEL_KEY, 1);
+        /*levelCounter = 19;
+        SharedPreferences.Editor editor = getProgress.edit();
+        editor.putInt(LEVEL_KEY, levelCounter);
+        editor.apply();*/
 
         Window w = getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION //Скрываем нижнюю панель навигации.

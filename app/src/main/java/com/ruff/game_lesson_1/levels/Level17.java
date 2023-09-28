@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -108,6 +110,24 @@ public class Level17 extends AppCompatActivity {
 
         soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
+
+
+        int screenLayout = getBaseContext().getResources().getConfiguration().screenLayout;
+        screenLayout &= Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        if (screenLayout == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            binding.tvLeftNumberText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+            binding.tvRightNumberText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        } else if (screenLayout == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+            binding.tvLeftNumberText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
+            binding.tvRightNumberText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
+        } else if (screenLayout == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            binding.tvLeftNumberText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 32);
+            binding.tvRightNumberText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 32);
+        } else if (screenLayout == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+            binding.tvLeftNumberText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
+            binding.tvRightNumberText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
+        }
 
 
         //фон заднего экрана

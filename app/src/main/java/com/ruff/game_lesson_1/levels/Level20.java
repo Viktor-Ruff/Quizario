@@ -22,6 +22,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.slider.Slider;
+import com.ruff.game_lesson_1.FinishActivity;
 import com.ruff.game_lesson_1.GameLevels;
 import com.ruff.game_lesson_1.LivesSingleton;
 import com.ruff.game_lesson_1.MyInterstitialAd;
@@ -47,9 +48,11 @@ public class Level20 extends AppCompatActivity {
     private int leftNumCard;
     int rightNumCard;
 
-    int[] sizePlanetArray;
-    String[] sizePlanetTextArray;
-
+    int[] teamSportArray;
+    String[] teamSportTextArray;
+    int[] notTeamSportArray;
+    String[] notTeamSportTextArray;
+    int order;
     MyMediaPlayer soundEndDialog, soundLivesDialog;
     LivesSingleton livesSingleton;
     private MyInterstitialAd myInterstitialAd;
@@ -83,7 +86,6 @@ public class Level20 extends AppCompatActivity {
             binding.tvHeartCounter.setText(String.valueOf(livesSingleton.getCurrentLives()));
         }
 
-
         //Проверка на премиум доступ
         if (livesSingleton.isEndlessLives()) { //если есть премиум
             myInterstitialAd = null;
@@ -100,14 +102,17 @@ public class Level20 extends AppCompatActivity {
         soundEndDialog = new MyMediaPlayer(this, R.raw.sound_level_complete);
         soundLivesDialog = new MyMediaPlayer(this, R.raw.sound_level_fail);
 
+        teamSportArray = new int[]{R.drawable.im_baseball, R.drawable.im_basketball, R.drawable.im_bubblesleigh,
+                R.drawable.im_football, R.drawable.im_handball, R.drawable.im_hockey, R.drawable.im_rugby,
+                R.drawable.im_volleyball, R.drawable.relay_race};
 
-        sizePlanetArray = new int[]{R.drawable.im_jupiter, R.drawable.im_saturn, R.drawable.im_uranus,
-                R.drawable.im_neptune, R.drawable.im_earth_planet, R.drawable.im_venus, R.drawable.im_mars,
-                R.drawable.im_merkuri, R.drawable.im_pluto};
+        notTeamSportArray = new int[]{R.drawable.im_cycling, R.drawable.im_golf, R.drawable.im_marathon,
+                R.drawable.im_pole_vaulting, R.drawable.im_ski_race, R.drawable.im_snowboarding,
+                R.drawable.im_tennis, R.drawable.im_weightlifting, R.drawable.im_wrestling};
 
 
         //фон заднего экрана
-        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level4);
+        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level20);
 
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {
@@ -116,7 +121,7 @@ public class Level20 extends AppCompatActivity {
 
 
         //установка номера уровня
-        binding.tvLevelNumber.setText(R.string.level_4);
+        binding.tvLevelNumber.setText(R.string.level_20);
 
 
         //скругление углов картинок
@@ -141,11 +146,11 @@ public class Level20 extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
         ConstraintLayout constraintLayout = dialogStart.findViewById(R.id.my_preview_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level4);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level20);
         ImageView ivDialog = dialogStart.findViewById(R.id.imageView);
-        ivDialog.setImageResource(R.drawable.two_cards_level4);
+        ivDialog.setImageResource(R.drawable.two_cards_level20);
         TextView tvDescription = dialogStart.findViewById(R.id.textView);
-        tvDescription.setText(getResources().getString(R.string.exercise_level4));
+        tvDescription.setText(getResources().getString(R.string.exercise_level20));
         dialogStart.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogStart.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogStart.setCancelable(false);
@@ -175,10 +180,10 @@ public class Level20 extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY); //Появляется поверх игры и исчезает.
 
         ConstraintLayout constraintLayout = dialogEnd.findViewById(R.id.my_end_dialog_constraint);
-        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level4);
+        constraintLayout.setBackgroundResource(R.drawable.im_back_dialog_level20);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView tvTextDialogEnd = dialogEnd.findViewById(R.id.textView);
-        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level4));
+        tvTextDialogEnd.setText(getResources().getString(R.string.interesting_fact_level20));
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
         dialogEnd.show();
@@ -200,7 +205,7 @@ public class Level20 extends AppCompatActivity {
         _continue.setOnClickListener(v -> {
             soundEndDialog.stopPlay();
             dialogEnd.cancel();
-            Intent intent = new Intent(Level20.this, Level5.class);
+            Intent intent = new Intent(Level20.this, FinishActivity.class);
 
             if (!livesSingleton.isEndlessLives() && myInterstitialAd.getLevelCompleteCounter() == myInterstitialAd.getMaxLevelComplete()) {
                 myInterstitialAd.showInterstitialAd(intent, Level20.this);
@@ -258,13 +263,13 @@ public class Level20 extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvRightNumber.setEnabled(false);
-                    if (leftNumCard > rightNumCard) {
+                    if (order > 0) {
                         binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_true));
                     } else {
                         binding.tvLeftNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (leftNumCard > rightNumCard) {
+                    if (order > 0) {
                         if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
@@ -300,6 +305,8 @@ public class Level20 extends AppCompatActivity {
                         if (!livesSingleton.isEndlessLives()) {
                             myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1); //наращивание счетчика завершенных уровневней для показа рекламы
                         }
+
+
                         initEndDialog();
                     } else {
                         binding.tvLeftNumber.startAnimation(animation);
@@ -320,13 +327,13 @@ public class Level20 extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     binding.tvLeftNumber.setEnabled(false);
-                    if (rightNumCard > leftNumCard) {
+                    if (order <= 0) {
                         binding.tvRightNumber.setBackground(getDrawable(R.drawable.im_back_true));
                     } else {
                         binding.tvRightNumber.setBackground(getDrawable(R.drawable.im_back_wrong));
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (rightNumCard > leftNumCard) {
+                    if (order <= 0) {
                         if (slider.getValue() < slider.getValueTo()) {
                             slider.setValue(slider.getValue() + trueAnswerPoint);
                         }
@@ -362,11 +369,11 @@ public class Level20 extends AppCompatActivity {
                         if (!livesSingleton.isEndlessLives()) {
                             myInterstitialAd.setLevelCompleteCounter(myInterstitialAd.getLevelCompleteCounter() + 1); //наращивание счетчика завершенных уровневней для показа рекламы
                         }
+
                         initEndDialog();
                     } else {
                         binding.tvRightNumber.startAnimation(animation);
                         initCardViews();
-
                     }
 
                     binding.tvLeftNumber.setEnabled(true);
@@ -382,21 +389,26 @@ public class Level20 extends AppCompatActivity {
 
     public void initCardViews() {
 
-        sizePlanetTextArray = getResources().getStringArray(R.array.heavy_things);
+        teamSportTextArray = getResources().getStringArray(R.array.team_sport_array);
+        notTeamSportTextArray = getResources().getStringArray(R.array.not_team_sport_array);
+
 
         Random random = new Random();
-        leftNumCard = random.nextInt(sizePlanetTextArray.length);
-        rightNumCard = random.nextInt(sizePlanetTextArray.length);
+        order = random.nextInt(2);
+        leftNumCard = random.nextInt(teamSportArray.length);
+        rightNumCard = random.nextInt(notTeamSportArray.length);
 
-        while (leftNumCard == rightNumCard) {
-            rightNumCard = random.nextInt(sizePlanetTextArray.length);
+        if (order > 0) {
+            binding.tvLeftNumber.setBackgroundResource(teamSportArray[leftNumCard]);
+            binding.tvRightNumber.setBackgroundResource(notTeamSportArray[rightNumCard]);
+            binding.tvLeftNumberText.setText(teamSportTextArray[leftNumCard]);
+            binding.tvRightNumberText.setText(notTeamSportTextArray[rightNumCard]);
+        } else {
+            binding.tvRightNumber.setBackgroundResource(teamSportArray[leftNumCard]);
+            binding.tvLeftNumber.setBackgroundResource(notTeamSportArray[rightNumCard]);
+            binding.tvRightNumberText.setText(teamSportTextArray[leftNumCard]);
+            binding.tvLeftNumberText.setText(notTeamSportTextArray[rightNumCard]);
         }
-
-        binding.tvLeftNumber.setBackgroundResource(sizePlanetArray[leftNumCard]);
-        binding.tvRightNumber.setBackgroundResource(sizePlanetArray[rightNumCard]);
-        binding.tvLeftNumberText.setText(sizePlanetTextArray[leftNumCard]);
-        binding.tvRightNumberText.setText(sizePlanetTextArray[rightNumCard]);
-
     }
 
     @Override

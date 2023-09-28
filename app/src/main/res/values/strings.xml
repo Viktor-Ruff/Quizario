@@ -68,8 +68,8 @@
     <string name="exercise_level16">Choose a card with a planet that is closer to the sun. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level17">Choose a card with a number that is divisible by 3 without a remainder. Questions can be repeated until you score 20 points</string>
     <string name="exercise_level18">Choose a card with an animal that can swim. Questions can be repeated until you score 20 points</string>
-    <string name="exercise_level19">Choose a card with a vehicle that has a mechanical or electric motor.. Questions can be repeated until you score 20 points</string>
-    <string name="exercise_level20"> </string>
+    <string name="exercise_level19">Choose a card with a vehicle that has a mechanical or electric motor. Questions can be repeated until you score 20 points</string>
+    <string name="exercise_level20">Choose a card with a team sport. Questions can be repeated until you score 20 points</string>
 
     <!--<string name="exercise_level21"> </string>
     <string name="exercise_level22"> </string>
@@ -146,7 +146,7 @@
         Lithium is the lightest metal in the world, its density is 0.534 g/cm3. If you put a piece of lithium in a glass of water, it will remain floating on the surface. By comparison, lithium is 42 times lighter than osmium, which is the densest metal known to mankind."</string>
 
     <string name="interesting_fact_level11">"Congratulations, you've completed the level!\n
-        Zero Is the Only Number That Can't Be Represented In Roman Numerals. sn't a number because you couldn't divide by zero. There are a total of zero zeros in Roman numerals. While the ancient Greeks were aware of zero as a concept, they didn't consider zero to be a number at all. For example, Aristotle decided zero wasn't a number because you couldn't divide by zero. Instead of a Roman numeral, the Latin word "nulla" would have been used to represent the concept of zero. The reason no numeral existed for zero is because there was no need for a numeral to represent it."</string>
+        Zero Is the Only Number That Can't Be Represented In Roman Numerals. Isn't a number because you couldn't divide by zero. While the ancient Greeks were aware of zero as a concept, they didn't consider zero to be a number at all. For example, Aristotle decided zero wasn't a number because you couldn't divide by zero. Instead of a Roman numeral, the Latin word "nulla" would have been used to represent the concept of zero. The reason no numeral existed for zero is because there was no need for a numeral to represent it."</string>
 
 
     <string name="interesting_fact_level12">"Congratulations, you've completed the level!\n
@@ -164,7 +164,7 @@
         Just as the Earth revolves around the Sun, the solar system revolves around the center of the Galaxy, and it moves at a speed of 220-240 kilometers per second."</string>
 
     <string name="interesting_fact_level17">"Congratulations, you've completed the level!\n
-        The number three is considered a lucky number in Chinese culture. The reason it is considered such is because the word "three" sounds very similar to the word "alive". This is completely contrary to Western traditions, which have sayings such as “third time's the charm”, which puts forward the idea that the number three is actually unlucky."</string>
+        The number three is considered a lucky number in Chinese culture. The reason it is considered such is because the word "three" sounds very similar to the word "alive". This is completely contrary to Western traditions, which puts forward the idea that the number three is actually unlucky."</string>
 
     <string name="interesting_fact_level18">"Congratulations, you've completed the level!\n
         Despite all the achievements of modern science, most of the underwater world has still not been studied. Zoologists to this day regularly discover new species of marine life."</string>
@@ -172,7 +172,8 @@
     <string name="interesting_fact_level19">"Congratulations, you've completed the level!\n
         Internal combustion engine. At the end of the 19th century the steam engine was replaced by the internal combustion engine. This device got its name because the combustion of a mixture of air and fuel in it occurs inside the housing and hot gas is produced here, which does the work. The flow of gas may be continuous, as in a gas turbine, or intermittent, as in a reciprocating machine or rotary engine."</string>
 
-    <string name="interesting_fact_level20"> </string>
+    <string name="interesting_fact_level20">"Congratulations, you've completed the level!\n
+        Team sports are very popular, and for good reason - it’s a great way to not only exercise different muscle groups, but also have fun and interesting time with friends."</string>
 
     <!--<string name="interesting_fact_level21"> </string>
     <string name="interesting_fact_level22"> </string>

@@ -117,7 +117,7 @@ public class Level19 extends AppCompatActivity {
 
 
         //фон заднего экрана
-        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level18);
+        binding.myUniversalConstraint.setBackgroundResource(R.drawable.im_back_level19);
 
         //кнопка назад
         binding.btBack.setOnClickListener(v -> {

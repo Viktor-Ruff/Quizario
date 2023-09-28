@@ -35,7 +35,7 @@
         <item>Лев</item>
         <item>Леопард</item>
         <item>Орел</item>
-        <item>Белый медведь</item>
+        <item>Медведь</item>
     </string-array>
 
     <string-array name="animalsHerbivorousArray">
@@ -104,8 +104,8 @@
         <item>Кошка</item>
         <item>Белка</item>
         <item>Собака</item>
-        <item>Белый медведь</item>
-        <item>Вокл</item>
+        <item>Медведь</item>
+        <item>Волк</item>
         <item>Лошадь</item>
         <item>Антилопа</item>
         <item>Леопард</item>
@@ -147,7 +147,7 @@
     <string-array name="sport_array">
         <item>Мяч</item>
         <item>Мяч</item>
-        <item>Летучая мышь</item>
+        <item>Бита</item>
         <item>Сноуборд</item>
         <item>Ракетка</item>
         <item>Ракетка</item>
@@ -202,18 +202,18 @@
 
     <!--level 9-->
     <string-array name="artifice_array">
-        <item>Бинго бонго</item>
+        <item>Бингобонго</item>
         <item>Бульбазавр</item>
         <item>Чип и Дэйл</item>
         <item>Приведение</item>
         <item>Гринч</item>
         <item>Русалка</item>
         <item>Пикачу</item>
-        <item>Том и Джери</item>
+        <item>Том, Джери</item>
         <item>Волк</item>
         <item>Йети</item>
         <item>Тигр</item>
-        <item>Трицератопс</item>
+        <item>Динозавр</item>
         <item>Единорог</item>
         <item>Мамонт</item>
         <item>Грифон</item>
@@ -238,7 +238,7 @@
 
     <!--level 10-->
     <string-array name="metal_array">
-        <item>Chain</item>
+        <item>Цепь</item>
         <item>Контейнер</item>
         <item>Гантель</item>
         <item>Гиря</item>
@@ -253,7 +253,7 @@
     <string-array name="not_metal_array">
         <item>Мяч</item>
         <item>Мяч</item>
-        <item>Лутучая мышь</item>
+        <item>Бита</item>
         <item>Мышь</item>
         <item>Мешочек</item>
         <item>Трос</item>
@@ -339,7 +339,7 @@
 
     <!--level 15-->
     <string-array name="fly_animal_array">
-        <item>Летучая мышь</item>
+        <item>Мышь</item>
         <item>Бабочка</item>
         <item>Белка</item>
         <item>Павлин</item>
@@ -349,10 +349,10 @@
         <item>Курица</item>
         <item>Куропатка</item>
         <item>Рыба</item>
-        <item>Майский жук</item>
-        <item>Божья коровка</item>
+        <item>Жук</item>
+        <item>Коровка</item>
         <item>Богомол</item>
-        <item>Жук носорог</item>
+        <item>Жук</item>
     </string-array>
 
 
@@ -428,7 +428,7 @@
         <item>Гусь</item>
         <item>Крокодил</item>
         <item>Утконос</item>
-        <item>Золотая рыбка</item>
+        <item>Рыбка</item>
         <item>Пингвин</item>
     </string-array>
 
@@ -442,9 +442,9 @@
         <item>Курица</item>
         <item>Хамелеон</item>
         <item>Бабочка</item>
-        <item>Майский жук</item>
+        <item>Жук</item>
         <item>Кузнечик</item>
-        <item>Божья коровка</item>
+        <item>Коровка</item>
         <item>Богомол</item>
         <item>Павлин</item>
     </string-array>
@@ -464,15 +464,42 @@
     </string-array>
 
     <string-array name="not_engine_array">
-        <item>Воздушный шар</item>
+        <item>Шар</item>
         <item>Катамаран</item>
         <item>Катамаран</item>
         <item>Планер</item>
         <item>Параплан</item>
-        <item>Парусная лодка</item>
+        <item>Парусник</item>
         <item>Велосипед</item>
         <item>Самокат</item>
         <item>Карета</item>
+    </string-array>
+
+
+
+    <!--level 20-->
+    <string-array name="team_sport_array">
+        <item>Бейсбол</item>
+        <item>Баскетбол</item>
+        <item>Бобслей</item>
+        <item>Футбол</item>
+        <item>Гандбол</item>
+        <item>Хоккей</item>
+        <item>Регби</item>
+        <item>Волейбол</item>
+        <item>Эстафета</item>
+    </string-array>
+
+    <string-array name="not_team_sport_array">
+        <item>Велогонка</item>
+        <item>Гольф</item>
+        <item>Марафон</item>
+        <item>Прыжки</item>
+        <item>Лыжи</item>
+        <item>Сноуборд</item>
+        <item>Теннис</item>
+        <item>Атлетика</item>
+        <item>Борьба</item>
     </string-array>
 
 
