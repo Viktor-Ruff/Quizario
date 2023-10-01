@@ -391,7 +391,7 @@ public class Level19 extends AppCompatActivity {
                         //Условие по счетчику пройденных уровней - начало
                         if (levelCounter <= 19) { //если кол-во пройденных уровней 1 или меньше
                             saveProgress = getProgress.edit();
-                            saveProgress.putInt(LEVEL_KEY, 2); //сохраняем в файл значение 2
+                            saveProgress.putInt(LEVEL_KEY, 20); //сохраняем в файл значение 2
                             saveProgress.apply();
                         }
                         //Условие по счетчику пройденных уровней - конец

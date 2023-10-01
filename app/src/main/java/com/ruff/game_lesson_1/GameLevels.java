@@ -67,7 +67,7 @@ public class GameLevels extends AppCompatActivity {
 
         getProgress = getSharedPreferences(SAVE_FILE, MODE_PRIVATE);
         levelCounter = getProgress.getInt(LEVEL_KEY, 1);
-        /*levelCounter = 19;
+        /*levelCounter = 18;
         SharedPreferences.Editor editor = getProgress.edit();
         editor.putInt(LEVEL_KEY, levelCounter);
         editor.apply();*/
