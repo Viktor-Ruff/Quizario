@@ -112,6 +112,11 @@ public class MyInterstitialAd {
                 // Called when ad fails to show.
                 Log.e(TAG, "Ad failed to show fullscreen content.");
                 mInterstitialAd = null;
+                if (intent == null) {
+                    activity.onBackPressed();
+                } else {
+                    activity.startActivity(intent);
+                }
             }
 
             @Override
